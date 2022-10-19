@@ -24,7 +24,14 @@ namespace KeyboardWIndowApp
         {
             using (Conteeeeeeeext ac = new Conteeeeeeeext())
             {
-
+                Users user;
+                if ((user = ac.Users.FirstOrDefault(u => u.Login == loginText.Text)) != null)
+                {
+                    if (user.Password == passwordText.Text)
+                    {
+                        MessageBox.Show("все хорошо ");
+                    }
+                }
             }
         }
 
@@ -32,8 +39,12 @@ namespace KeyboardWIndowApp
         {
             using (Conteeeeeeeext ac = new Conteeeeeeeext())
             {
-                ac.Users.Add(new Users(loginText.Text, passwordText.Text));
-                ac.SaveChanges();
+                if (ac.Users.FirstOrDefault(u => u.Login == loginText.Text) == null)
+                {
+                    ac.Users.Add(new Users(loginText.Text, passwordText.Text));
+                    ac.SaveChanges();
+                }
+                else MessageBox.Show("ты уже существуешь");
             }
         }
     }

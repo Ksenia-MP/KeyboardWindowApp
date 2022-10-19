@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,5 +19,8 @@ namespace KeyboardWIndowApp.DataBase
             Login = login;
             Password = password;
         }
+        public Users()
+        { }
     }
+
 }
