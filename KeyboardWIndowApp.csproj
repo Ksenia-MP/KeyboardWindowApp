@@ -170,6 +170,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase\Conteeeeeeeext.cs" />
+    <Compile Include="DataBase\Difficulty.cs" />
+    <Compile Include="DataBase\Exercise.cs" />
+    <Compile Include="DataBase\Keyboard.cs" />
+    <Compile Include="DataBase\Statistics.cs" />
+    <Compile Include="DataBase\TypeZone.cs" />
     <Compile Include="DataBase\Users.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -177,6 +182,15 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20221018142441_init.cs" />
+    <Compile Include="Migrations\20221018142441_init.designer.cs">
+      <DependentUpon>20221018142441_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20221019154319_madeDB.cs" />
+    <Compile Include="Migrations\20221019154319_madeDB.designer.cs">
+      <DependentUpon>20221019154319_madeDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ConteeeeeeeextModelSnapshot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
