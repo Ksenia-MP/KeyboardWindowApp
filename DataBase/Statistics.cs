@@ -11,6 +11,7 @@ namespace KeyboardWIndowApp.DataBase
         public long Id { get; set; }
         public int TipeSpeed { get; set; }
         public int ErrorPct { get; set; }
+        public DateTime Date { get; set; }
         public long UsersId { get; set; }
         public Users Users { get; set; }
         public long ExerciseId { get; set; }

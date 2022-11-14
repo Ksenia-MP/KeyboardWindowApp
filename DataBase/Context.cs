@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KeyboardWIndowApp.DataBase
 {
-    public class Conteeeeeeeext : DbContext
+    public class Context : DbContext
     {
 
         public DbSet<Users> Users { get; set; }
@@ -18,12 +18,12 @@ namespace KeyboardWIndowApp.DataBase
         public DbSet<TypeZone> TypeZones { get; set; }
 
 
-        public Conteeeeeeeext()
+        public Context()
         {
             Database.EnsureCreated();
         }
 
-        public Conteeeeeeeext(DbContextOptions<Conteeeeeeeext> options) : base(options)
+        public Context(DbContextOptions<Context> options) : base(options)
         {
 
         }
@@ -43,13 +43,17 @@ namespace KeyboardWIndowApp.DataBase
         {
             modelBuilder.Entity<Users>().HasAlternateKey(u => u.Login);
             modelBuilder.Entity<Users>().HasKey(u => u.Id);
+
             modelBuilder.Entity<Difficulty>().HasKey(d => d.Id);
+
             modelBuilder.Entity<Exercise>().HasKey(e => e.Id);
             modelBuilder.Entity<Exercise>().HasAlternateKey(e => e.Name);
+            modelBuilder.Entity<Exercise>().HasOne(e => e.Difficulty);
+
             modelBuilder.Entity<TypeZone>().HasKey(t => t.Id);
             modelBuilder.Entity<TypeZone>().HasOne(t => t.Difficulty);
-            modelBuilder.Entity<Exercise>().HasOne(e => e.Difficulty);
-            modelBuilder.Entity<TypeZone>().HasOne(e => e.Keyboard);
+            //modelBuilder.Entity<TypeZone>().HasOne(e => e.Keyboard);
+
             modelBuilder.Entity<Statistics>().HasOne(s => s.Users);
             modelBuilder.Entity<Statistics>().HasOne(s => s.Exercise);
             modelBuilder.Entity<Statistics>().HasKey(s => s.Id);

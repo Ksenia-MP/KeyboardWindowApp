@@ -8,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace KeyboardWIndowApp.Migrations
 {
-    [DbContext(typeof(Conteeeeeeeext))]
+    [DbContext(typeof(Context))]
     [Migration("20221018142441_init")]
     partial class init
     {

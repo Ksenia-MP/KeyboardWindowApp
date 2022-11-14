@@ -22,7 +22,7 @@ namespace KeyboardWIndowApp
 
         private void Войти_Click(object sender, EventArgs e)
         {
-            using (Conteeeeeeeext ac = new Conteeeeeeeext())
+            using (Context ac = new Context())
             {
                 Users user;
                 if ((user = ac.Users.FirstOrDefault(u => u.Login == loginText.Text)) != null)
@@ -37,7 +37,7 @@ namespace KeyboardWIndowApp
 
         private void Регистрация_Click(object sender, EventArgs e)
         {
-            using (Conteeeeeeeext ac = new Conteeeeeeeext())
+            using (Context ac = new Context())
             {
                 if (ac.Users.FirstOrDefault(u => u.Login == loginText.Text) == null)
                 {

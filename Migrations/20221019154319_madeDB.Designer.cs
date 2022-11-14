@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace KeyboardWIndowApp.Migrations
 {
-    [DbContext(typeof(Conteeeeeeeext))]
+    [DbContext(typeof(Context))]
     [Migration("20221019154319_madeDB")]
     partial class madeDB
     {

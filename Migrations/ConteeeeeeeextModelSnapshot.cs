@@ -8,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace KeyboardWIndowApp.Migrations
 {
-    [DbContext(typeof(Conteeeeeeeext))]
+    [DbContext(typeof(Context))]
     partial class ConteeeeeeeextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
