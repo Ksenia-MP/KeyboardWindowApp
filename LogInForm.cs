@@ -16,26 +16,19 @@ namespace KeyboardWIndowApp
         public LogInForm()
         {
             InitializeComponent();
-            loginText.Text = "admin";
-            passwordText.Text = "admin";
+            loginText.Text = "ghrherh";
+            passwordText.Text = "111";
         }
 
         private void Войти_Click(object sender, EventArgs e)
         {
             if (UserWork.UserConfirmed(loginText.Text, passwordText.Text))
             {
-                User user = UserWork.GetUserByLogin(loginText.Text);
-                if (user.Admin)
-                {
-                    Hide();
-                    AdminForm adminForm = new AdminForm();
-                    adminForm.ShowDialog();
-                }
-                else MessageBox.Show("Вход выполнен.");
+                //выполнить проверку роли и войти в систему
+                MessageBox.Show("Вход выполнен.");
             }
             else MessageBox.Show("Пользователь с указанными логином и паролем не найден");
             
-            this.Close();
         }
 
         private void Регистрация_Click(object sender, EventArgs e)
@@ -45,7 +38,7 @@ namespace KeyboardWIndowApp
                 if (passwordText.Text.Equals(reptpassText.Text))
                 {
                     UserWork.AddUser(loginText.Text, passwordText.Text);
-                    //войти в систему
+                    //выполнить проверку роли и войти в систему
                     MessageBox.Show("Регистрация прошла успешно.");
                 }
                 else MessageBox.Show("Пароли не совпадают.");
