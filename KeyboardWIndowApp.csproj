@@ -175,26 +175,23 @@
     <Compile Include="DataBase\Keyboard.cs" />
     <Compile Include="DataBase\Statistics.cs" />
     <Compile Include="DataBase\TypeZone.cs" />
-    <Compile Include="DataBase\Users.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="DataBase\User.cs" />
+    <Compile Include="LogInForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="LogInForm.Designer.cs">
+      <DependentUpon>LogInForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20221018142441_init.cs" />
-    <Compile Include="Migrations\20221018142441_init.designer.cs">
-      <DependentUpon>20221018142441_init.cs</DependentUpon>
+    <Compile Include="Migrations\20221116135450_madeDB.cs" />
+    <Compile Include="Migrations\20221116135450_madeDB.designer.cs">
+      <DependentUpon>20221116135450_madeDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20221019154319_madeDB.cs" />
-    <Compile Include="Migrations\20221019154319_madeDB.designer.cs">
-      <DependentUpon>20221019154319_madeDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\ConteeeeeeeextModelSnapshot.cs" />
+    <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="UserWork.cs" />
+    <EmbeddedResource Include="LogInForm.resx">
+      <DependentUpon>LogInForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -12,10 +12,11 @@ namespace KeyboardWIndowApp.DataBase
         public int TipeSpeed { get; set; }
         public int ErrorPct { get; set; }
         public DateTime Date { get; set; }
-        public long UsersId { get; set; }
-        public Users Users { get; set; }
+        public long UserId { get; set; }
+        public User User { get; set; }
         public long ExerciseId { get; set; }
         public Exercise Exercise { get; set; }
+
         public Statistics()
         { }
 

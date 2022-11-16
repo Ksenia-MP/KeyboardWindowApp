@@ -10,12 +10,12 @@ namespace KeyboardWIndowApp.DataBase
     public class Context : DbContext
     {
 
-        public DbSet<Users> Users { get; set; }
-        public DbSet<Difficulty> Difficulties { get; set; }
-        public DbSet<Exercise> Exercises { get; set; }
-        public DbSet<Keyboard> Keyboards { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<Difficulty> Difficulty { get; set; }
+        public DbSet<Exercise> Exercise { get; set; }
+        public DbSet<Keyboard> Keyboard { get; set; }
         public DbSet<Statistics> Statistics { get; set; }
-        public DbSet<TypeZone> TypeZones { get; set; }
+        public DbSet<TypeZone> TypeZone { get; set; }
 
 
         public Context()
@@ -23,10 +23,8 @@ namespace KeyboardWIndowApp.DataBase
             Database.EnsureCreated();
         }
 
-        public Context(DbContextOptions<Context> options) : base(options)
-        {
+        public Context(DbContextOptions<Context> options) : base(options) {}
 
-        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var uriString = "postgresql://uh1srox1yttftbmstrtu:MNcNeVRlYXdW1aPbHlvR@byejp0mzelrxtjzryxfd-postgresql.services.clever-cloud.com:5432/byejp0mzelrxtjzryxfd";
@@ -39,10 +37,11 @@ namespace KeyboardWIndowApp.DataBase
                 uri.Host, db, user, passwd, port);
             optionsBuilder.UseNpgsql(connStr);
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Users>().HasAlternateKey(u => u.Login);
-            modelBuilder.Entity<Users>().HasKey(u => u.Id);
+            modelBuilder.Entity<User>().HasAlternateKey(u => u.Login);
+            modelBuilder.Entity<User>().HasKey(u => u.Id);
 
             modelBuilder.Entity<Difficulty>().HasKey(d => d.Id);
 
@@ -52,9 +51,8 @@ namespace KeyboardWIndowApp.DataBase
 
             modelBuilder.Entity<TypeZone>().HasKey(t => t.Id);
             modelBuilder.Entity<TypeZone>().HasOne(t => t.Difficulty);
-            //modelBuilder.Entity<TypeZone>().HasOne(e => e.Keyboard);
 
-            modelBuilder.Entity<Statistics>().HasOne(s => s.Users);
+            modelBuilder.Entity<Statistics>().HasOne(s => s.User);
             modelBuilder.Entity<Statistics>().HasOne(s => s.Exercise);
             modelBuilder.Entity<Statistics>().HasKey(s => s.Id);
 

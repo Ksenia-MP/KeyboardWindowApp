@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace KeyboardWIndowApp.DataBase
 {
-    public class Users
+    public class User
     {
         public long Id { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
         public bool Admin { get; set; }
 
-        public Users(string login, string password)
+        public User(string login, string password)
         {
             Login = login;
             Password = password;
         }
-        public Users()
+        public User()
         { }
     }
 

@@ -3,17 +3,15 @@ using System;
 using KeyboardWIndowApp.DataBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace KeyboardWIndowApp.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20221019154319_madeDB")]
-    partial class madeDB
+    partial class ContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,7 +43,7 @@ namespace KeyboardWIndowApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Difficulties");
+                    b.ToTable("Difficulty");
                 });
 
             modelBuilder.Entity("KeyboardWIndowApp.DataBase.Exercise", b =>
@@ -58,8 +56,8 @@ namespace KeyboardWIndowApp.Migrations
                     b.Property<long>("DifficultyId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("IsRandom")
-                        .HasColumnType("integer");
+                    b.Property<bool>("IsRandom")
+                        .HasColumnType("boolean");
 
                     b.Property<int>("Len")
                         .HasColumnType("integer");
@@ -90,8 +88,8 @@ namespace KeyboardWIndowApp.Migrations
                     b.Property<char[]>("Char")
                         .HasColumnType("character(1)[]");
 
-                    b.Property<string>("ZoneN")
-                        .HasColumnType("text");
+                    b.Property<int>("ZoneN")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -105,6 +103,9 @@ namespace KeyboardWIndowApp.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<int>("ErrorPct")
                         .HasColumnType("integer");
 
@@ -114,14 +115,14 @@ namespace KeyboardWIndowApp.Migrations
                     b.Property<int>("TipeSpeed")
                         .HasColumnType("integer");
 
-                    b.Property<long>("UsersId")
+                    b.Property<long>("UserId")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ExerciseId");
 
-                    b.HasIndex("UsersId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Statistics");
                 });
@@ -136,19 +137,17 @@ namespace KeyboardWIndowApp.Migrations
                     b.Property<long>("DifficultyId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("KeyboardId")
-                        .HasColumnType("bigint");
+                    b.Property<int>("ZoneN")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
                     b.HasIndex("DifficultyId");
 
-                    b.HasIndex("KeyboardId");
-
                     b.ToTable("TypeZone");
                 });
 
-            modelBuilder.Entity("KeyboardWIndowApp.DataBase.Users", b =>
+            modelBuilder.Entity("KeyboardWIndowApp.DataBase.User", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -169,7 +168,7 @@ namespace KeyboardWIndowApp.Migrations
 
                     b.HasAlternateKey("Login");
 
-                    b.ToTable("Users");
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("KeyboardWIndowApp.DataBase.Exercise", b =>
@@ -189,9 +188,9 @@ namespace KeyboardWIndowApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("KeyboardWIndowApp.DataBase.Users", "Users")
+                    b.HasOne("KeyboardWIndowApp.DataBase.User", "User")
                         .WithMany()
-                        .HasForeignKey("UsersId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -201,12 +200,6 @@ namespace KeyboardWIndowApp.Migrations
                     b.HasOne("KeyboardWIndowApp.DataBase.Difficulty", "Difficulty")
                         .WithMany()
                         .HasForeignKey("DifficultyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("KeyboardWIndowApp.DataBase.Keyboard", "Keyboard")
-                        .WithMany()
-                        .HasForeignKey("KeyboardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -8,21 +8,8 @@ namespace KeyboardWIndowApp.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
-                name: "Login",
-                table: "Users",
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "text",
-                oldNullable: true);
-
-            migrationBuilder.AddUniqueConstraint(
-                name: "AK_Users_Login",
-                table: "Users",
-                column: "Login");
-
             migrationBuilder.CreateTable(
-                name: "Difficulties",
+                name: "Difficulty",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
@@ -35,7 +22,7 @@ namespace KeyboardWIndowApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Difficulties", x => x.Id);
+                    table.PrimaryKey("PK_Difficulty", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -44,12 +31,28 @@ namespace KeyboardWIndowApp.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    ZoneN = table.Column<string>(nullable: true),
+                    ZoneN = table.Column<int>(nullable: false),
                     Char = table.Column<char[]>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Keyboard", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "User",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Login = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: true),
+                    Admin = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.Id);
+                    table.UniqueConstraint("AK_User_Login", x => x.Login);
                 });
 
             migrationBuilder.CreateTable(
@@ -59,19 +62,19 @@ namespace KeyboardWIndowApp.Migrations
                     Id = table.Column<long>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(nullable: false),
-                    DifficultyId = table.Column<long>(nullable: false),
                     Len = table.Column<int>(nullable: false),
                     Text = table.Column<string>(nullable: true),
-                    IsRandom = table.Column<int>(nullable: false)
+                    IsRandom = table.Column<bool>(nullable: false),
+                    DifficultyId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Exercise", x => x.Id);
                     table.UniqueConstraint("AK_Exercise_Name", x => x.Name);
                     table.ForeignKey(
-                        name: "FK_Exercise_Difficulties_DifficultyId",
+                        name: "FK_Exercise_Difficulty_DifficultyId",
                         column: x => x.DifficultyId,
-                        principalTable: "Difficulties",
+                        principalTable: "Difficulty",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -82,22 +85,16 @@ namespace KeyboardWIndowApp.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    DifficultyId = table.Column<long>(nullable: false),
-                    KeyboardId = table.Column<long>(nullable: false)
+                    ZoneN = table.Column<int>(nullable: false),
+                    DifficultyId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TypeZone", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TypeZone_Difficulties_DifficultyId",
+                        name: "FK_TypeZone_Difficulty_DifficultyId",
                         column: x => x.DifficultyId,
-                        principalTable: "Difficulties",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_TypeZone_Keyboard_KeyboardId",
-                        column: x => x.KeyboardId,
-                        principalTable: "Keyboard",
+                        principalTable: "Difficulty",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -110,7 +107,8 @@ namespace KeyboardWIndowApp.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     TipeSpeed = table.Column<int>(nullable: false),
                     ErrorPct = table.Column<int>(nullable: false),
-                    UsersId = table.Column<long>(nullable: false),
+                    Date = table.Column<DateTime>(nullable: false),
+                    UserId = table.Column<long>(nullable: false),
                     ExerciseId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
@@ -123,9 +121,9 @@ namespace KeyboardWIndowApp.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Statistics_Users_UsersId",
-                        column: x => x.UsersId,
-                        principalTable: "Users",
+                        name: "FK_Statistics_User_UserId",
+                        column: x => x.UserId,
+                        principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -141,23 +139,21 @@ namespace KeyboardWIndowApp.Migrations
                 column: "ExerciseId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Statistics_UsersId",
+                name: "IX_Statistics_UserId",
                 table: "Statistics",
-                column: "UsersId");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TypeZone_DifficultyId",
                 table: "TypeZone",
                 column: "DifficultyId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TypeZone_KeyboardId",
-                table: "TypeZone",
-                column: "KeyboardId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Keyboard");
+
             migrationBuilder.DropTable(
                 name: "Statistics");
 
@@ -168,21 +164,10 @@ namespace KeyboardWIndowApp.Migrations
                 name: "Exercise");
 
             migrationBuilder.DropTable(
-                name: "Keyboard");
+                name: "User");
 
             migrationBuilder.DropTable(
-                name: "Difficulties");
-
-            migrationBuilder.DropUniqueConstraint(
-                name: "AK_Users_Login",
-                table: "Users");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Login",
-                table: "Users",
-                type: "text",
-                nullable: true,
-                oldClrType: typeof(string));
+                name: "Difficulty");
         }
     }
 }

@@ -14,6 +14,7 @@ namespace KeyboardWIndowApp.DataBase
         public int MinLen { get; set; }
         public int MaxLen { get; set; }
         public int TypeSpeed { get; set; }
+
         public Difficulty(int level, int errorPct, int minLen, int maxLen, int typeSpeed)
         {
             Level = level;
@@ -22,6 +23,7 @@ namespace KeyboardWIndowApp.DataBase
             MaxLen = maxLen;
             TypeSpeed = typeSpeed;
         }
+
         public Difficulty()
         { }
     }

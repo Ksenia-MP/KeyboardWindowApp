@@ -9,12 +9,11 @@ namespace KeyboardWIndowApp.DataBase
     public class TypeZone
     {
         public long Id { get; set; }
+        public int ZoneN { get; set; }
         public long DifficultyId { get; set; }
         public Difficulty Difficulty { get; set; }
-        public long KeyboardId { get; set; }
-        public Keyboard Keyboard { get; set; }
-        public TypeZone()
-        { }
+
+        public TypeZone() {}
         
     }
 }
