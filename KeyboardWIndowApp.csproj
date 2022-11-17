@@ -182,6 +182,18 @@
     <Compile Include="DataBase\Statistics.cs" />
     <Compile Include="DataBase\TypeZone.cs" />
     <Compile Include="DataBase\User.cs" />
+    <Compile Include="DifficultyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DifficultyForm.Designer.cs">
+      <DependentUpon>DifficultyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="StaticClasses\ExerciseWork.cs" />
     <Compile Include="LogInForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,23 +207,22 @@
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserWork.cs" />
+    <Compile Include="StaticClasses\DifficultyWork.cs" />
+    <Compile Include="StaticClasses\UserWork.cs" />
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DifficultyForm.resx">
+      <DependentUpon>DifficultyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogInForm.resx">
       <DependentUpon>LogInForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -228,6 +239,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\infolinear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Keyboard_layout.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

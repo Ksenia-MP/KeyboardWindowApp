@@ -45,10 +45,9 @@ namespace KeyboardWIndowApp
             // 
             // LogInBtn
             // 
-            this.LogInBtn.Location = new System.Drawing.Point(30, 210);
-            this.LogInBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.LogInBtn.Location = new System.Drawing.Point(54, 152);
             this.LogInBtn.Name = "LogInBtn";
-            this.LogInBtn.Size = new System.Drawing.Size(167, 45);
+            this.LogInBtn.Size = new System.Drawing.Size(125, 37);
             this.LogInBtn.TabIndex = 0;
             this.LogInBtn.Text = "Вход";
             this.LogInBtn.UseVisualStyleBackColor = true;
@@ -57,44 +56,47 @@ namespace KeyboardWIndowApp
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 27);
+            this.label1.Location = new System.Drawing.Point(11, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 17);
+            this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Логин:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 86);
+            this.label2.Location = new System.Drawing.Point(11, 57);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 17);
+            this.label2.Size = new System.Drawing.Size(48, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Пароль:";
             // 
             // loginText
             // 
-            this.loginText.Location = new System.Drawing.Point(30, 47);
+            this.loginText.Location = new System.Drawing.Point(13, 25);
+            this.loginText.Margin = new System.Windows.Forms.Padding(2);
             this.loginText.MaxLength = 8;
             this.loginText.Name = "loginText";
-            this.loginText.Size = new System.Drawing.Size(253, 22);
+            this.loginText.Size = new System.Drawing.Size(191, 20);
             this.loginText.TabIndex = 3;
             // 
             // passwordText
             // 
-            this.passwordText.Location = new System.Drawing.Point(30, 106);
+            this.passwordText.Location = new System.Drawing.Point(13, 73);
+            this.passwordText.Margin = new System.Windows.Forms.Padding(2);
             this.passwordText.MaxLength = 12;
             this.passwordText.Name = "passwordText";
             this.passwordText.PasswordChar = '●';
-            this.passwordText.Size = new System.Drawing.Size(253, 22);
+            this.passwordText.Size = new System.Drawing.Size(191, 20);
             this.passwordText.TabIndex = 4;
             // 
             // RegBtn
             // 
-            this.RegBtn.Location = new System.Drawing.Point(30, 210);
-            this.RegBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.RegBtn.Location = new System.Drawing.Point(54, 152);
             this.RegBtn.Name = "RegBtn";
-            this.RegBtn.Size = new System.Drawing.Size(167, 45);
+            this.RegBtn.Size = new System.Drawing.Size(125, 37);
             this.RegBtn.TabIndex = 5;
             this.RegBtn.Text = "Регистрация";
             this.RegBtn.UseVisualStyleBackColor = true;
@@ -103,20 +105,22 @@ namespace KeyboardWIndowApp
             // 
             // reptpassText
             // 
-            this.reptpassText.Location = new System.Drawing.Point(30, 165);
+            this.reptpassText.Location = new System.Drawing.Point(13, 121);
+            this.reptpassText.Margin = new System.Windows.Forms.Padding(2);
             this.reptpassText.MaxLength = 12;
             this.reptpassText.Name = "reptpassText";
             this.reptpassText.PasswordChar = '●';
-            this.reptpassText.Size = new System.Drawing.Size(253, 22);
+            this.reptpassText.Size = new System.Drawing.Size(191, 20);
             this.reptpassText.TabIndex = 7;
             this.reptpassText.Visible = false;
             // 
             // reptpassLabel
             // 
             this.reptpassLabel.AutoSize = true;
-            this.reptpassLabel.Location = new System.Drawing.Point(27, 145);
+            this.reptpassLabel.Location = new System.Drawing.Point(11, 105);
+            this.reptpassLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.reptpassLabel.Name = "reptpassLabel";
-            this.reptpassLabel.Size = new System.Drawing.Size(134, 17);
+            this.reptpassLabel.Size = new System.Drawing.Size(103, 13);
             this.reptpassLabel.TabIndex = 6;
             this.reptpassLabel.Text = "Повторите пароль:";
             this.reptpassLabel.Visible = false;
@@ -124,18 +128,18 @@ namespace KeyboardWIndowApp
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 259);
+            this.label3.Location = new System.Drawing.Point(8, 190);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(288, 17);
+            this.label3.Size = new System.Drawing.Size(217, 13);
             this.label3.TabIndex = 8;
             this.label3.Text = "___________________________________";
             // 
             // showRegBtn
             // 
-            this.showRegBtn.Location = new System.Drawing.Point(30, 321);
-            this.showRegBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.showRegBtn.Location = new System.Drawing.Point(64, 228);
             this.showRegBtn.Name = "showRegBtn";
-            this.showRegBtn.Size = new System.Drawing.Size(167, 45);
+            this.showRegBtn.Size = new System.Drawing.Size(105, 28);
             this.showRegBtn.TabIndex = 9;
             this.showRegBtn.Text = "Регистрация";
             this.showRegBtn.UseVisualStyleBackColor = true;
@@ -144,18 +148,18 @@ namespace KeyboardWIndowApp
             // newhereLable
             // 
             this.newhereLable.AutoSize = true;
-            this.newhereLable.Location = new System.Drawing.Point(27, 300);
+            this.newhereLable.Location = new System.Drawing.Point(71, 212);
+            this.newhereLable.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.newhereLable.Name = "newhereLable";
-            this.newhereLable.Size = new System.Drawing.Size(115, 17);
+            this.newhereLable.Size = new System.Drawing.Size(91, 13);
             this.newhereLable.TabIndex = 10;
             this.newhereLable.Text = "Впервые здесь?";
             // 
             // showLogInBtn
             // 
-            this.showLogInBtn.Location = new System.Drawing.Point(30, 321);
-            this.showLogInBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.showLogInBtn.Location = new System.Drawing.Point(64, 228);
             this.showLogInBtn.Name = "showLogInBtn";
-            this.showLogInBtn.Size = new System.Drawing.Size(167, 45);
+            this.showLogInBtn.Size = new System.Drawing.Size(105, 28);
             this.showLogInBtn.TabIndex = 11;
             this.showLogInBtn.Text = "<< Назад";
             this.showLogInBtn.UseVisualStyleBackColor = true;
@@ -165,9 +169,9 @@ namespace KeyboardWIndowApp
             // LogInForm
             // 
             this.AcceptButton = this.LogInBtn;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(312, 393);
+            this.ClientSize = new System.Drawing.Size(234, 267);
             this.Controls.Add(this.newhereLable);
             this.Controls.Add(this.showRegBtn);
             this.Controls.Add(this.label3);
@@ -180,7 +184,8 @@ namespace KeyboardWIndowApp
             this.Controls.Add(this.LogInBtn);
             this.Controls.Add(this.RegBtn);
             this.Controls.Add(this.showLogInBtn);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.Name = "LogInForm";
             this.Text = "Вход";
             this.ResumeLayout(false);

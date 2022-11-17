@@ -27,4 +27,12 @@ namespace KeyboardWIndowApp.DataBase
         public Difficulty()
         { }
     }
+
+    public class DiffIdLvl
+    {
+        public long Id { get; set; }
+        public int Level { get; set; }
+
+        public DiffIdLvl() { }
+    }
 }
