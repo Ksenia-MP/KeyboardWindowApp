@@ -208,6 +208,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaticClasses\DifficultyWork.cs" />
+    <Compile Include="StaticClasses\KeyboardWork.cs" />
+    <Compile Include="StaticClasses\TypeZoneWork.cs" />
     <Compile Include="StaticClasses\UserWork.cs" />
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>

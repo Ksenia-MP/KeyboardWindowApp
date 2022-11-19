@@ -102,7 +102,10 @@ namespace KeyboardWIndowApp
 
         private void LevelSettingsBtn_Click(object sender, EventArgs e)
         {
-
+            DifficultyForm difficulty = new DifficultyForm();
+            this.Hide();
+            difficulty.ShowDialog();
+            this.Show();
         }
     }
 }

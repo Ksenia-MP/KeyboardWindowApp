@@ -33,5 +33,19 @@ namespace KeyboardWIndowApp.StaticClasses
                 return context.Difficulty.Where(d => d.Level == lvl).Select(d => d.Id).FirstOrDefault();
             }
         }
+
+        public static void UdateDifficulty(int old_diff_lvl, Difficulty new_diff, List<int> new_typeZones)
+        {
+            using (Context context = new Context())
+            {
+                Difficulty difficulty = context.Difficulty.Where(d => d.Level == old_diff_lvl).FirstOrDefault();
+                if (difficulty != null)
+                {
+                    difficulty = new_diff;
+                    TypeZoneWork.SetZones(difficulty.Id, new_typeZones);
+                    context.SaveChanges();
+                }
+            }
+        }
     }
 }
