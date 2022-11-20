@@ -20,7 +20,6 @@ namespace KeyboardWIndowApp.DataBase
 
         public Context()
         {
-            Database.CloseConnection();
             Database.EnsureCreated();
         }
 

@@ -28,6 +28,7 @@ namespace KeyboardWIndowApp
         private void InitDifficultyes()
         {
             difficulties = DifficultyWork.GetDifficultyes();
+            difficulties.Sort((a, b) => a.Level.CompareTo(b.Level));
 
             for (int i = 0; i < difficulties.Count; i++)
             {
@@ -39,8 +40,8 @@ namespace KeyboardWIndowApp
                 return;
             }
             diffComBox.SelectedIndex = 0;
-            string diffName = diffComBox.SelectedItem.ToString().Substring(8);
-            FillControls(diffName);
+            string diffLvl = diffComBox.SelectedItem.ToString().Substring(8);
+            FillControls(diffLvl);
         }
 
         private void FillControls(string lvl)
@@ -64,11 +65,6 @@ namespace KeyboardWIndowApp
                 type_zones.Sort();
                 typeZoneText.Text = String.Join(", ", type_zones);
             }
-        }
-
-        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
-        {
-            MessageBox.Show(string.Format("X:{0} Y:{1}", e.X.ToString(), e.Y.ToString()));
         }
 
         //---------------------------------------отображение полигонов на клавиатуре-------------------------
@@ -160,16 +156,44 @@ namespace KeyboardWIndowApp
 
         private void diffComBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string diffName = diffComBox.SelectedItem.ToString().Substring(8);
-            FillControls(diffName);
+            string diffLvl = diffComBox.SelectedItem.ToString().Substring(8);
+            FillControls(diffLvl);
         }
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            int lvl = int.Parse(diffComBox.SelectedItem.ToString().Substring(8));
+            bool error_flag = false;
+            string diffLvl = diffComBox.SelectedItem.ToString().Substring(8);
+            int lvl = int.Parse(diffLvl);
             Difficulty difficulty = difficulties.Find(d => d.Level == lvl);
-            difficulty.MinLen = int.Parse(minExeLenText.Text);
-            DifficultyWork.UdateDifficulty(lvl, difficulty, GetZonesByText(typeZoneText.Text));
+
+            if (int.TryParse(minExeLenText.Text, out int minLen) &&
+                int.TryParse(maxExeLenText.Text, out int maxLen) &&
+                (minLen <= maxLen))
+            {
+                difficulty.MinLen = minLen;
+                difficulty.MaxLen = maxLen;
+            }
+            else error_flag = true;
+
+            int pct = int.Parse(errPctText.Text.Substring(0, 3));
+            if (pct > 100) error_flag = true;
+            else difficulty.ErrorPct = pct;
+
+            if (int.TryParse(typeSpeedText.Text, out int typeSpeed))
+            {
+                difficulty.TypeSpeed = typeSpeed;
+            }
+            else error_flag = true;
+
+            if (error_flag)
+                MessageBox.Show("Некоторые данные имели неверный формат \nИзменения не сохранены.");
+            else
+            {
+                DifficultyWork.UdateDifficulty(lvl, difficulty, GetZonesByText(typeZoneText.Text));
+                MessageBox.Show("Данные сохранены успешно");
+            }
+            FillControls(diffLvl);
         }
     }
 }

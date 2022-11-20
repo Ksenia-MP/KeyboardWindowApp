@@ -23,10 +23,10 @@ namespace KeyboardWIndowApp.StaticClasses
             {
                 context.TypeZone.RemoveRange(context.TypeZone.Where(t => t.DifficultyId == diffId));
 
-                List<TypeZone> zoneList = null;
+                List<TypeZone> zoneList = new List<TypeZone>();
                 foreach(int zone in zones)
                 {
-                    zoneList.Add(new TypeZone(zone, diffId));
+                    zoneList.Add(new TypeZone {DifficultyId = diffId, ZoneN = zone });
                 }
 
                 context.TypeZone.AddRange(zoneList);

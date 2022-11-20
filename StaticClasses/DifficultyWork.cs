@@ -38,12 +38,16 @@ namespace KeyboardWIndowApp.StaticClasses
         {
             using (Context context = new Context())
             {
-                Difficulty difficulty = context.Difficulty.Where(d => d.Level == old_diff_lvl).FirstOrDefault();
+                var difficulty = context.Difficulty.Where(d => d.Level == old_diff_lvl).FirstOrDefault();
                 if (difficulty != null)
                 {
-                    difficulty = new_diff;
-                    TypeZoneWork.SetZones(difficulty.Id, new_typeZones);
+                    difficulty.MaxLen = new_diff.MaxLen;
+                    difficulty.MinLen = new_diff.MinLen;
+                    difficulty.ErrorPct = new_diff.ErrorPct;
+                    difficulty.TypeSpeed = new_diff.TypeSpeed;
                     context.SaveChanges();
+
+                    TypeZoneWork.SetZones(difficulty.Id, new_typeZones);
                 }
             }
         }

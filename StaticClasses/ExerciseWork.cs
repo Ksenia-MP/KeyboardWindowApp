@@ -43,7 +43,10 @@ namespace KeyboardWIndowApp.StaticClasses
             List<string> exerc_names;
             List<Button> btns = new List<Button>();
             //получим список уровней сложности и добавим вкладки в tab
+
             difficulties = DifficultyWork.GetDiffIdLvls();
+            difficulties.Sort((a, b) => a.Level.CompareTo(b.Level));
+
             for (int i = 0; i < difficulties.Count; i++)
             {
                 tab.TabPages.Add(new TabPage()      //добавим вкладку
