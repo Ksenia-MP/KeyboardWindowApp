@@ -10,10 +10,17 @@ namespace KeyboardWIndowApp.DataBase
     {
         public long Id { get; set; }
         public int ZoneN { get; set; }
+
         public long DifficultyId { get; set; }
         public Difficulty Difficulty { get; set; }
 
         public TypeZone() {}
+
+        public TypeZone(int zone_n, long dID)
+        {
+            ZoneN = zone_n;
+            DifficultyId = dID;
+        }
         
     }
 }

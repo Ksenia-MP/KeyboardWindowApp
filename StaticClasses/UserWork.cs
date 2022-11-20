@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KeyboardWIndowApp.DataBase;
 
-namespace KeyboardWIndowApp
+namespace KeyboardWIndowApp.StaticClasses
 {
     static class UserWork
     {
