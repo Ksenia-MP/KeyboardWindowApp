@@ -38,6 +38,7 @@ namespace KeyboardWIndowApp
             this.LevelSettingsBtn = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.ExercisesTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +58,7 @@ namespace KeyboardWIndowApp
             // 
             // ExercisesTab
             // 
+            this.ExercisesTab.Controls.Add(this.tabPage1);
             this.ExercisesTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ExercisesTab.ItemSize = new System.Drawing.Size(58, 30);
             this.ExercisesTab.Location = new System.Drawing.Point(331, 87);
@@ -166,6 +168,15 @@ namespace KeyboardWIndowApp
             this.button6.Text = "Удалить";
             this.button6.UseVisualStyleBackColor = false;
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 34);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(705, 443);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -203,5 +214,6 @@ namespace KeyboardWIndowApp
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TabPage tabPage1;
     }
 }
