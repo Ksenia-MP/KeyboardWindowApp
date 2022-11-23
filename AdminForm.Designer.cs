@@ -193,6 +193,7 @@ namespace KeyboardWIndowApp
 
         #endregion
 
+
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabControl ExercisesTab;
         private System.Windows.Forms.Button button1;
