@@ -188,6 +188,12 @@
     <Compile Include="DifficultyForm.Designer.cs">
       <DependentUpon>DifficultyForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExerciseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExerciseForm.Designer.cs">
+      <DependentUpon>ExerciseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -216,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DifficultyForm.resx">
       <DependentUpon>DifficultyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExerciseForm.resx">
+      <DependentUpon>ExerciseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogInForm.resx">
       <DependentUpon>LogInForm.cs</DependentUpon>

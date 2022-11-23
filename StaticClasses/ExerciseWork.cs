@@ -37,6 +37,14 @@ namespace KeyboardWIndowApp.StaticClasses
             }
         }
 
+
+        /// <summary>
+        /// Конструктор автоматического создания вкладок и их заполнения кнопками с упражнениями
+        /// </summary>
+        /// <param name="tab">заполняемый TabControl</param>
+        /// <param name="btn_width">ширина кнопки</param>
+        /// <param name="btn_height">высота кнопки</param>
+        /// <returns>Возвращает список созданных кнопок</returns>
         public static List<Button> CreateExecBtns(TabControl tab, int btn_width, int btn_height)
         {
             List<DiffIdLvl> difficulties;
