@@ -21,10 +21,6 @@ namespace KeyboardWIndowApp.DataBase
         public Context()
         {
             Database.CloseConnection();
-            Database.CloseConnection();
-            Database.CloseConnection();
-            Database.CloseConnection();
-            Database.CloseConnection();
             Database.EnsureCreated();
         }
 
