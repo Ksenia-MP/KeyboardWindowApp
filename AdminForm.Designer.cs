@@ -69,37 +69,6 @@ namespace KeyboardWIndowApp
             this.ExercisesTab.Size = new System.Drawing.Size(713, 481);
             this.ExercisesTab.TabIndex = 2;
             // 
-            // dif1
-            // 
-            this.dif1.AutoScroll = true;
-            this.dif1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dif1.Location = new System.Drawing.Point(4, 34);
-            this.dif1.Name = "dif1";
-            this.dif1.Size = new System.Drawing.Size(705, 443);
-            this.dif1.TabIndex = 0;
-            this.dif1.Text = "ур. 01";
-            this.dif1.UseVisualStyleBackColor = true;
-            // 
-            // dif2
-            // 
-            this.dif2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dif2.Location = new System.Drawing.Point(4, 34);
-            this.dif2.Name = "dif2";
-            this.dif2.Size = new System.Drawing.Size(705, 443);
-            this.dif2.TabIndex = 1;
-            this.dif2.Text = "ур. 02";
-            this.dif2.UseVisualStyleBackColor = true;
-            // 
-            // dif3
-            // 
-            this.dif3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dif3.Location = new System.Drawing.Point(4, 34);
-            this.dif3.Name = "dif3";
-            this.dif3.Size = new System.Drawing.Size(705, 443);
-            this.dif3.TabIndex = 2;
-            this.dif3.Text = "ур. 03";
-            this.dif3.UseVisualStyleBackColor = true;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::KeyboardWIndowApp.Properties.Resources.infolinear;
