@@ -79,7 +79,7 @@ namespace KeyboardWIndowApp
             this.dif1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dif1.Location = new System.Drawing.Point(4, 34);
             this.dif1.Name = "dif1";
-            this.dif1.Size = new System.Drawing.Size(527, 387);
+            this.dif1.Size = new System.Drawing.Size(705, 443);
             this.dif1.TabIndex = 0;
             this.dif1.Text = "ур. 01";
             this.dif1.UseVisualStyleBackColor = true;
@@ -89,7 +89,7 @@ namespace KeyboardWIndowApp
             this.dif2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dif2.Location = new System.Drawing.Point(4, 34);
             this.dif2.Name = "dif2";
-            this.dif2.Size = new System.Drawing.Size(527, 387);
+            this.dif2.Size = new System.Drawing.Size(705, 443);
             this.dif2.TabIndex = 1;
             this.dif2.Text = "ур. 02";
             this.dif2.UseVisualStyleBackColor = true;
@@ -99,7 +99,7 @@ namespace KeyboardWIndowApp
             this.dif3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dif3.Location = new System.Drawing.Point(4, 34);
             this.dif3.Name = "dif3";
-            this.dif3.Size = new System.Drawing.Size(527, 387);
+            this.dif3.Size = new System.Drawing.Size(705, 443);
             this.dif3.TabIndex = 2;
             this.dif3.Text = "ур. 03";
             this.dif3.UseVisualStyleBackColor = true;
@@ -158,6 +158,7 @@ namespace KeyboardWIndowApp
             this.button3.TabIndex = 5;
             this.button3.Text = "Создать упражнение";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // LevelSettingsBtn
             // 
@@ -188,6 +189,7 @@ namespace KeyboardWIndowApp
             this.button5.TabIndex = 7;
             this.button5.Text = "Изменить";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
