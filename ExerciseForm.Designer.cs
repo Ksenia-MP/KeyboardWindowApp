@@ -521,6 +521,7 @@ namespace KeyboardWIndowApp
             this.Space.Name = "Space";
             this.Space.Size = new System.Drawing.Size(445, 70);
             this.Space.TabIndex = 34;
+            this.Space.Text = " ";
             this.Space.UseVisualStyleBackColor = false;
             // 
             // ShiftKey
