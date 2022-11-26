@@ -24,6 +24,14 @@ namespace KeyboardWIndowApp.StaticClasses
             }
         }
 
+        public static Exercise GetExerciseByName(string name)
+        {
+            using (Context context = new Context())
+            {
+                return context.Exercise.FirstOrDefault(e => e.Name.Equals(name));
+            }
+        }
+
         /// <summary>
         /// Возвращает список названий упражнений для указанного уровня сложности
         /// </summary>
@@ -83,6 +91,34 @@ namespace KeyboardWIndowApp.StaticClasses
                 }
             }
             return btns;
+        }
+
+        public static string RandomText(string symb_str, int len)
+        {
+            string text = "";
+            char ch;
+            char l_ch;
+
+            Random rnd = new Random();
+
+            l_ch = symb_str[rnd.Next(0, symb_str.Length)];
+            text += l_ch;
+
+            symb_str += " ";
+
+            int i = 1;
+            while (i < len)
+            {
+                ch = symb_str[rnd.Next(0, symb_str.Length)];
+                if (!(ch.Equals(' ') && (l_ch.Equals(' '))))
+                {
+                    text += ch;
+                    i++;
+                    l_ch = ch;
+                }
+            }
+
+            return text;
         }
     }
 }

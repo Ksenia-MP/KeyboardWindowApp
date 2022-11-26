@@ -46,13 +46,13 @@ namespace KeyboardWIndowApp
             // LogInBtn
             // 
             this.LogInBtn.Location = new System.Drawing.Point(72, 187);
-            this.LogInBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LogInBtn.Margin = new System.Windows.Forms.Padding(4);
             this.LogInBtn.Name = "LogInBtn";
             this.LogInBtn.Size = new System.Drawing.Size(167, 46);
             this.LogInBtn.TabIndex = 0;
             this.LogInBtn.Text = "Вход";
             this.LogInBtn.UseVisualStyleBackColor = true;
-            this.LogInBtn.Click += new System.EventHandler(this.Войти_Click);
+            this.LogInBtn.Click += new System.EventHandler(this.LogIn_Click);
             // 
             // label1
             // 
@@ -94,14 +94,14 @@ namespace KeyboardWIndowApp
             // RegBtn
             // 
             this.RegBtn.Location = new System.Drawing.Point(72, 187);
-            this.RegBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RegBtn.Margin = new System.Windows.Forms.Padding(4);
             this.RegBtn.Name = "RegBtn";
             this.RegBtn.Size = new System.Drawing.Size(167, 46);
             this.RegBtn.TabIndex = 5;
             this.RegBtn.Text = "Регистрация";
             this.RegBtn.UseVisualStyleBackColor = true;
             this.RegBtn.Visible = false;
-            this.RegBtn.Click += new System.EventHandler(this.Регистрация_Click);
+            this.RegBtn.Click += new System.EventHandler(this.Registr_Click);
             // 
             // reptpassText
             // 
@@ -136,7 +136,7 @@ namespace KeyboardWIndowApp
             // showRegBtn
             // 
             this.showRegBtn.Location = new System.Drawing.Point(85, 281);
-            this.showRegBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.showRegBtn.Margin = new System.Windows.Forms.Padding(4);
             this.showRegBtn.Name = "showRegBtn";
             this.showRegBtn.Size = new System.Drawing.Size(140, 34);
             this.showRegBtn.TabIndex = 9;
@@ -156,7 +156,7 @@ namespace KeyboardWIndowApp
             // showLogInBtn
             // 
             this.showLogInBtn.Location = new System.Drawing.Point(85, 281);
-            this.showLogInBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.showLogInBtn.Margin = new System.Windows.Forms.Padding(4);
             this.showLogInBtn.Name = "showLogInBtn";
             this.showLogInBtn.Size = new System.Drawing.Size(140, 34);
             this.showLogInBtn.TabIndex = 11;
@@ -184,7 +184,7 @@ namespace KeyboardWIndowApp
             this.Controls.Add(this.RegBtn);
             this.Controls.Add(this.showLogInBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "LogInForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

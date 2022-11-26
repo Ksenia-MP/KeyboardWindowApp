@@ -29,6 +29,7 @@ namespace KeyboardWIndowApp
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Q = new System.Windows.Forms.Button();
             this.W = new System.Windows.Forms.Button();
             this.E = new System.Windows.Forms.Button();
@@ -78,6 +79,16 @@ namespace KeyboardWIndowApp
             this.D3 = new System.Windows.Forms.Button();
             this.D2 = new System.Windows.Forms.Button();
             this.D1 = new System.Windows.Forms.Button();
+            this.nameLbl = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.speedLbl = new System.Windows.Forms.Label();
+            this.errorLbl = new System.Windows.Forms.Label();
+            this.countLbl = new System.Windows.Forms.Label();
+            this.timeLbl = new System.Windows.Forms.Label();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.HideKeys.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -521,6 +532,7 @@ namespace KeyboardWIndowApp
             this.Space.Name = "Space";
             this.Space.Size = new System.Drawing.Size(445, 70);
             this.Space.TabIndex = 34;
+            this.Space.Text = " ";
             this.Space.UseVisualStyleBackColor = false;
             // 
             // ShiftKey
@@ -568,7 +580,6 @@ namespace KeyboardWIndowApp
             this.rtb.Location = new System.Drawing.Point(115, 207);
             this.rtb.Multiline = false;
             this.rtb.Name = "rtb";
-            this.rtb.ReadOnly = true;
             this.rtb.Size = new System.Drawing.Size(1082, 79);
             this.rtb.TabIndex = 0;
             this.rtb.Text = "вкЕеаДпгОршБоПщлзПд нпгрш гшрнг аенгпшл";
@@ -720,11 +731,130 @@ namespace KeyboardWIndowApp
             this.D1.Text = "1";
             this.D1.UseVisualStyleBackColor = false;
             // 
+            // nameLbl
+            // 
+            this.nameLbl.BackColor = System.Drawing.Color.SkyBlue;
+            this.nameLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nameLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.nameLbl.Location = new System.Drawing.Point(0, 0);
+            this.nameLbl.Name = "nameLbl";
+            this.nameLbl.Size = new System.Drawing.Size(294, 68);
+            this.nameLbl.TabIndex = 48;
+            this.nameLbl.Text = "Упражнение 01-01";
+            this.nameLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.Control;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label2.Location = new System.Drawing.Point(109, 110);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(164, 32);
+            this.label2.TabIndex = 49;
+            this.label2.Text = "Скорость: ";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.SystemColors.Control;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label3.Location = new System.Drawing.Point(129, 163);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(144, 32);
+            this.label3.TabIndex = 50;
+            this.label3.Text = "Ошибки: ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.SystemColors.Control;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label4.Location = new System.Drawing.Point(925, 110);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(155, 32);
+            this.label4.TabIndex = 51;
+            this.label4.Text = "Набрано: ";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.SystemColors.Control;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label5.Location = new System.Drawing.Point(957, 163);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(123, 32);
+            this.label5.TabIndex = 52;
+            this.label5.Text = "Время: ";
+            // 
+            // speedLbl
+            // 
+            this.speedLbl.AutoSize = true;
+            this.speedLbl.BackColor = System.Drawing.SystemColors.Control;
+            this.speedLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.speedLbl.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.speedLbl.Location = new System.Drawing.Point(279, 110);
+            this.speedLbl.Name = "speedLbl";
+            this.speedLbl.Size = new System.Drawing.Size(0, 32);
+            this.speedLbl.TabIndex = 53;
+            // 
+            // errorLbl
+            // 
+            this.errorLbl.AutoSize = true;
+            this.errorLbl.BackColor = System.Drawing.SystemColors.Control;
+            this.errorLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.errorLbl.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.errorLbl.Location = new System.Drawing.Point(279, 163);
+            this.errorLbl.Name = "errorLbl";
+            this.errorLbl.Size = new System.Drawing.Size(0, 32);
+            this.errorLbl.TabIndex = 54;
+            // 
+            // countLbl
+            // 
+            this.countLbl.AutoSize = true;
+            this.countLbl.BackColor = System.Drawing.SystemColors.Control;
+            this.countLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.countLbl.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.countLbl.Location = new System.Drawing.Point(1086, 110);
+            this.countLbl.Name = "countLbl";
+            this.countLbl.Size = new System.Drawing.Size(0, 32);
+            this.countLbl.TabIndex = 55;
+            // 
+            // timeLbl
+            // 
+            this.timeLbl.AutoSize = true;
+            this.timeLbl.BackColor = System.Drawing.SystemColors.Control;
+            this.timeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.timeLbl.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.timeLbl.Location = new System.Drawing.Point(1086, 163);
+            this.timeLbl.Name = "timeLbl";
+            this.timeLbl.Size = new System.Drawing.Size(0, 32);
+            this.timeLbl.TabIndex = 56;
+            // 
+            // timer
+            // 
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
             // ExerciseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1312, 699);
+            this.Controls.Add(this.HideKeys);
+            this.Controls.Add(this.timeLbl);
+            this.Controls.Add(this.countLbl);
+            this.Controls.Add(this.errorLbl);
+            this.Controls.Add(this.speedLbl);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.nameLbl);
             this.Controls.Add(this.D0);
             this.Controls.Add(this.checkVK);
             this.Controls.Add(this.rtb);
@@ -772,7 +902,6 @@ namespace KeyboardWIndowApp
             this.Controls.Add(this.E);
             this.Controls.Add(this.W);
             this.Controls.Add(this.Q);
-            this.Controls.Add(this.HideKeys);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ExerciseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -834,5 +963,15 @@ namespace KeyboardWIndowApp
         private System.Windows.Forms.Button D3;
         private System.Windows.Forms.Button D2;
         private System.Windows.Forms.Button D1;
+        private System.Windows.Forms.Label nameLbl;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label speedLbl;
+        private System.Windows.Forms.Label errorLbl;
+        private System.Windows.Forms.Label countLbl;
+        private System.Windows.Forms.Label timeLbl;
+        private System.Windows.Forms.Timer timer;
     }
 }

@@ -25,5 +25,7 @@ namespace KeyboardWIndowApp.StaticClasses
             new Point(54, 98), new Point(30,98), new Point(13, 25)
         };
 
+
+
     }
 }

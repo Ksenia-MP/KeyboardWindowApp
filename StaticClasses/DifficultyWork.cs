@@ -34,6 +34,14 @@ namespace KeyboardWIndowApp.StaticClasses
             }
         }
 
+        public static Difficulty GetDiffById(long id)
+        {
+            using (Context context = new Context())
+            {
+                return context.Difficulty.FirstOrDefault(d => d.Id == id);
+            }
+        } 
+
         public static void UdateDifficulty(int old_diff_lvl, Difficulty new_diff, List<int> new_typeZones)
         {
             using (Context context = new Context())
