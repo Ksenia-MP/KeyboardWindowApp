@@ -31,14 +31,14 @@ namespace KeyboardWIndowApp
         {
             this.label1 = new System.Windows.Forms.Label();
             this.ExercisesTab = new System.Windows.Forms.TabControl();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.ExrcsBtn = new System.Windows.Forms.Button();
+            this.adminStatBtn = new System.Windows.Forms.Button();
+            this.createExrcBtn = new System.Windows.Forms.Button();
             this.LevelSettingsBtn = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.changeBtn = new System.Windows.Forms.Button();
+            this.delBtn = new System.Windows.Forms.Button();
+            this.info = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.info)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -66,60 +66,49 @@ namespace KeyboardWIndowApp
             this.ExercisesTab.Size = new System.Drawing.Size(713, 481);
             this.ExercisesTab.TabIndex = 2;
             // 
-            // pictureBox1
+            // ExrcsBtn
             // 
-            this.pictureBox1.Image = global::KeyboardWIndowApp.Properties.Resources.infolinear;
-            this.pictureBox1.Location = new System.Drawing.Point(992, 21);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(47, 43);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
+            this.ExrcsBtn.BackColor = System.Drawing.Color.SteelBlue;
+            this.ExrcsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ExrcsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ExrcsBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ExrcsBtn.Location = new System.Drawing.Point(20, 98);
+            this.ExrcsBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.ExrcsBtn.Name = "ExrcsBtn";
+            this.ExrcsBtn.Size = new System.Drawing.Size(287, 74);
+            this.ExrcsBtn.TabIndex = 3;
+            this.ExrcsBtn.Text = "Упражнения";
+            this.ExrcsBtn.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // adminStatBtn
             // 
-            this.button1.BackColor = System.Drawing.Color.SteelBlue;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(20, 98);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(287, 74);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Упражнения";
-            this.button1.UseVisualStyleBackColor = false;
+            this.adminStatBtn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.adminStatBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
+            this.adminStatBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.adminStatBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.adminStatBtn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.adminStatBtn.Location = new System.Drawing.Point(20, 185);
+            this.adminStatBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.adminStatBtn.Name = "adminStatBtn";
+            this.adminStatBtn.Size = new System.Drawing.Size(287, 74);
+            this.adminStatBtn.TabIndex = 4;
+            this.adminStatBtn.Text = "Статистика";
+            this.adminStatBtn.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // createExrcBtn
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button2.Location = new System.Drawing.Point(20, 185);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(287, 74);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Статистика";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button3.Location = new System.Drawing.Point(20, 271);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(287, 74);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Создать упражнение";
-            this.button3.UseVisualStyleBackColor = false;
+            this.createExrcBtn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.createExrcBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
+            this.createExrcBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.createExrcBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.createExrcBtn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.createExrcBtn.Location = new System.Drawing.Point(20, 271);
+            this.createExrcBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.createExrcBtn.Name = "createExrcBtn";
+            this.createExrcBtn.Size = new System.Drawing.Size(287, 74);
+            this.createExrcBtn.TabIndex = 5;
+            this.createExrcBtn.Text = "Создать упражнение";
+            this.createExrcBtn.UseVisualStyleBackColor = false;
             // 
             // LevelSettingsBtn
             // 
@@ -137,46 +126,57 @@ namespace KeyboardWIndowApp
             this.LevelSettingsBtn.UseVisualStyleBackColor = false;
             this.LevelSettingsBtn.Click += new System.EventHandler(this.LevelSettingsBtn_Click);
             // 
-            // button5
+            // changeBtn
             // 
-            this.button5.BackColor = System.Drawing.Color.SkyBlue;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button5.Location = new System.Drawing.Point(441, 15);
-            this.button5.Margin = new System.Windows.Forms.Padding(4);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(207, 49);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "Изменить";
-            this.button5.UseVisualStyleBackColor = false;
+            this.changeBtn.BackColor = System.Drawing.Color.SkyBlue;
+            this.changeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.changeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.changeBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.changeBtn.Location = new System.Drawing.Point(441, 15);
+            this.changeBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.changeBtn.Name = "changeBtn";
+            this.changeBtn.Size = new System.Drawing.Size(207, 49);
+            this.changeBtn.TabIndex = 7;
+            this.changeBtn.Text = "Изменить";
+            this.changeBtn.UseVisualStyleBackColor = false;
             // 
-            // button6
+            // delBtn
             // 
-            this.button6.BackColor = System.Drawing.Color.SkyBlue;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button6.Location = new System.Drawing.Point(647, 15);
-            this.button6.Margin = new System.Windows.Forms.Padding(4);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(207, 49);
-            this.button6.TabIndex = 8;
-            this.button6.Text = "Удалить";
-            this.button6.UseVisualStyleBackColor = false;
+            this.delBtn.BackColor = System.Drawing.Color.SkyBlue;
+            this.delBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.delBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.delBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.delBtn.Location = new System.Drawing.Point(647, 15);
+            this.delBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.delBtn.Name = "delBtn";
+            this.delBtn.Size = new System.Drawing.Size(207, 49);
+            this.delBtn.TabIndex = 8;
+            this.delBtn.Text = "Удалить";
+            this.delBtn.UseVisualStyleBackColor = false;
+            // 
+            // info
+            // 
+            this.info.Image = global::KeyboardWIndowApp.Properties.Resources.infolinear;
+            this.info.Location = new System.Drawing.Point(1000, 13);
+            this.info.Margin = new System.Windows.Forms.Padding(4);
+            this.info.Name = "info";
+            this.info.Size = new System.Drawing.Size(47, 47);
+            this.info.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.info.TabIndex = 9;
+            this.info.TabStop = false;
             // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1060, 578);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.info);
+            this.Controls.Add(this.delBtn);
+            this.Controls.Add(this.changeBtn);
             this.Controls.Add(this.LevelSettingsBtn);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.createExrcBtn);
+            this.Controls.Add(this.adminStatBtn);
+            this.Controls.Add(this.ExrcsBtn);
             this.Controls.Add(this.ExercisesTab);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -184,7 +184,7 @@ namespace KeyboardWIndowApp
             this.Name = "AdminForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Режим администратора";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.info)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -194,12 +194,12 @@ namespace KeyboardWIndowApp
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabControl ExercisesTab;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button ExrcsBtn;
+        private System.Windows.Forms.Button adminStatBtn;
+        private System.Windows.Forms.Button createExrcBtn;
         private System.Windows.Forms.Button LevelSettingsBtn;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button changeBtn;
+        private System.Windows.Forms.Button delBtn;
+        private System.Windows.Forms.PictureBox info;
     }
 }
