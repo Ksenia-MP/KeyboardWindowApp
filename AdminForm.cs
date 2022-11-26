@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using KeyboardWIndowApp.DataBase;
 using KeyboardWIndowApp.StaticClasses;
+using Microsoft.EntityFrameworkCore;
 
 namespace KeyboardWIndowApp
 {
@@ -25,7 +26,7 @@ namespace KeyboardWIndowApp
             int h = 60;
 
             List<Button> btns = ExerciseWork.CreateExecBtns(ExercisesTab, w, h);
-            foreach (Button b in btns) 
+            foreach (Button b in btns)
                 b.Click += new System.EventHandler(exercise_Click);
         }
 
@@ -55,6 +56,28 @@ namespace KeyboardWIndowApp
             this.Hide();
             difficulty.ShowDialog();
             this.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            CreateExercise ce = new CreateExercise();
+            ce.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Exercise exercise;
+            if (curr_btn != null)
+            {
+                using (Context context = new Context())
+                {
+                    exercise = context.Exercise.Include(ex => ex.Difficulty).FirstOrDefault(ex => ex.Name == curr_btn.Text.Split(' ')[1]); 
+                }
+                CreateExercise ce = new CreateExercise(exercise);
+                ce.Show();
+            }
+            else
+                MessageBox.Show("Выберете упражнение!");
         }
     }
 }

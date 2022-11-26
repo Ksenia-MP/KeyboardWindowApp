@@ -31,7 +31,6 @@ namespace KeyboardWIndowApp
         {
             this.label1 = new System.Windows.Forms.Label();
             this.exerciseName = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.diffComBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,8 +40,10 @@ namespace KeyboardWIndowApp
             this.openBut = new System.Windows.Forms.Button();
             this.generateBut = new System.Windows.Forms.Button();
             this.saveBut = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.diffName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.countChar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -58,22 +59,12 @@ namespace KeyboardWIndowApp
             // exerciseName
             // 
             this.exerciseName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.8F);
-            this.exerciseName.Location = new System.Drawing.Point(227, 16);
+            this.exerciseName.Location = new System.Drawing.Point(301, 16);
             this.exerciseName.Multiline = true;
             this.exerciseName.Name = "exerciseName";
-            this.exerciseName.Size = new System.Drawing.Size(209, 51);
+            this.exerciseName.Size = new System.Drawing.Size(135, 51);
             this.exerciseName.TabIndex = 1;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::KeyboardWIndowApp.Properties.Resources.Keyboard_layout;
-            this.pictureBox1.Location = new System.Drawing.Point(447, 9);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(613, 199);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.exerciseName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.exerciseName_KeyPress);
             // 
             // diffComBox
             // 
@@ -87,6 +78,7 @@ namespace KeyboardWIndowApp
             this.diffComBox.Name = "diffComBox";
             this.diffComBox.Size = new System.Drawing.Size(192, 39);
             this.diffComBox.TabIndex = 11;
+            this.diffComBox.SelectedIndexChanged += new System.EventHandler(this.diffComBox_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -128,11 +120,13 @@ namespace KeyboardWIndowApp
             // 
             // exerciseText
             // 
+            this.exerciseText.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.exerciseText.Location = new System.Drawing.Point(12, 214);
             this.exerciseText.Name = "exerciseText";
             this.exerciseText.Size = new System.Drawing.Size(835, 299);
             this.exerciseText.TabIndex = 15;
             this.exerciseText.Text = "";
+            this.exerciseText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.exerciseText_KeyPress);
             // 
             // openBut
             // 
@@ -160,7 +154,7 @@ namespace KeyboardWIndowApp
             // 
             // saveBut
             // 
-            this.saveBut.BackColor = System.Drawing.Color.Blue;
+            this.saveBut.BackColor = System.Drawing.Color.SteelBlue;
             this.saveBut.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
             this.saveBut.ForeColor = System.Drawing.SystemColors.Window;
             this.saveBut.Location = new System.Drawing.Point(853, 455);
@@ -169,12 +163,33 @@ namespace KeyboardWIndowApp
             this.saveBut.TabIndex = 18;
             this.saveBut.Text = "Сохранить";
             this.saveBut.UseVisualStyleBackColor = false;
+            this.saveBut.Click += new System.EventHandler(this.saveBut_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::KeyboardWIndowApp.Properties.Resources.Keyboard_layout;
+            this.pictureBox1.Location = new System.Drawing.Point(447, 9);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(613, 199);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // diffName
+            // 
+            this.diffName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.8F);
+            this.diffName.Location = new System.Drawing.Point(227, 16);
+            this.diffName.Name = "diffName";
+            this.diffName.Size = new System.Drawing.Size(68, 51);
+            this.diffName.TabIndex = 19;
             // 
             // CreateExercise
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 525);
+            this.Controls.Add(this.diffName);
             this.Controls.Add(this.saveBut);
             this.Controls.Add(this.generateBut);
             this.Controls.Add(this.openBut);
@@ -190,8 +205,8 @@ namespace KeyboardWIndowApp
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CreateExercise";
             this.Text = "Создание упражнения";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.countChar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,7 +216,6 @@ namespace KeyboardWIndowApp
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox exerciseName;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox diffComBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -211,5 +225,7 @@ namespace KeyboardWIndowApp
         private System.Windows.Forms.Button openBut;
         private System.Windows.Forms.Button generateBut;
         private System.Windows.Forms.Button saveBut;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label diffName;
     }
 }

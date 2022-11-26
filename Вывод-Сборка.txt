@@ -1,0 +1,4 @@
+﻿Сборка начата…
+1>------ Сборка начата: проект: KeyboardWIndowApp, Конфигурация: Debug Any CPU ------
+1>C:\Users\Анастасия Пономарева\Source\Repos\KeyboardWindowApp\CreateExercise.cs(20,16,20,30): error CS0111: Тип "CreateExercise" уже определяет член "CreateExercise" с такими же типами параметров.
+========== Сборка: успешно: 0, с ошибками: 1, без изменений: 0, пропущено: 0 ==========

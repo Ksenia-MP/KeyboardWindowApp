@@ -109,6 +109,7 @@ namespace KeyboardWIndowApp
             this.createExrcBtn.TabIndex = 5;
             this.createExrcBtn.Text = "Создать упражнение";
             this.createExrcBtn.UseVisualStyleBackColor = false;
+            this.createExrcBtn.Click += new System.EventHandler(this.createExrcBtn_Click);
             // 
             // LevelSettingsBtn
             // 
@@ -139,6 +140,7 @@ namespace KeyboardWIndowApp
             this.changeBtn.TabIndex = 7;
             this.changeBtn.Text = "Изменить";
             this.changeBtn.UseVisualStyleBackColor = false;
+            this.changeBtn.Click += new System.EventHandler(this.changeBtn_Click);
             // 
             // delBtn
             // 
