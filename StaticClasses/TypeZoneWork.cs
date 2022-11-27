@@ -33,5 +33,13 @@ namespace KeyboardWIndowApp.StaticClasses
                 context.SaveChanges();
             }
         }
+
+        public static long GetDiffId(int zoneN)
+        {
+            using (Context context = new Context())
+            {
+                return context.TypeZone.Where(t => t.ZoneN == zoneN).Select(t => t.DifficultyId).FirstOrDefault();
+            }
+        }
     }
 }

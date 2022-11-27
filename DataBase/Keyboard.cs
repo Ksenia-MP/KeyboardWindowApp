@@ -10,13 +10,14 @@ namespace KeyboardWIndowApp.DataBase
     {
         public long Id { get; set; }
         public int ZoneN { get; set; }
-        public char[] Char { get; set; }
+        public string Char { get; set; }
 
         public Keyboard() {}
 
-        public Keyboard(int zoneN)
+        public Keyboard(int zoneN, string ch)
         {
             ZoneN = zoneN;
+            Char =  ch;
         }
 
     }

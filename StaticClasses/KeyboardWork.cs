@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KeyboardWIndowApp.DataBase;
 
 namespace KeyboardWIndowApp.StaticClasses
 {
@@ -25,7 +26,12 @@ namespace KeyboardWIndowApp.StaticClasses
             new Point(54, 98), new Point(30,98), new Point(13, 25)
         };
 
-
-
+        public static int GetZoneN(string ch)
+        {
+            using (Context context = new Context())
+            {
+                return context.Keyboard.Where(k => k.Char.Equals(ch)).Select(k => k.ZoneN).FirstOrDefault();
+            }
+        }
     }
 }

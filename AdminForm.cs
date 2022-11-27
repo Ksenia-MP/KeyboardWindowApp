@@ -58,20 +58,26 @@ namespace KeyboardWIndowApp
             this.Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+
+        private void adminStatBtn_Click(object sender, EventArgs e)
         {
-            CreateExercise ce = new CreateExercise();
-            ce.Show();
+
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void createExrcBtn_Click(object sender, EventArgs e)
+        {
+            CreateExercise ce = new CreateExercise();
+            ce.ShowDialog();
+        }
+
+        private void changeBtn_Click(object sender, EventArgs e)
         {
             Exercise exercise;
             if (curr_btn != null)
             {
                 using (Context context = new Context())
                 {
-                    exercise = context.Exercise.Include(ex => ex.Difficulty).FirstOrDefault(ex => ex.Name == curr_btn.Text.Split(' ')[1]); 
+                    exercise = context.Exercise.Include(ex => ex.Difficulty).FirstOrDefault(ex => ex.Name == curr_btn.Text.Split(' ')[1]);
                 }
                 CreateExercise ce = new CreateExercise(exercise);
                 ce.Show();

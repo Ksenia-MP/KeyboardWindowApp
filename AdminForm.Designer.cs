@@ -94,6 +94,7 @@ namespace KeyboardWIndowApp
             this.adminStatBtn.TabIndex = 4;
             this.adminStatBtn.Text = "Статистика";
             this.adminStatBtn.UseVisualStyleBackColor = false;
+            this.adminStatBtn.Click += new System.EventHandler(this.adminStatBtn_Click);
             // 
             // createExrcBtn
             // 
