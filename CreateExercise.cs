@@ -2,13 +2,9 @@
 using KeyboardWIndowApp.StaticClasses;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KeyboardWIndowApp
@@ -81,8 +77,11 @@ namespace KeyboardWIndowApp
                         character.Text += c;
                 countChar.Value = exerciseText.TextLength;
                 int i = 0;
-                while (exerciseText.TextLength > difficulties[i++].MaxLen && i < difficulties.Count)
+                while (exerciseText.TextLength > difficulties[i].MaxLen && i < difficulties.Count)
+                {
                     diffComBox.Text = "Уровень " + difficulties[i].Level;
+                    i++;
+                }
             }
 
         }
@@ -107,40 +106,59 @@ namespace KeyboardWIndowApp
             if (generateBut.BackColor == Color.SteelBlue)
                 _exercise.IsRandom = true;
             int i = 0;
-            while (difficulties[i++].Id == diffComBox.Text[8])
+            while (difficulties[i].Id == int.Parse(diffComBox.Text.Split(' ')[1]))
             {
                 _exercise.DifficultyId = difficulties[i].Id;
                 _exercise.Difficulty = difficulties[i];
+                i++;
             }
-            if (_exercise.Id == 0)
+            using (Context context = new Context())
             {
-                using (Context context = new Context())
+                context.Entry(_exercise.Difficulty).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
+                if (_exercise.Id == 0)
                 {
                     context.Exercise.Add(_exercise);
-                    context.SaveChanges();
                 }
-            }
-            else
-            {
-                using (Context context = new Context())
+                else
                 {
                     context.Exercise.Update(_exercise);
-                    context.SaveChanges();
                 }
+                context.SaveChanges();
             }
+            Close();
         }
 
         private void exerciseText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (number == 8)
+            {
+                e.Handled = true;
+                character.Text = "";
+                foreach (var c in exerciseText.Text)
+                    if (!character.Text.Contains(c))
+                        character.Text += c;
+            }
+        }
+
+        private void exerciseText_TextChanged(object sender, EventArgs e)
         {
             countChar.Value = exerciseText.TextLength;
             foreach (var c in exerciseText.Text)
                 if (!character.Text.Contains(c))
                     character.Text += c;
-            int i = 0;
-            while (exerciseText.TextLength > difficulties[i++].MaxLen && i < difficulties.Count)
-                diffComBox.Text = "Уровень " + difficulties[i].Level;
+            int i = 1;
+            while (i < difficulties.Count && exerciseText.TextLength > difficulties[i].MaxLen)
+            {
+                i++;
+            }
+            diffComBox.Text = "Уровень " + difficulties[i - 1].Level;
+        }
+
+        private void character_KeyPress(object sender, KeyPressEventArgs e)
+        {
             char number = e.KeyChar;
-            if ( number == 8)
+            if (number == 8)
             {
                 e.Handled = true;
                 character.Text = "";
@@ -148,11 +166,7 @@ namespace KeyboardWIndowApp
                     if (!character.Text.Contains(c))
                         character.Text += c;
                 countChar.Value = exerciseText.TextLength;
-                int j = 0;
-                while (exerciseText.TextLength > difficulties[j++].MaxLen && j < difficulties.Count)
-                    diffComBox.Text = "Уровень " + difficulties[j].Level;
-            }    
-                
+            }
         }
     }
 }

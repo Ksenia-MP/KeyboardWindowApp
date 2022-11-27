@@ -117,15 +117,18 @@ namespace KeyboardWIndowApp
             this.character.Size = new System.Drawing.Size(429, 45);
             this.character.TabIndex = 14;
             this.character.Text = "";
+            this.character.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.character_KeyPress);
             // 
             // exerciseText
             // 
             this.exerciseText.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.exerciseText.Location = new System.Drawing.Point(12, 214);
+            this.exerciseText.MaxLength = 100;
             this.exerciseText.Name = "exerciseText";
             this.exerciseText.Size = new System.Drawing.Size(835, 299);
             this.exerciseText.TabIndex = 15;
             this.exerciseText.Text = "";
+            this.exerciseText.TextChanged += new System.EventHandler(this.exerciseText_TextChanged);
             this.exerciseText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.exerciseText_KeyPress);
             // 
             // openBut
