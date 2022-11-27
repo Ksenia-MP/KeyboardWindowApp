@@ -2,14 +2,10 @@
 using KeyboardWIndowApp.StaticClasses;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KeyboardWIndowApp
@@ -139,78 +135,6 @@ namespace KeyboardWIndowApp
             }
         }
 
-        private void exerciseName_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char number = e.KeyChar;
-            if (!Char.IsDigit(number) && number != 8)
-                e.Handled = true;
-        }
-
-        private void saveBut_Click(object sender, EventArgs e)
-        {
-            _exercise.Name = diffName.Text + exerciseName.Text;
-            _exercise.Len = (int)(countChar.Value);
-            _exercise.Text = exerciseText.Text;
-            if (generateBut.BackColor == onRndClr)
-                _exercise.IsRandom = true;
-            int i = 0;
-            while (difficulties[i++].Id == diffComBox.Text[8])
-            {
-                _exercise.DifficultyId = difficulties[i].Id;
-                _exercise.Difficulty = difficulties[i];
-            }
-            if (_exercise.Id == 0)
-            {
-                using (Context context = new Context())
-                {
-                    context.Exercise.Add(_exercise);
-                    context.SaveChanges();
-                }
-            }
-            else
-            {
-                using (Context context = new Context())
-                {
-                    context.Exercise.Update(_exercise);
-                    context.SaveChanges();
-                }
-            }
-        }
-
-        private void exerciseText_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-            ///*int i = 0;
-            //while (exerciseText.TextLength > difficulties[i++].MaxLen && i < difficulties.Count)
-            //    diffComBox.Text = "Уровень " + difficulties[i].Level;*/
-            //text = exerciseText.Text;
-
-
-            //char number = e.KeyChar;
-            //if ( number == 8)
-            //{
-            //    e.Handled = true;
-            //    character.Text = GetCharecters(text);
-            //    countChar.Value = exerciseText.TextLength;
-            //    /*int j = 0;
-            //    while (exerciseText.TextLength > difficulties[j++].MaxLen && j < difficulties.Count)
-            //        diffComBox.Text = "Уровень " + difficulties[j].Level;*/
-            //}
-
-            //diffComBox.SelectedIndex = GetDiffIndex(ref text);
-            //countChar.Value = (text.Length < difficulties[0].MinLen) ? difficulties[0].MinLen : exerciseText.TextLength;
-            //character.Text = GetCharecters(text);
-        }
-
-        private void generateBut_Click(object sender, EventArgs e)
-        {
-            generateBut.BackColor = (generateBut.BackColor == onRndClr) ? offRndClr : onRndClr;
-            if (generateBut.BackColor == onRndClr)
-            {
-                exerciseText.Text = ExerciseWork.RandomText(character.Text, (int)countChar.Value);
-            }
-        }
-
         private void OpenBtn_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -232,6 +156,70 @@ namespace KeyboardWIndowApp
             }
         }
 
+        private void exerciseName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!Char.IsDigit(number) && number != 8)
+                e.Handled = true;
+        }
+
+        private void saveBut_Click(object sender, EventArgs e)
+        {
+            _exercise.Name = diffName.Text + exerciseName.Text;
+            _exercise.Len = (int)(countChar.Value);
+            _exercise.Text = exerciseText.Text;
+            if (generateBut.BackColor == onRndClr)
+                _exercise.IsRandom = true;
+            int i = 0;
+            while (difficulties[i].Id == int.Parse(diffComBox.Text.Split(' ')[1]))
+            {
+                _exercise.DifficultyId = difficulties[i].Id;
+                _exercise.Difficulty = difficulties[i];
+                i++;
+            }
+            using (Context context = new Context())
+            {
+                context.Entry(_exercise.Difficulty).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
+                if (_exercise.Id == 0)
+                {
+                    context.Exercise.Add(_exercise);
+                }
+                else
+                {
+                    context.Exercise.Update(_exercise);
+                }
+                context.SaveChanges();
+            }
+            Close();
+        }
+
+        private void exerciseText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (number == 8)
+            {
+                e.Handled = true;
+                character.Text = "";
+                foreach (var c in exerciseText.Text)
+                    if (!character.Text.Contains(c))
+                        character.Text += c;
+            }
+        }
+
+        private void character_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (number == 8)
+            {
+                e.Handled = true;
+                character.Text = "";
+                foreach (var c in exerciseText.Text)
+                    if (!character.Text.Contains(c))
+                        character.Text += c;
+                countChar.Value = exerciseText.TextLength;
+            }
+        }
+
         private string GetCharecters(string text)
         {
             string chars = "";
@@ -242,7 +230,7 @@ namespace KeyboardWIndowApp
                 if (!chars.Contains(ch) && !ch.Equals(" "))
                     chars += ch;
             }
-                
+
             return chars;
         }
 
@@ -269,7 +257,7 @@ namespace KeyboardWIndowApp
         private int GetDiffIndex(ref string text, string chars)
         {
             int lenDiff = 0;
-            if (text.Length > difficulties[difficulties.Count-1].MaxLen)
+            if (text.Length > difficulties[difficulties.Count - 1].MaxLen)
             {
                 text = text.Substring(0, difficulties[difficulties.Count - 1].MaxLen);
                 lenDiff = difficulties.Count - 1;
@@ -283,7 +271,7 @@ namespace KeyboardWIndowApp
 
             //список зон задействованных в тексте упражнения
             List<int> zones = GetTextZones(chars);
-            
+
             bool foundall;
             for (int i = 0; i < difficulties.Count; i++)
             {
@@ -306,30 +294,7 @@ namespace KeyboardWIndowApp
                 }
             }
 
-            return Math.Max(zoneDiff,lenDiff);
-        }
-
-        private void character_TextChanged(object sender, EventArgs e)
-        {
-            character.Text = GetCharecters(character.Text);
-            List<int> d_zones = diffZones[diffComBox.SelectedIndex].Split(',').Select(int.Parse).ToList();
-            List<int> chars_zones = GetTextZones(character.Text);
-
-            bool foundall = false;
-            foreach (int zone in chars_zones)
-            {
-                foundall = d_zones.Contains(zone);
-                if (!foundall)
-                {
-                    break;
-                }
-            }
-            if (!foundall && character.TextLength != 0)
-            {
-                character.Text = character.Text.Substring(0,character.TextLength -1);
-            }
-
-            character.SelectionStart = character.TextLength;
+            return Math.Max(zoneDiff, lenDiff);
         }
 
         private void exerciseText_TextChanged(object sender, EventArgs e)
@@ -352,6 +317,7 @@ namespace KeyboardWIndowApp
             if (diffComBox.SelectedIndex != diffIndx)
                 diffComBox.SelectedIndex = diffIndx;
             countChar.Value = (exerciseText.TextLength < difficulties[diffIndx].MinLen) ? difficulties[diffIndx].MinLen : exerciseText.TextLength;
+
         }
     }
 }

@@ -130,7 +130,7 @@ namespace KeyboardWIndowApp
             this.character.Size = new System.Drawing.Size(429, 45);
             this.character.TabIndex = 14;
             this.character.Text = "";
-            this.character.TextChanged += new System.EventHandler(this.character_TextChanged);
+            this.character.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.character_KeyPress);
             // 
             // exerciseText
             // 
