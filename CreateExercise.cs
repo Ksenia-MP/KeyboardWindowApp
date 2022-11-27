@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace KeyboardWIndowApp
@@ -165,6 +166,7 @@ namespace KeyboardWIndowApp
 
         private void saveBut_Click(object sender, EventArgs e)
         {
+            //добавить проверку полей (название упр, длина текста должна быть в границах сложности)
             _exercise.Name = diffName.Text + exerciseName.Text;
             _exercise.Len = (int)(countChar.Value);
             _exercise.Text = exerciseText.Text;
@@ -193,16 +195,16 @@ namespace KeyboardWIndowApp
             Close();
         }
 
+        //сделать удаление
+
         private void exerciseText_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
             if (number == 8)
             {
                 e.Handled = true;
-                character.Text = "";
-                foreach (var c in exerciseText.Text)
-                    if (!character.Text.Contains(c))
-                        character.Text += c;
+                character.Text = GetCharecters(character.Text);
+                //удаление символа - удаление из текста
             }
         }
 
@@ -299,10 +301,10 @@ namespace KeyboardWIndowApp
 
         private void exerciseText_TextChanged(object sender, EventArgs e)
         {
-            if (generateBut.BackColor == onRndClr)
-            {
-                return;
-            }
+            //if (generateBut.BackColor == onRndClr)
+            //{
+            //    return;
+            //}
             string text = exerciseText.Text;
             character.Text = GetCharecters(text);
             int diffIndx = GetDiffIndex(ref text, character.Text);
@@ -318,6 +320,15 @@ namespace KeyboardWIndowApp
                 diffComBox.SelectedIndex = diffIndx;
             countChar.Value = (exerciseText.TextLength < difficulties[diffIndx].MinLen) ? difficulties[diffIndx].MinLen : exerciseText.TextLength;
 
+        }
+
+        private void generateBut_Click(object sender, EventArgs e)
+        {
+            generateBut.BackColor = (generateBut.BackColor == onRndClr) ? offRndClr : onRndClr;
+            if (generateBut.BackColor == onRndClr)
+            {
+                exerciseText.Text = ExerciseWork.RandomText(character.Text, (int)countChar.Value);
+            }
         }
     }
 }
