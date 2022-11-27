@@ -63,7 +63,7 @@ namespace KeyboardWIndowApp
             this.ExercisesTab.Multiline = true;
             this.ExercisesTab.Name = "ExercisesTab";
             this.ExercisesTab.SelectedIndex = 0;
-            this.ExercisesTab.Size = new System.Drawing.Size(713, 481);
+            this.ExercisesTab.Size = new System.Drawing.Size(713, 478);
             this.ExercisesTab.TabIndex = 2;
             // 
             // ExrcsBtn

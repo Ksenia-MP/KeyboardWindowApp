@@ -1,10 +1,12 @@
-﻿using System;
+﻿using KeyboardWIndowApp.DataBase;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KeyboardWIndowApp.DataBase;
+
 
 namespace KeyboardWIndowApp.StaticClasses
 {
@@ -31,6 +33,32 @@ namespace KeyboardWIndowApp.StaticClasses
             using (Context context = new Context())
             {
                 return context.Keyboard.Where(k => k.Char.Equals(ch)).Select(k => k.ZoneN).FirstOrDefault();
+            }
+        }
+
+        public static List<Keyboard> GetKeyboard()
+        {
+            using (Context context = new Context())
+            {
+                return context.Keyboard.ToList();
+            }
+        }
+
+        public static List<int> TextZones(string characters)
+        {
+            using (Context context = new Context())
+            {
+                List<Keyboard> keys = context.Keyboard.ToList();
+                List<int> zones = new List<int>();
+                int zone;
+
+                foreach (char ch in characters)
+                {
+                    zone = keys.Where(k => k.Char.Equals(ch.ToString())).Select(k => k.ZoneN).FirstOrDefault();
+                    if (!zones.Contains(zone))
+                        zones.Add(zone);
+                }
+                return zones;
             }
         }
     }

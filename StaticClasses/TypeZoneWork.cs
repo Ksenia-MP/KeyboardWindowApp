@@ -17,6 +17,19 @@ namespace KeyboardWIndowApp.StaticClasses
             }
         }
 
+        public static List<string> GetDiffsZones(List<Difficulty> difficulties)
+        {
+            using (Context context = new Context())
+            {
+                List<string> diffzones = new List<string>();  
+                foreach (Difficulty diff in difficulties)
+                {
+                    diffzones.Add(String.Join(",", GetZoneByDiffId(diff.Id)));
+                }
+                return diffzones;
+            }
+        }
+
         public static void SetZones(long diffId, List<int> zones)
         {
             using (Context context = new Context())
