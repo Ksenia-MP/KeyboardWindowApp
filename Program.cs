@@ -20,7 +20,7 @@ namespace KeyboardWIndowApp
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LogInForm());
             //Application.Run(new DifficultyForm());
-            //Application.Run(new ExerciseForm(ExerciseWork.GetExerciseByName("01-02")));
+            //Application.Run(new ExerciseForm());
         }
     }
 }

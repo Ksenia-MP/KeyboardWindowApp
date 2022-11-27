@@ -63,7 +63,7 @@ namespace KeyboardWIndowApp
             this.ExercisesTab.Multiline = true;
             this.ExercisesTab.Name = "ExercisesTab";
             this.ExercisesTab.SelectedIndex = 0;
-            this.ExercisesTab.Size = new System.Drawing.Size(713, 481);
+            this.ExercisesTab.Size = new System.Drawing.Size(713, 478);
             this.ExercisesTab.TabIndex = 2;
             // 
             // ExrcsBtn
@@ -94,6 +94,7 @@ namespace KeyboardWIndowApp
             this.adminStatBtn.TabIndex = 4;
             this.adminStatBtn.Text = "Статистика";
             this.adminStatBtn.UseVisualStyleBackColor = false;
+            this.adminStatBtn.Click += new System.EventHandler(this.adminStatBtn_Click);
             // 
             // createExrcBtn
             // 
@@ -109,6 +110,7 @@ namespace KeyboardWIndowApp
             this.createExrcBtn.TabIndex = 5;
             this.createExrcBtn.Text = "Создать упражнение";
             this.createExrcBtn.UseVisualStyleBackColor = false;
+            this.createExrcBtn.Click += new System.EventHandler(this.createExrcBtn_Click);
             // 
             // LevelSettingsBtn
             // 
@@ -139,6 +141,7 @@ namespace KeyboardWIndowApp
             this.changeBtn.TabIndex = 7;
             this.changeBtn.Text = "Изменить";
             this.changeBtn.UseVisualStyleBackColor = false;
+            this.changeBtn.Click += new System.EventHandler(this.changeBtn_Click);
             // 
             // delBtn
             // 

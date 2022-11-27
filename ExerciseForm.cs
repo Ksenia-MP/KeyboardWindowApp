@@ -94,7 +94,6 @@ namespace KeyboardWIndowApp
             {
                 timer.Enabled = false;
                 MessageBox.Show("Поменяйте раскладку на русскую!");
-                timer.Enabled = true;
             }
             else
             {
@@ -109,6 +108,7 @@ namespace KeyboardWIndowApp
                     //btn.BackColor = pressedKeyClr;
                 }
             }
+            timer.Enabled = true;
         }
 
 

@@ -68,7 +68,8 @@ namespace KeyboardWIndowApp.StaticClasses
                 tab.TabPages.Add(new TabPage()      //добавим вкладку
                 {
                     Name = "dif" + difficulties[i].Level,
-                    Text = "lvl " + difficulties[i].Level
+                    Text = "lvl " + difficulties[i].Level,
+                    AutoScroll = true
                 });
 
                 //отрисовка кнопок с упражнениями
