@@ -68,6 +68,12 @@ namespace KeyboardWIndowApp
         {
             CreateExercise ce = new CreateExercise();
             ce.ShowDialog();
+            ExercisesTab.Controls.Clear();
+            int w = ExercisesTab.Width - 25;
+            int h = 60;
+            List<Button> btns = ExerciseWork.CreateExecBtns(ExercisesTab, w, h);
+            foreach (Button b in btns)
+                b.Click += new System.EventHandler(exercise_Click);
         }
 
         private void changeBtn_Click(object sender, EventArgs e)
@@ -81,6 +87,29 @@ namespace KeyboardWIndowApp
                 }
                 CreateExercise ce = new CreateExercise(exercise);
                 ce.Show();
+            }
+            else
+                MessageBox.Show("Выберете упражнение!");
+        }
+
+        private void delBtn_Click(object sender, EventArgs e)
+        {
+            Exercise exercise;
+            if (curr_btn != null)
+            {
+                using (Context context = new Context())
+                {
+                    exercise = context.Exercise.FirstOrDefault(ex => ex.Name == curr_btn.Text.Split(' ')[1]);
+                    context.Exercise.Remove(exercise);
+                    context.SaveChanges();
+                }
+                ExercisesTab.Controls.Clear();
+                int w = ExercisesTab.Width - 25;
+                int h = 60;
+                List<Button> btns = ExerciseWork.CreateExecBtns(ExercisesTab, w, h);
+                foreach (Button b in btns)
+                    b.Click += new System.EventHandler(exercise_Click);
+                MessageBox.Show("Упражнение было удалено");
             }
             else
                 MessageBox.Show("Выберете упражнение!");

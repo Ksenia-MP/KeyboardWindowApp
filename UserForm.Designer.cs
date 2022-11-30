@@ -80,6 +80,7 @@ namespace KeyboardWIndowApp
             this.settingsBtn.TabIndex = 14;
             this.settingsBtn.Text = "Настройка";
             this.settingsBtn.UseVisualStyleBackColor = false;
+            this.settingsBtn.Click += new System.EventHandler(this.settingsBtn_Click);
             // 
             // statisticBtn
             // 

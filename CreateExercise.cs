@@ -13,7 +13,7 @@ namespace KeyboardWIndowApp
 {
     public partial class CreateExercise : Form
     {
-        private Exercise _exercise;
+        private Exercise _exercise = new Exercise();
         List<Difficulty> difficulties = DifficultyWork.GetDifficultyes();
         List<Keyboard> keys = KeyboardWork.GetKeyboard();
         List<string> diffZones = new List<string>();
@@ -114,9 +114,6 @@ namespace KeyboardWIndowApp
             int diffLvl = int.Parse(diffComBox.SelectedItem.ToString().Substring(8));
             Difficulty diff = difficulties.FirstOrDefault(d => d.Level == diffLvl);
             SetPanels(diff.Id);
-            countChar.Minimum = diff.MinLen;
-            countChar.Maximum = diff.MaxLen;
-
         }
 
         private void SetPanels(long id)
@@ -140,19 +137,28 @@ namespace KeyboardWIndowApp
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "txt files (*.txt)|*.txt|exc files (*.exc)|*.exc";
-            openFileDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory; //относительный путь
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                //string filePath = openFileDialog.FileName;
+                string filePath = openFileDialog.FileName;
                 var fileStream = openFileDialog.OpenFile();
                 string text;
-
-                using (StreamReader reader = new StreamReader(fileStream, Encoding.Default))
+                using (StreamReader reader = new StreamReader(fileStream))
                 {
                     text = reader.ReadToEnd();
                 }
-
+                foreach (var c in exerciseText.Text)
+                    if (!character.Text.Contains(c))
+                        character.Text += c;
+                countChar.Value = exerciseText.TextLength;
+                int i = 0;
+                while (exerciseText.TextLength > difficulties[i].MaxLen && i < difficulties.Count)
+                {
+                    diffComBox.Text = "Уровень " + difficulties[i].Level;
+                    i++;
+                }
+                
                 text = text.Replace("ё", "е");
+                text = text.ToLower();
                 exerciseText.Text = text;
             }
         }
@@ -166,10 +172,11 @@ namespace KeyboardWIndowApp
 
         private void saveBut_Click(object sender, EventArgs e)
         {
-            //добавить проверку полей (название упр, длина текста должна быть в границах сложности)
-            _exercise.Name = diffName.Text + exerciseName.Text;
+            if ((diffName.Text + exerciseName.Text).Length == 5)
+                _exercise.Name = diffName.Text + exerciseName.Text;
+            else
+                MessageBox.Show("Введите название уровня состоящее из 2 цифр");
             _exercise.Len = (int)(countChar.Value);
-            _exercise.Text = exerciseText.Text;
             if (generateBut.BackColor == onRndClr)
                 _exercise.IsRandom = true;
             int i = 0;
@@ -179,6 +186,10 @@ namespace KeyboardWIndowApp
                 _exercise.Difficulty = difficulties[i];
                 i++;
             }
+            if (_exercise.Difficulty.MinLen <= exerciseText.TextLength && _exercise.Difficulty.MaxLen >= exerciseText.TextLength) 
+                _exercise.Text = exerciseText.Text;
+            else
+                MessageBox.Show("Размер текста не соответствует уровню. Минимальная длинна теста " + _exercise.Difficulty.MinLen + " Максимальная " + _exercise.Difficulty.MaxLen);
             using (Context context = new Context())
             {
                 context.Entry(_exercise.Difficulty).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
@@ -188,11 +199,13 @@ namespace KeyboardWIndowApp
                 }
                 else
                 {
+                    context.Entry(_exercise).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                     context.Exercise.Update(_exercise);
                 }
                 context.SaveChanges();
             }
             Close();
+
         }
 
         //сделать удаление
@@ -204,7 +217,7 @@ namespace KeyboardWIndowApp
             {
                 e.Handled = true;
                 character.Text = GetCharecters(character.Text);
-                //удаление символа - удаление из текста
+                
             }
         }
 
@@ -214,12 +227,18 @@ namespace KeyboardWIndowApp
             if (number == 8)
             {
                 e.Handled = true;
-                character.Text = "";
-                foreach (var c in exerciseText.Text)
-                    if (!character.Text.Contains(c))
-                        character.Text += c;
+                string str = "";
+                for (int i = 0; i < exerciseText.TextLength; i++)
+                {
+                    if (character.Text.Contains(exerciseText.Text[i]))
+                    {
+                        str += exerciseText.Text[i];
+                    }
+                }
+                exerciseText.Text = str;
                 countChar.Value = exerciseText.TextLength;
             }
+
         }
 
         private string GetCharecters(string text)
@@ -312,13 +331,15 @@ namespace KeyboardWIndowApp
             {
                 MessageBox.Show("Текст содержит недопустимые символы.\nВозможно выбрана неверная раскладка.");
                 exerciseText.Text = "";
+                character.Text = "";
+                countChar.Value = 0;
                 return;
             }
             exerciseText.Text = text;
             exerciseText.SelectionStart = exerciseText.TextLength;
             if (diffComBox.SelectedIndex != diffIndx)
                 diffComBox.SelectedIndex = diffIndx;
-            countChar.Value = (exerciseText.TextLength < difficulties[diffIndx].MinLen) ? difficulties[diffIndx].MinLen : exerciseText.TextLength;
+            countChar.Value =  exerciseText.TextLength;
 
         }
 

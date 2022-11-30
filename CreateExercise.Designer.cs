@@ -116,6 +116,7 @@ namespace KeyboardWIndowApp
             // 
             // countChar
             // 
+            this.countChar.Enabled = false;
             this.countChar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.countChar.Location = new System.Drawing.Point(227, 120);
             this.countChar.Name = "countChar";

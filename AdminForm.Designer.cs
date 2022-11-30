@@ -156,6 +156,7 @@ namespace KeyboardWIndowApp
             this.delBtn.TabIndex = 8;
             this.delBtn.Text = "Удалить";
             this.delBtn.UseVisualStyleBackColor = false;
+            this.delBtn.Click += new System.EventHandler(this.delBtn_Click);
             // 
             // info
             // 

@@ -44,5 +44,12 @@ namespace KeyboardWIndowApp
             exerciseForm.ShowDialog();
             this.Show();
         }
+
+        private void settingsBtn_Click(object sender, EventArgs e)
+        {
+            User user = UserWork.GetUserByLogin(userNameLbl.Text);
+            SettingUser su = new SettingUser(user);
+            su.Show();
+        }
     }
 }
