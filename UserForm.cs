@@ -44,5 +44,11 @@ namespace KeyboardWIndowApp
             exerciseForm.ShowDialog();
             this.Show();
         }
+
+        private void info_Click(object sender, EventArgs e)
+        {
+            InfoForm infoForm = new InfoForm();
+            infoForm.ShowDialog();
+        }
     }
 }

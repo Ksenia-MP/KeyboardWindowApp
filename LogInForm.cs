@@ -61,7 +61,11 @@ namespace KeyboardWIndowApp
                     userForm.ShowDialog();
                 }
             }
-            else MessageBox.Show("Пользователь с указанными логином и паролем не найден");
+            else
+            {
+                MessageBox.Show("Пользователь с указанными логином и паролем не найден");
+                return;
+            }
 
             this.Close();
         }
