@@ -89,7 +89,9 @@ namespace KeyboardWIndowApp
             this.countLbl = new System.Windows.Forms.Label();
             this.timeLbl = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.HideKeys.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Q
@@ -395,15 +397,16 @@ namespace KeyboardWIndowApp
             // 
             this.OemQuestion.BackColor = System.Drawing.Color.SkyBlue;
             this.OemQuestion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.OemQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.OemQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.OemQuestion.ForeColor = System.Drawing.SystemColors.Control;
             this.OemQuestion.Location = new System.Drawing.Point(962, 510);
             this.OemQuestion.Name = "OemQuestion";
             this.OemQuestion.Size = new System.Drawing.Size(70, 70);
             this.OemQuestion.TabIndex = 33;
-            this.OemQuestion.Text = ",\r\n.";
+            this.OemQuestion.Text = ". ,";
             this.OemQuestion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.OemQuestion.UseVisualStyleBackColor = false;
+            this.OemQuestion.Click += new System.EventHandler(this.OemQuestion_Click);
             // 
             // OemPeriod
             // 
@@ -840,12 +843,25 @@ namespace KeyboardWIndowApp
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Image = global::KeyboardWIndowApp.Properties.Resources.volume;
+            this.pictureBox1.Location = new System.Drawing.Point(1250, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(51, 45);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 57;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.sound_icon_Click);
+            // 
             // ExerciseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1312, 699);
-            this.Controls.Add(this.HideKeys);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.timeLbl);
             this.Controls.Add(this.countLbl);
             this.Controls.Add(this.errorLbl);
@@ -902,11 +918,13 @@ namespace KeyboardWIndowApp
             this.Controls.Add(this.E);
             this.Controls.Add(this.W);
             this.Controls.Add(this.Q);
+            this.Controls.Add(this.HideKeys);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ExerciseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Клавиатурный тренажер";
             this.HideKeys.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -973,5 +991,6 @@ namespace KeyboardWIndowApp
         private System.Windows.Forms.Label countLbl;
         private System.Windows.Forms.Label timeLbl;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

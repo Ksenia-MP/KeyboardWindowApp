@@ -17,8 +17,16 @@ namespace KeyboardWIndowApp.DataBase
         public long ExerciseId { get; set; }
         public Exercise Exercise { get; set; }
 
-        public Statistics()
-        { }
+        public Statistics() { }
+
+        public Statistics(int ts, int err, DateTime date, long user_id, long exer_id)
+        {
+            TipeSpeed = ts;
+            ErrorPct = err;
+            Date = date;
+            UserId = user_id;
+            ExerciseId = exer_id;
+        }
 
     }
 }

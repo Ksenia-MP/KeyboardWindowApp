@@ -21,7 +21,7 @@ namespace KeyboardWIndowApp.DataBase
         public Context()
         {
             Database.CloseConnection();
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
 
         public Context(DbContextOptions<Context> options) : base(options) {}

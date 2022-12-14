@@ -88,7 +88,7 @@ namespace KeyboardWIndowApp.StaticClasses
                         Width = btn_width
                     });
 
-                    tab.TabPages[i].Controls.Add(btns[j]);
+                    tab.TabPages[i].Controls.Add(btns[btns.Count-1]);
                 }
             }
             return btns;
@@ -98,24 +98,26 @@ namespace KeyboardWIndowApp.StaticClasses
         {
             string text = "";
             char ch;
-            char l_ch;
 
             Random rnd = new Random();
 
-            l_ch = symb_str[rnd.Next(0, symb_str.Length)];
-            text += l_ch;
+            int word_len = rnd.Next(1, 7);
 
-            symb_str += " ";
-
-            int i = 1;
+            int i = 0;
             while (i < len)
             {
-                ch = symb_str[rnd.Next(0, symb_str.Length)];
-                if (!(ch.Equals(' ') && (l_ch.Equals(' '))))
+                if (word_len == 0)
                 {
+                    text += " ";
+                    i++;
+                    word_len = rnd.Next(1, 7);
+                }
+                else
+                {
+                    ch = symb_str[rnd.Next(0, symb_str.Length)];
                     text += ch;
                     i++;
-                    l_ch = ch;
+                    word_len--;
                 }
             }
 
