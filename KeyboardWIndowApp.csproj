@@ -233,6 +233,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaticClasses\DifficultyWork.cs" />
     <Compile Include="StaticClasses\KeyboardWork.cs" />
+    <Compile Include="StaticClasses\StatisticWork.cs" />
     <Compile Include="StaticClasses\TypeZoneWork.cs" />
     <Compile Include="StaticClasses\UserWork.cs" />
     <Compile Include="UserForm.cs">
@@ -283,6 +284,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Keyboard_layout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\volume.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mute.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
