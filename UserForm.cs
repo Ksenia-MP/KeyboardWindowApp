@@ -53,5 +53,12 @@ namespace KeyboardWIndowApp
             InfoForm infoForm = new InfoForm();
             infoForm.ShowDialog();
         }
+
+        private void settingsBtn_Click(object sender, EventArgs e)
+        {
+            User user = UserWork.GetUserByLogin(userNameLbl.Text);
+            SettingUser su = new SettingUser(user);
+            su.Show();
+        }
     }
 }
