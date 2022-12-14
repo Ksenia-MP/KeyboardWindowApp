@@ -405,7 +405,7 @@ namespace KeyboardWIndowApp
             exerciseText.SelectionStart = exerciseText.TextLength;
             if (diffComBox.SelectedIndex != diffIndx)
                 diffComBox.SelectedIndex = diffIndx;
-            countChar.Value =  exerciseText.TextLength;
+            countChar.Value = (exerciseText.TextLength < difficulties[diffIndx].MinLen) ? difficulties[diffIndx].MinLen : exerciseText.TextLength; ;
 
         }
 

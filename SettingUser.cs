@@ -40,7 +40,7 @@ namespace KeyboardWIndowApp
         {
             user.Login = loginText.Text;
             if(passwordText.Text!="")
-            user.Password = passwordText.Text;
+            user.Password = passwordText.Text.GetHashCode().ToString();
                 var appSettings = ConfigurationManager.AppSettings;
             if (keyCheck.Checked)
             {
