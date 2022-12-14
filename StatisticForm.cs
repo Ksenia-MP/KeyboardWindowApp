@@ -12,9 +12,9 @@ using KeyboardWIndowApp.StaticClasses;
 
 namespace KeyboardWIndowApp
 {
-    public partial class UserForm : Form
+    public partial class StatisticForm : Form
     {
-        public UserForm(string u_name)
+        public StatisticForm(string u_name)
         {
             InitializeComponent();
             userNameLbl.Text = u_name;
@@ -27,7 +27,7 @@ namespace KeyboardWIndowApp
                 b.Click += new System.EventHandler(exercise_Click);
         }
 
-        private void exercise_Click(object sender, EventArgs e)
+        private void exercise_Click(object sender, EventArgs e) // Сделать для статистики
         {
             string exrc_name = (sender as Button).Name.Replace('_', '-').Substring(3, 5);
             Exercise exrc = ExerciseWork.GetExerciseByName(exrc_name);
@@ -37,29 +37,15 @@ namespace KeyboardWIndowApp
             this.Show();
         }
 
-        private void testBtn_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            ExerciseForm exerciseForm = new ExerciseForm();
-            exerciseForm.ShowDialog();
-            this.Show();
-        }
-
-        private void info_Click(object sender, EventArgs e)
-        {
-            InfoForm infoForm = new InfoForm();
-            infoForm.ShowDialog();
-        }
-
-        private void UserForm_Load(object sender, EventArgs e)
+        private void StatisticForm_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void statisticBtn_Click(object sender, EventArgs e)
+        private void buttonAllStatistic_Click(object sender, EventArgs e)
         {
-            StatisticForm statisticForm = new StatisticForm(userNameLbl.Text);
-            statisticForm.ShowDialog();
+            DiagrammForm diagrammForm = new DiagrammForm();
+            diagrammForm.ShowDialog();
         }
     }
 }
