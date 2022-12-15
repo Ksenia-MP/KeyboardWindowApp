@@ -117,6 +117,7 @@ namespace KeyboardWIndowApp
             this.Date});
             this.dataGVStatistic.Location = new System.Drawing.Point(30, 300);
             this.dataGVStatistic.Name = "dataGVStatistic";
+            this.dataGVStatistic.RowHeadersVisible = false;
             this.dataGVStatistic.RowHeadersWidth = 51;
             this.dataGVStatistic.RowTemplate.Height = 24;
             this.dataGVStatistic.Size = new System.Drawing.Size(790, 274);
