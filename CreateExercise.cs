@@ -186,25 +186,29 @@ namespace KeyboardWIndowApp
                 _exercise.Difficulty = difficulties[i];
                 i++;
             }
-            if (_exercise.Difficulty.MinLen <= exerciseText.TextLength && _exercise.Difficulty.MaxLen >= exerciseText.TextLength) 
+            // проверить на 3 уровне сложности 
+            if (_exercise.Difficulty.MinLen <= exerciseText.TextLength && _exercise.Difficulty.MaxLen >= exerciseText.TextLength)
+            {
                 _exercise.Text = exerciseText.Text;
+                using (Context context = new Context())
+                {
+                    context.Entry(_exercise.Difficulty).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
+                    if (_exercise.Id == 0)
+                    {
+                        context.Exercise.Add(_exercise);
+                    }
+                    else
+                    {
+                        context.Entry(_exercise).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                        context.Exercise.Update(_exercise);
+                    }
+                    context.SaveChanges();
+                }
+            Close();
+            } 
             else
                 MessageBox.Show("Размер текста не соответствует уровню. Минимальная длинна теста " + _exercise.Difficulty.MinLen + " Максимальная " + _exercise.Difficulty.MaxLen);
-            using (Context context = new Context())
-            {
-                context.Entry(_exercise.Difficulty).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
-                if (_exercise.Id == 0)
-                {
-                    context.Exercise.Add(_exercise);
-                }
-                else
-                {
-                    context.Entry(_exercise).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                    context.Exercise.Update(_exercise);
-                }
-                context.SaveChanges();
-            }
-            Close();
+            
 
         }
 
@@ -320,10 +324,10 @@ namespace KeyboardWIndowApp
 
         private void exerciseText_TextChanged(object sender, EventArgs e)
         {
-            //if (generateBut.BackColor == onRndClr)
-            //{
-            //    return;
-            //}
+            if (generateBut.BackColor == onRndClr)
+            {
+                return;
+            }
             string text = exerciseText.Text;
             character.Text = GetCharecters(text);
             int diffIndx = GetDiffIndex(ref text, character.Text);
