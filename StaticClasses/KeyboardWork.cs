@@ -61,5 +61,13 @@ namespace KeyboardWIndowApp.StaticClasses
                 return zones;
             }
         }
+
+        public static string GetChars(int zoneN)
+        {
+            using (Context context = new Context())
+            {
+                return string.Join("",context.Keyboard.Where(k => k.ZoneN == zoneN).Select(k => k.Char).ToArray());
+            }
+        }
     }
 }

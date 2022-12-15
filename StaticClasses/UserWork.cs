@@ -26,14 +26,6 @@ namespace KeyboardWIndowApp.StaticClasses
             }
         }
 
-        public static void AddUser (User user)
-        {
-            using (Context context = new Context())
-            {
-                context.User.Add(user);
-            }
-        }
-
         public static User GetUserById(int id)
         {
             using (Context context = new Context())

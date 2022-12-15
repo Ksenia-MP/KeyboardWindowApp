@@ -14,9 +14,12 @@ namespace KeyboardWIndowApp
 {
     public partial class UserForm : Form
     {
+        private long UID;
+
         public UserForm(string u_name)
         {
             InitializeComponent();
+            UID = UserWork.GetUserByLogin(u_name).Id;
             userNameLbl.Text = u_name;
 
             int w = ExercisesTab.Width - 25;
@@ -32,7 +35,7 @@ namespace KeyboardWIndowApp
             string exrc_name = (sender as Button).Name.Replace('_', '-').Substring(3, 5);
             Exercise exrc = ExerciseWork.GetExerciseByName(exrc_name);
             this.Hide();
-            ExerciseForm exerciseForm = new ExerciseForm(exrc);
+            ExerciseForm exerciseForm = new ExerciseForm(UID, exrc);
             exerciseForm.ShowDialog();
             this.Show();
         }
@@ -51,15 +54,11 @@ namespace KeyboardWIndowApp
             infoForm.ShowDialog();
         }
 
-        private void UserForm_Load(object sender, EventArgs e)
+        private void settingsBtn_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void statisticBtn_Click(object sender, EventArgs e)
-        {
-            StatisticForm statisticForm = new StatisticForm(userNameLbl.Text);
-            statisticForm.ShowDialog();
+            User user = UserWork.GetUserByLogin(userNameLbl.Text);
+            SettingUser su = new SettingUser(user);
+            su.Show();
         }
     }
 }
