@@ -64,6 +64,7 @@ namespace KeyboardWIndowApp
                 context.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 context.User.Update(user);
                 context.SaveChanges();
+                MessageBox.Show("Изменения сохранены");
             }
         }
     }
