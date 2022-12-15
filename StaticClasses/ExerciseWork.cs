@@ -74,6 +74,7 @@ namespace KeyboardWIndowApp.StaticClasses
 
                 //отрисовка кнопок с упражнениями
                 exerc_names = GetExerciseNames(difficulties[i].Id);
+                exerc_names.Sort((a, b) => a.CompareTo(b));
                 for (int j = 0; j < exerc_names.Count; j++)
                 {
                     btns.Add(new Button()

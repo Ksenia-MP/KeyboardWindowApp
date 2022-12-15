@@ -16,7 +16,11 @@ namespace KeyboardWIndowApp
 {
     public partial class ExerciseForm : Form
     {
+        private static string FileName = string.Format("{0}Resources\\bup.wav", Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\")));
+        //private SoundPlayer sound = new SoundPlayer(FileName);
         private SoundPlayer sound = new SoundPlayer(Directory.GetCurrentDirectory() + "\\bup.wav");
+
+
 
         private long UID;
         private long EID;
