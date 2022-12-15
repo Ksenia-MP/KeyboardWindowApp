@@ -32,6 +32,9 @@ namespace KeyboardWIndowApp
             {
                 context.User.Remove(user);
                 context.SaveChanges();
+                MessageBox.Show("Пользователь удален!");
+                Close();
+                Application.Restart();
             }
             
         }
