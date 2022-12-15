@@ -45,44 +45,54 @@ namespace KeyboardWIndowApp
 
         private void LogIn_Click(object sender, EventArgs e)
         {
-            if (UserWork.UserConfirmed(loginText.Text, passwordText.Text))
+            if (loginText.Text.Length > 2 && loginText.Text.Length <= 8 && passwordText.Text.Length > 4 && passwordText.Text.Length <= 12)
             {
-                User user = UserWork.GetUserByLogin(loginText.Text);
-                if (user.Admin)
+                if (UserWork.UserConfirmed(loginText.Text, passwordText.Text))
                 {
-                    Hide();
-                    AdminForm adminForm = new AdminForm();
-                    adminForm.ShowDialog();
+                    User user = UserWork.GetUserByLogin(loginText.Text);
+                    if (user.Admin)
+                    {
+                        Hide();
+                        AdminForm adminForm = new AdminForm();
+                        adminForm.ShowDialog();
+                    }
+                    else
+                    {
+                        Hide();
+                        UserForm userForm = new UserForm(user.Login);
+                        userForm.ShowDialog();
+                    }
                 }
                 else
                 {
-                    Hide();
-                    UserForm userForm = new UserForm(user.Login);
-                    userForm.ShowDialog();
+                    MessageBox.Show("Пользователь с указанными логином и паролем не найден");
+                    return;
                 }
-            }
-            else
-            {
-                MessageBox.Show("Пользователь с указанными логином и паролем не найден");
-                return;
-            }
 
-            this.Close();
+                this.Close();
+            }
+            else MessageBox.Show("Длина логина должна быть от 2х до 8ми символов\nДлина пароля должна быть от 4х до 12ми символов");
+
         }
 
         private void Registr_Click(object sender, EventArgs e)
         {
-            if (UserWork.GetUserByLogin(loginText.Text) == null)
+            if(loginText.Text.Length > 2 && loginText.Text.Length <= 8 && passwordText.Text.Length > 4 && passwordText.Text.Length <= 12)
             {
-                if (passwordText.Text.Equals(reptpassText.Text))
+                if (UserWork.GetUserByLogin(loginText.Text) == null)
                 {
-                    UserWork.AddUser(loginText.Text, passwordText.Text);
-                    MessageBox.Show("Регистрация прошла успешно.");
-                    LogIn_Click(sender, e);
+                    if (passwordText.Text.Equals(reptpassText.Text))
+                    {
+                        UserWork.AddUser(loginText.Text, passwordText.Text);
+                        MessageBox.Show("Регистрация прошла успешно.");
+                        LogIn_Click(sender, e);
+                    }
+                    else MessageBox.Show("Пароли не совпадают.");
                 }
-                else MessageBox.Show("Пароли не совпадают.");
+                else MessageBox.Show("Пользователь с указанным логином уже существует.");
             }
-            else MessageBox.Show("Пользователь с указанным логином уже существует.");
+            else MessageBox.Show("Длина логина должна быть от 2х до 8ми символов\nДлина пароля должна быть от 4х до 12ми символов");
+
         }
     }
 }
