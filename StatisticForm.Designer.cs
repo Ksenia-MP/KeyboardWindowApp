@@ -1,7 +1,7 @@
 ﻿
 namespace KeyboardWIndowApp
 {
-    partial class UserForm
+    partial class StatisticForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,27 +29,28 @@ namespace KeyboardWIndowApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.info = new System.Windows.Forms.PictureBox();
+            this.userNameLbl = new System.Windows.Forms.Label();
             this.testBtn = new System.Windows.Forms.Button();
             this.settingsBtn = new System.Windows.Forms.Button();
             this.statisticBtn = new System.Windows.Forms.Button();
             this.exrcBtn = new System.Windows.Forms.Button();
             this.ExercisesTab = new System.Windows.Forms.TabControl();
-            this.userNameLbl = new System.Windows.Forms.Label();
+            this.info = new System.Windows.Forms.PictureBox();
+            this.buttonAllStatistic = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.info)).BeginInit();
             this.SuspendLayout();
             // 
-            // info
+            // userNameLbl
             // 
-            this.info.Image = global::KeyboardWIndowApp.Properties.Resources.infolinear;
-            this.info.Location = new System.Drawing.Point(1000, 13);
-            this.info.Margin = new System.Windows.Forms.Padding(4);
-            this.info.Name = "info";
-            this.info.Size = new System.Drawing.Size(47, 47);
-            this.info.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.info.TabIndex = 18;
-            this.info.TabStop = false;
-            this.info.Click += new System.EventHandler(this.info_Click);
+            this.userNameLbl.BackColor = System.Drawing.Color.SkyBlue;
+            this.userNameLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.userNameLbl.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.userNameLbl.Location = new System.Drawing.Point(0, 0);
+            this.userNameLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.userNameLbl.Name = "userNameLbl";
+            this.userNameLbl.Size = new System.Drawing.Size(325, 80);
+            this.userNameLbl.TabIndex = 11;
+            this.userNameLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // testBtn
             // 
@@ -62,10 +63,9 @@ namespace KeyboardWIndowApp
             this.testBtn.Margin = new System.Windows.Forms.Padding(4);
             this.testBtn.Name = "testBtn";
             this.testBtn.Size = new System.Drawing.Size(287, 74);
-            this.testBtn.TabIndex = 15;
+            this.testBtn.TabIndex = 19;
             this.testBtn.Text = "Тестовое упражнение";
             this.testBtn.UseVisualStyleBackColor = false;
-            this.testBtn.Click += new System.EventHandler(this.testBtn_Click);
             // 
             // settingsBtn
             // 
@@ -78,38 +78,36 @@ namespace KeyboardWIndowApp
             this.settingsBtn.Margin = new System.Windows.Forms.Padding(4);
             this.settingsBtn.Name = "settingsBtn";
             this.settingsBtn.Size = new System.Drawing.Size(287, 74);
-            this.settingsBtn.TabIndex = 14;
+            this.settingsBtn.TabIndex = 18;
             this.settingsBtn.Text = "Настройка";
             this.settingsBtn.UseVisualStyleBackColor = false;
-            this.settingsBtn.Click += new System.EventHandler(this.settingsBtn_Click);
             // 
             // statisticBtn
             // 
-            this.statisticBtn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.statisticBtn.BackColor = System.Drawing.Color.SteelBlue;
             this.statisticBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
-            this.statisticBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.statisticBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.statisticBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.statisticBtn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.statisticBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.statisticBtn.Location = new System.Drawing.Point(20, 185);
             this.statisticBtn.Margin = new System.Windows.Forms.Padding(4);
             this.statisticBtn.Name = "statisticBtn";
             this.statisticBtn.Size = new System.Drawing.Size(287, 74);
-            this.statisticBtn.TabIndex = 13;
+            this.statisticBtn.TabIndex = 17;
             this.statisticBtn.Text = "Статистика";
             this.statisticBtn.UseVisualStyleBackColor = false;
-            this.statisticBtn.Click += new System.EventHandler(this.statisticBtn_Click);
             // 
             // exrcBtn
             // 
-            this.exrcBtn.BackColor = System.Drawing.Color.SteelBlue;
-            this.exrcBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.exrcBtn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.exrcBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exrcBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.exrcBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.exrcBtn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.exrcBtn.Location = new System.Drawing.Point(20, 98);
             this.exrcBtn.Margin = new System.Windows.Forms.Padding(4);
             this.exrcBtn.Name = "exrcBtn";
             this.exrcBtn.Size = new System.Drawing.Size(287, 74);
-            this.exrcBtn.TabIndex = 12;
+            this.exrcBtn.TabIndex = 16;
             this.exrcBtn.Text = "Упражнения";
             this.exrcBtn.UseVisualStyleBackColor = false;
             // 
@@ -123,36 +121,52 @@ namespace KeyboardWIndowApp
             this.ExercisesTab.Name = "ExercisesTab";
             this.ExercisesTab.SelectedIndex = 0;
             this.ExercisesTab.Size = new System.Drawing.Size(713, 481);
-            this.ExercisesTab.TabIndex = 11;
+            this.ExercisesTab.TabIndex = 20;
             // 
-            // userNameLbl
+            // info
             // 
-            this.userNameLbl.BackColor = System.Drawing.Color.SkyBlue;
-            this.userNameLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.userNameLbl.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.userNameLbl.Location = new System.Drawing.Point(0, 0);
-            this.userNameLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.userNameLbl.Name = "userNameLbl";
-            this.userNameLbl.Size = new System.Drawing.Size(325, 80);
-            this.userNameLbl.TabIndex = 10;
-            this.userNameLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.info.Image = global::KeyboardWIndowApp.Properties.Resources.infolinear;
+            this.info.Location = new System.Drawing.Point(1000, 4);
+            this.info.Margin = new System.Windows.Forms.Padding(4);
+            this.info.Name = "info";
+            this.info.Size = new System.Drawing.Size(47, 47);
+            this.info.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.info.TabIndex = 21;
+            this.info.TabStop = false;
             // 
-            // UserForm
+            // buttonAllStatistic
+            // 
+            this.buttonAllStatistic.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonAllStatistic.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
+            this.buttonAllStatistic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAllStatistic.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonAllStatistic.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.buttonAllStatistic.Location = new System.Drawing.Point(684, 4);
+            this.buttonAllStatistic.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonAllStatistic.Name = "buttonAllStatistic";
+            this.buttonAllStatistic.Size = new System.Drawing.Size(308, 47);
+            this.buttonAllStatistic.TabIndex = 22;
+            this.buttonAllStatistic.Text = "Общая статистика";
+            this.buttonAllStatistic.UseVisualStyleBackColor = false;
+            this.buttonAllStatistic.Click += new System.EventHandler(this.buttonAllStatistic_Click);
+            // 
+            // StatisticForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1060, 578);
+            this.Controls.Add(this.buttonAllStatistic);
             this.Controls.Add(this.info);
+            this.Controls.Add(this.ExercisesTab);
             this.Controls.Add(this.testBtn);
             this.Controls.Add(this.settingsBtn);
             this.Controls.Add(this.statisticBtn);
             this.Controls.Add(this.exrcBtn);
-            this.Controls.Add(this.ExercisesTab);
             this.Controls.Add(this.userNameLbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "UserForm";
-            this.Text = "Клавиатурный тренажер";
-            this.Load += new System.EventHandler(this.UserForm_Load);
+            this.Name = "StatisticForm";
+            this.Text = "Статистика";
+            this.Load += new System.EventHandler(this.StatisticForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.info)).EndInit();
             this.ResumeLayout(false);
 
@@ -160,12 +174,13 @@ namespace KeyboardWIndowApp
 
         #endregion
 
-        private System.Windows.Forms.PictureBox info;
+        private System.Windows.Forms.Label userNameLbl;
         private System.Windows.Forms.Button testBtn;
         private System.Windows.Forms.Button settingsBtn;
         private System.Windows.Forms.Button statisticBtn;
         private System.Windows.Forms.Button exrcBtn;
         private System.Windows.Forms.TabControl ExercisesTab;
-        private System.Windows.Forms.Label userNameLbl;
+        private System.Windows.Forms.PictureBox info;
+        private System.Windows.Forms.Button buttonAllStatistic;
     }
 }

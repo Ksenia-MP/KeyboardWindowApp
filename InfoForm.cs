@@ -16,5 +16,10 @@ namespace KeyboardWIndowApp
             string curDir = Directory.GetCurrentDirectory();
             System.Diagnostics.Process.Start(String.Format("file:///{0}/Info.html", curDir));
         }
+
+        private void AboutDev_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
