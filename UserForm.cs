@@ -71,5 +71,10 @@ namespace KeyboardWIndowApp
             SettingUser su = new SettingUser(user);
             su.Show();
         }
+
+        private void logout_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
     }
 }

@@ -29,27 +29,17 @@ namespace KeyboardWIndowApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.info = new System.Windows.Forms.PictureBox();
             this.testBtn = new System.Windows.Forms.Button();
             this.settingsBtn = new System.Windows.Forms.Button();
             this.statisticBtn = new System.Windows.Forms.Button();
             this.exrcBtn = new System.Windows.Forms.Button();
             this.ExercisesTab = new System.Windows.Forms.TabControl();
             this.userNameLbl = new System.Windows.Forms.Label();
+            this.info = new System.Windows.Forms.PictureBox();
+            this.logout = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.info)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
             this.SuspendLayout();
-            // 
-            // info
-            // 
-            this.info.Image = global::KeyboardWIndowApp.Properties.Resources.infolinear;
-            this.info.Location = new System.Drawing.Point(1000, 13);
-            this.info.Margin = new System.Windows.Forms.Padding(4);
-            this.info.Name = "info";
-            this.info.Size = new System.Drawing.Size(47, 47);
-            this.info.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.info.TabIndex = 18;
-            this.info.TabStop = false;
-            this.info.Click += new System.EventHandler(this.info_Click);
             // 
             // testBtn
             // 
@@ -137,11 +127,36 @@ namespace KeyboardWIndowApp
             this.userNameLbl.TabIndex = 10;
             this.userNameLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // info
+            // 
+            this.info.Image = global::KeyboardWIndowApp.Properties.Resources.infolinear;
+            this.info.Location = new System.Drawing.Point(1000, 13);
+            this.info.Margin = new System.Windows.Forms.Padding(4);
+            this.info.Name = "info";
+            this.info.Size = new System.Drawing.Size(47, 47);
+            this.info.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.info.TabIndex = 18;
+            this.info.TabStop = false;
+            this.info.Click += new System.EventHandler(this.info_Click);
+            // 
+            // logout
+            // 
+            this.logout.Image = global::KeyboardWIndowApp.Properties.Resources.logout;
+            this.logout.Location = new System.Drawing.Point(945, 13);
+            this.logout.Margin = new System.Windows.Forms.Padding(4);
+            this.logout.Name = "logout";
+            this.logout.Size = new System.Drawing.Size(47, 47);
+            this.logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.logout.TabIndex = 19;
+            this.logout.TabStop = false;
+            this.logout.Click += new System.EventHandler(this.logout_Click);
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1060, 578);
+            this.Controls.Add(this.logout);
             this.Controls.Add(this.info);
             this.Controls.Add(this.testBtn);
             this.Controls.Add(this.settingsBtn);
@@ -154,6 +169,7 @@ namespace KeyboardWIndowApp
             this.Text = "Клавиатурный тренажер";
             this.Load += new System.EventHandler(this.UserForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.info)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -167,5 +183,6 @@ namespace KeyboardWIndowApp
         private System.Windows.Forms.Button exrcBtn;
         private System.Windows.Forms.TabControl ExercisesTab;
         private System.Windows.Forms.Label userNameLbl;
+        private System.Windows.Forms.PictureBox logout;
     }
 }
