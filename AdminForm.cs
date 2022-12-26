@@ -16,18 +16,17 @@ namespace KeyboardWIndowApp
 {
     public partial class AdminForm : Form
     {
-        Button curr_btn = null;
+        private Button curr_btn = null;
+        private int w;
+        private int h;
 
         public AdminForm()
         {
             InitializeComponent();
 
-            int w = ExercisesTab.Width - 25;
-            int h = 60;
-
-            List<Button> btns = ExerciseWork.CreateExecBtns(ExercisesTab, w, h);
-            foreach (Button b in btns)
-                b.Click += new System.EventHandler(exercise_Click);
+            w = ExercisesTab.Width - 25;
+            h = 60;
+            RefreshBtns(w, h, ExercisesTab);
         }
 
         private void exercise_Click(object sender, EventArgs e)
@@ -68,12 +67,7 @@ namespace KeyboardWIndowApp
         {
             CreateExercise ce = new CreateExercise();
             ce.ShowDialog();
-            ExercisesTab.Controls.Clear();
-            int w = ExercisesTab.Width - 25;
-            int h = 60;
-            List<Button> btns = ExerciseWork.CreateExecBtns(ExercisesTab, w, h);
-            foreach (Button b in btns)
-                b.Click += new System.EventHandler(exercise_Click);
+            RefreshBtns(w, h, ExercisesTab);
         }
 
         private void changeBtn_Click(object sender, EventArgs e)
@@ -92,6 +86,12 @@ namespace KeyboardWIndowApp
                 MessageBox.Show("Выберете упражнение!");
         }
 
+        private void info_Click(object sender, EventArgs e)
+        {
+            InfoForm infoForm = new InfoForm();
+            infoForm.ShowDialog();
+        }
+
         private void delBtn_Click(object sender, EventArgs e)
         {
             Exercise exercise;
@@ -103,16 +103,20 @@ namespace KeyboardWIndowApp
                     context.Exercise.Remove(exercise);
                     context.SaveChanges();
                 }
-                ExercisesTab.Controls.Clear();
-                int w = ExercisesTab.Width - 25;
-                int h = 60;
-                List<Button> btns = ExerciseWork.CreateExecBtns(ExercisesTab, w, h);
-                foreach (Button b in btns)
-                    b.Click += new System.EventHandler(exercise_Click);
+                RefreshBtns(w, h, ExercisesTab);
                 MessageBox.Show("Упражнение было удалено");
             }
             else
                 MessageBox.Show("Выберете упражнение!");
+        }
+
+        private void RefreshBtns(int w, int h, TabControl tc)
+        {
+            tc.Controls.Clear();
+
+            List<Button> btns = ExerciseWork.CreateExecBtns(tc, w, h);
+            foreach (Button b in btns)
+                b.Click += new System.EventHandler(exercise_Click);
         }
     }
 }

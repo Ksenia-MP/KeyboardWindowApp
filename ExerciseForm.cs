@@ -6,46 +6,82 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
 using System.Windows.Forms;
 using KeyboardWIndowApp.DataBase;
 using KeyboardWIndowApp.StaticClasses;
+using System.IO;
 
 namespace KeyboardWIndowApp
 {
     public partial class ExerciseForm : Form
     {
+        private SoundPlayer sound = new SoundPlayer(Directory.GetCurrentDirectory() + "\\bup.wav");
+
+        private long UID;
+        private long EID;
+        private int speed = 0;
+        private int error = 0;
+        private int typed = 0;
+        private int time = 0;
+        private int difspeed = 0;
+        private int diferror = 0;
+        private int len = 0;
+        private int testlen = 50;
+        private bool test;
+        private bool soundON = true;
+
+        private List<Button> hlBtns = new List<Button>();
+        private Button let;
+        private Button shiftkey;
+
+        private int indx = 0;
+        private int endindx = 15;
+        private string text;
+        private bool chartyped = false;
+        private bool first = false;
+
+        private readonly Color baseKeyClr = Color.SkyBlue;
+        private readonly Color printedClr = Color.PaleGreen;
+        private readonly Color errorClr = Color.Tomato;
+        private readonly Color nextCharClr = Color.SkyBlue;
+        private readonly Color nextKeyClr = Color.IndianRed;
+
         public ExerciseForm()
         {
             InitializeComponent();
             nameLbl.Text = "Тестовое упражнение";
-            text = ExerciseWork.RandomText("апро", testlen);
-            InitRtb();
+            List<Keyboard> keys = KeyboardWork.GetKeyboard();
+            string chars = "";
+            foreach (Keyboard key in keys)
+            {
+                if (Char.IsLetter(key.Char[0]))
+                    chars += key.Char;
+            }
+            text = ExerciseWork.RandomText(chars, testlen);
             test = true;
             InitControls();
             shiftkey = this.Controls.Find("ShiftKey", true).FirstOrDefault() as Button;
+            InitRtb();
         }
 
-        public ExerciseForm(Exercise exrc)
+        public ExerciseForm(long user_id, Exercise exrc)
         {
             InitializeComponent();
+            UID = user_id;
+            EID = exrc.Id;
+            nameLbl.Text = "Упражнение " + exrc.Name;
             if (exrc.IsRandom)
                 text = ExerciseWork.RandomText(exrc.Text, exrc.Len);
             else text = exrc.Text;
-            InitRtb();
+
             test = false;
-            nameLbl.Text = "Упражнение " + exrc.Name;
-            GetMaxParsms(exrc);
             InitControls();
-
-
             shiftkey = this.Controls.Find("ShiftKey", true).FirstOrDefault() as Button;
+            InitRtb();
+            GetMaxParsms(exrc);
         }
 
-        Color baseKeyClr = Color.SkyBlue;
-        Color printedClr = Color.PaleGreen;
-        Color errorClr = Color.Tomato;
-        Color nextCharClr = Color.SkyBlue;
-        Color nextKeyClr = Color.IndianRed;
 
         private Button GetBtn(KeyEventArgs e)
         {
@@ -81,12 +117,9 @@ namespace KeyboardWIndowApp
             }
 
             if (indx < text.Length)
-                HightLightBtn(text[indx]);
+                HightLightBtn(text[indx].ToString());
         }
 
-        List<Button> hlBtns = new List<Button>();
-        Button let;
-        Button shiftkey;
 
         private void rtb_KeyDown(object sender, KeyEventArgs e)
         {
@@ -105,24 +138,22 @@ namespace KeyboardWIndowApp
                 if (btn != null)
                 {
                     btn.Enabled = false;
-                    //btn.BackColor = pressedKeyClr;
                 }
             }
             timer.Enabled = true;
         }
 
 
-        private void HightLightBtn(char btn_text)
+        private void HightLightBtn(string btn_text)
         {
             Button btn;
-            if (Char.IsUpper(btn_text))
+            if (Char.IsUpper(btn_text[0]) || btn_text == ",")
             {
                 shiftkey.BackColor = nextKeyClr;
-                Shift = true;
                 hlBtns.Add(shiftkey);
+                if (btn_text == ",") btn_text = ". ,";
             }
-            else
-                Shift = false;
+            if(btn_text == ".") btn_text = ". ,";
 
             btn = this.Controls.OfType<Button>().FirstOrDefault(b => b.Text.Equals(btn_text.ToString().ToUpper()));
             btn.BackColor = nextKeyClr;
@@ -142,19 +173,13 @@ namespace KeyboardWIndowApp
             rtb.SelectionAlignment = HorizontalAlignment.Right;
             rtb.Select(indx, 1);
             rtb.SelectionBackColor = nextCharClr;
-            HightLightBtn(text[indx]);
+            HightLightBtn(text[indx].ToString());
         }
-
-        int indx = 0;
-        int endindx = 15;
-        string text;// = "вкЕеаДпгОршБоПщлзПд нпгрш гшрнг аенгпшл"; //йцуйцуйцуйцулоптшагтомдкшгетмо
-        bool chartyped = false;
-        bool Shift;
-        bool first = false;
 
 
         private void rtb_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (soundON) sound.Play();
             if (indx < text.Length)
             {
                 if (!first)
@@ -202,19 +227,18 @@ namespace KeyboardWIndowApp
             if (indx == text.Length)
             {
                 timer.Enabled = false;
-                MessageBox.Show("Finish");
+                if(test)
+                    MessageBox.Show(StatisticWork.GetTestResultString(time, len, error, speed));
+                else
+                {
+                    int err_pct = error * 100 / len;
+                    Statistics statistics = new Statistics(speed, err_pct, DateTime.Now, UID, EID);
+                    MessageBox.Show(StatisticWork.GetStatisticString(time, len, error, speed));
+                }
             }
             e.Handled = true;
         }
 
-        private int speed = 0;
-        private int error = 0;
-        private int typed = 0;
-        private int time = 0;
-        private int difspeed = 0;
-        private int diferror = 0;
-        private int len = 0;
-        private int testlen = 60;
 
         private void GetMaxParsms(Exercise exrc)
         {
@@ -224,7 +248,6 @@ namespace KeyboardWIndowApp
             diferror = (int)(len * diff.ErrorPct / 100);
         }
 
-        bool test;
         private void InitControls()
         {
             if (test)
@@ -248,6 +271,25 @@ namespace KeyboardWIndowApp
             double coeff = 60d / time;
             speed = (int)(coeff * typed);
             InitControls();
+        }
+
+        private void sound_icon_Click(object sender, EventArgs e)
+        {
+            if (soundON)
+            {
+                pictureBox1.Image = Properties.Resources.mute;
+                soundON = false;
+            }
+            else
+            {
+                pictureBox1.Image = Properties.Resources.volume;
+                soundON = true;
+            }
+        }
+
+        private void OemQuestion_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(OemQuestion.Text.ToString());
         }
     }
 }

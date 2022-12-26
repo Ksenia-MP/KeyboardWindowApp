@@ -14,12 +14,14 @@ namespace KeyboardWIndowApp
     public partial class CreateExercise : Form
     {
         private Exercise _exercise = new Exercise();
-        List<Difficulty> difficulties = DifficultyWork.GetDifficultyes();
-        List<Keyboard> keys = KeyboardWork.GetKeyboard();
-        List<string> diffZones = new List<string>();
-
-        List<int> type_zones; 
+        private List<Difficulty> difficulties = DifficultyWork.GetDifficultyes();
+        private List<Keyboard> keys = KeyboardWork.GetKeyboard();
+        private List<string> diffZones = new List<string>();
+        
+        private List<int> type_zones; 
         private List<Panel> panels = new List<Panel>();
+
+        bool GenerateState = false;
 
         Color noColor = Color.Transparent;
         Color setClr = Color.FromArgb(100, Color.Green);
@@ -47,6 +49,7 @@ namespace KeyboardWIndowApp
             countChar.Value = exercise.Len;
             if (exercise.IsRandom)
             {
+                GenerateState = true;
                 character.Text = exercise.Text;
                 generateBut.BackColor = onRndClr;
                 exerciseText.Text = ExerciseWork.RandomText(character.Text, (int)countChar.Value);
@@ -54,8 +57,11 @@ namespace KeyboardWIndowApp
             else
             {
                 exerciseText.Text = exercise.Text;
-                character.Text = GetCharecters(exerciseText.Text);
+                character.Text = "Набрано " + exercise.Len + " символов";
             }
+            refresh.Visible = GenerateState;
+            character.ReadOnly = !GenerateState;
+            exerciseText.ReadOnly = GenerateState;
         }
 
         private void InitPanels()
@@ -114,6 +120,8 @@ namespace KeyboardWIndowApp
             int diffLvl = int.Parse(diffComBox.SelectedItem.ToString().Substring(8));
             Difficulty diff = difficulties.FirstOrDefault(d => d.Level == diffLvl);
             SetPanels(diff.Id);
+            countChar.Minimum = diff.MinLen;
+            countChar.Maximum = diff.MaxLen;
         }
 
         private void SetPanels(long id)
@@ -135,30 +143,26 @@ namespace KeyboardWIndowApp
 
         private void OpenBtn_Click(object sender, EventArgs e)
         {
+            if (GenerateState)
+            {
+                if (DialogResult.No == MessageBox.Show("Открытие текста из файла\nотключит генерацию текста.\nПродолжить?",
+                    "Продолжить?", MessageBoxButtons.YesNo)) return;
+                generateBut_Click(sender, e);
+            }
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "txt files (*.txt)|*.txt|exc files (*.exc)|*.exc";
+            openFileDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory; //относительный путь
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string filePath = openFileDialog.FileName;
                 var fileStream = openFileDialog.OpenFile();
                 string text;
-                using (StreamReader reader = new StreamReader(fileStream))
+
+                using (StreamReader reader = new StreamReader(fileStream, Encoding.Default))
                 {
                     text = reader.ReadToEnd();
                 }
-                foreach (var c in exerciseText.Text)
-                    if (!character.Text.Contains(c))
-                        character.Text += c;
-                countChar.Value = exerciseText.TextLength;
-                int i = 0;
-                while (exerciseText.TextLength > difficulties[i].MaxLen && i < difficulties.Count)
-                {
-                    diffComBox.Text = "Уровень " + difficulties[i].Level;
-                    i++;
-                }
-                
+
                 text = text.Replace("ё", "е");
-                text = text.ToLower();
                 exerciseText.Text = text;
             }
         }
@@ -172,77 +176,125 @@ namespace KeyboardWIndowApp
 
         private void saveBut_Click(object sender, EventArgs e)
         {
+            bool error_flag = false;
+            string error_mes = "В процессе сохранения возникли ошибки: \n";
+
             if ((diffName.Text + exerciseName.Text).Length == 5)
                 _exercise.Name = diffName.Text + exerciseName.Text;
             else
-                MessageBox.Show("Введите название уровня состоящее из 2 цифр");
-            _exercise.Len = (int)(countChar.Value);
-            if (generateBut.BackColor == onRndClr)
-                _exercise.IsRandom = true;
-            int i = 0;
-            while (difficulties[i].Id == int.Parse(diffComBox.Text.Split(' ')[1]))
             {
-                _exercise.DifficultyId = difficulties[i].Id;
-                _exercise.Difficulty = difficulties[i];
-                i++;
+                error_mes += "Введите название уровня состоящее из 2 цифр\n";
+                error_flag = true;
             }
-            // проверить на 3 уровне сложности 
-            if (_exercise.Difficulty.MinLen <= exerciseText.TextLength && _exercise.Difficulty.MaxLen >= exerciseText.TextLength)
+
+            if (exerciseText.TextLength == countChar.Value)
+                _exercise.Len = (int)(countChar.Value);
+            else
             {
+                error_mes += "Недопустимая длина упражнения\n";
+                error_flag = true;
+            }
+
+            if (GenerateState)
+            {
+                _exercise.IsRandom = true;
+                _exercise.Text = character.Text;
+            }
+            else
+            {
+                _exercise.IsRandom = false;
                 _exercise.Text = exerciseText.Text;
+            }
+
+
+            int i = diffComBox.SelectedIndex;
+            _exercise.DifficultyId = difficulties[i].Id;
+            _exercise.Difficulty = difficulties[i];
+
+            if (!error_flag)
+            {
                 using (Context context = new Context())
                 {
-                    context.Entry(_exercise.Difficulty).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
-                    if (_exercise.Id == 0)
+                    try
                     {
-                        context.Exercise.Add(_exercise);
+                        context.Entry(_exercise.Difficulty).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
+                        if (_exercise.Id == 0)
+                        {
+                            context.Exercise.Add(_exercise);
+                        }
+                        else
+                        {
+                            context.Entry(_exercise).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                            context.Exercise.Update(_exercise);
+                        }
+                        context.SaveChanges();
+                        MessageBox.Show("Изменения сохранены");
                     }
-                    else
+                    catch (Microsoft.EntityFrameworkCore.DbUpdateException ex)
                     {
-                        context.Entry(_exercise).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                        context.Exercise.Update(_exercise);
+                        MessageBox.Show(error_mes + ex.InnerException.Message);
                     }
-                    context.SaveChanges();
                 }
-            Close();
-            } 
-            else
-                MessageBox.Show("Размер текста не соответствует уровню. Минимальная длинна теста " + _exercise.Difficulty.MinLen + " Максимальная " + _exercise.Difficulty.MaxLen);
-            
+                //Close();
+            }
+            else MessageBox.Show(error_mes);
 
+            //int i = 0;
+            //while (difficulties[i].Id == int.Parse(diffComBox.Text.Split(' ')[1]))
+            //{
+            //    _exercise.DifficultyId = difficulties[i].Id;
+            //    _exercise.Difficulty = difficulties[i];
+            //    i++;
+            //}
+            //if (_exercise.Difficulty.MinLen <= exerciseText.TextLength && _exercise.Difficulty.MaxLen >= exerciseText.TextLength)
+            //{ 
+            //    _exercise.Text = exerciseText.Text; 
+            //    using (Context context = new Context())
+            //    {
+            //        context.Entry(_exercise.Difficulty).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
+            //        if (_exercise.Id == 0)
+            //        {
+            //            context.Exercise.Add(_exercise);
+            //        }
+            //        else
+            //        {
+            //            context.Entry(_exercise).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            //            context.Exercise.Update(_exercise);
+            //        }
+            //        context.SaveChanges();
+            //    }
+            //    Close();
+            //}
+            //else
+            //    MessageBox.Show("Размер текста не соответствует уровню. Минимальная длинна теста " + _exercise.Difficulty.MinLen + " Максимальная " + _exercise.Difficulty.MaxLen);
+            
         }
 
         //сделать удаление
 
         private void exerciseText_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char number = e.KeyChar;
-            if (number == 8)
-            {
-                e.Handled = true;
-                character.Text = GetCharecters(character.Text);
-                
-            }
+            //char number = e.KeyChar;
+            //if (number == 8)
+            //{
+            //    e.Handled = true;
+            //    character.Text = GetCharecters(character.Text);
+            //    //удаление символа - удаление из текста
+            //}
         }
 
         private void character_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char number = e.KeyChar;
-            if (number == 8)
-            {
-                e.Handled = true;
-                string str = "";
-                for (int i = 0; i < exerciseText.TextLength; i++)
-                {
-                    if (character.Text.Contains(exerciseText.Text[i]))
-                    {
-                        str += exerciseText.Text[i];
-                    }
-                }
-                exerciseText.Text = str;
-                countChar.Value = exerciseText.TextLength;
-            }
-
+            //char number = e.KeyChar;
+            //if (number == 8)
+            //{
+            //    e.Handled = true;
+            //    character.Text = "";
+            //    foreach (var c in exerciseText.Text)
+            //        if (!character.Text.Contains(c))
+            //            character.Text += c;
+            //    countChar.Value = exerciseText.TextLength;
+            //}
         }
 
         private string GetCharecters(string text)
@@ -273,6 +325,16 @@ namespace KeyboardWIndowApp
             return zones;
         }
 
+        private string DeleteWrongSymbols(string text)
+        {
+            List<string> symbols = keys.Select(k => k.Char).ToList();
+            IEnumerable<Char> allowed = text.Select(c => symbols.Contains(c.ToString()) ? c : '*');
+
+            string result = new string(allowed.ToArray());
+            result = result.Replace("*", "");
+            return result;
+        }
+
         /// <summary>
         /// Проверка сложности текста
         /// </summary>
@@ -296,7 +358,7 @@ namespace KeyboardWIndowApp
 
             //список зон задействованных в тексте упражнения
             List<int> zones = GetTextZones(chars);
-
+            
             bool foundall;
             for (int i = 0; i < difficulties.Count; i++)
             {
@@ -324,36 +386,78 @@ namespace KeyboardWIndowApp
 
         private void exerciseText_TextChanged(object sender, EventArgs e)
         {
-            if (generateBut.BackColor == onRndClr)
-            {
-                return;
-            }
+            //if (generateBut.BackColor == onRndClr)
+            //{
+            //    return;
+            //}
             string text = exerciseText.Text;
-            character.Text = GetCharecters(text);
-            int diffIndx = GetDiffIndex(ref text, character.Text);
+            int diffIndx = GetDiffIndex(ref text, GetCharecters(text));
             if (diffIndx == diffComBox.Items.Count)
             {
                 MessageBox.Show("Текст содержит недопустимые символы.\nВозможно выбрана неверная раскладка.");
-                exerciseText.Text = "";
-                character.Text = "";
-                countChar.Value = 0;
+                exerciseText.Text = DeleteWrongSymbols(text);
                 return;
             }
+
+            exerciseText.TextChanged -= exerciseText_TextChanged;  // останавливаем обработчик события
             exerciseText.Text = text;
+            exerciseText.TextChanged += exerciseText_TextChanged; // запускаем обработчик события
+
+            character.Text = "Набрано " + exerciseText.TextLength + " символов";
             exerciseText.SelectionStart = exerciseText.TextLength;
             if (diffComBox.SelectedIndex != diffIndx)
                 diffComBox.SelectedIndex = diffIndx;
-            countChar.Value =  exerciseText.TextLength;
+            countChar.Value = (exerciseText.TextLength < difficulties[diffIndx].MinLen) ? difficulties[diffIndx].MinLen : exerciseText.TextLength; ;
 
         }
 
         private void generateBut_Click(object sender, EventArgs e)
         {
             generateBut.BackColor = (generateBut.BackColor == onRndClr) ? offRndClr : onRndClr;
-            if (generateBut.BackColor == onRndClr)
+            GenerateState = (generateBut.BackColor == onRndClr) ? true : false;
+            character.Text = "";
+            character.ReadOnly = !GenerateState;
+            exerciseText.Text = "";
+            exerciseText.ReadOnly = GenerateState;
+            refresh.Visible = GenerateState;
+        }
+
+        private void refresh_Click(object sender, EventArgs e)
+        {
+            if (character.TextLength == 0)
             {
-                exerciseText.Text = ExerciseWork.RandomText(character.Text, (int)countChar.Value);
+                List<int> d_zones = diffZones[diffComBox.SelectedIndex].Split(',').Select(int.Parse).ToList();
+                string chars = "";
+                foreach (int zoneN in d_zones)
+                {
+                    chars += string.Join("", keys.Where(k => k.ZoneN == zoneN).Select(k => k.Char).ToArray());
+                }
+                character.Text = chars;
             }
+
+            exerciseText.Text = ExerciseWork.RandomText(character.Text, (int)countChar.Value);
+        }
+
+        private void character_TextChanged(object sender, EventArgs e)
+        {
+            if (!GenerateState) return;
+
+            string text = GetCharecters(character.Text);
+            int diffIndx = GetDiffIndex(ref text, text);
+            if (diffIndx == diffComBox.Items.Count)
+            {
+                MessageBox.Show("Текст содержит недопустимые символы.\nВозможно выбрана неверная раскладка.");
+                character.Text = DeleteWrongSymbols(text);
+                return;
+            }
+
+            character.TextChanged -= exerciseText_TextChanged;  // останавливаем обработчик события
+            character.Text = text;
+            character.TextChanged += exerciseText_TextChanged; // запускаем обработчик события
+
+            character.SelectionStart = character.TextLength;
+            if (diffComBox.SelectedIndex != diffIndx)
+                diffComBox.SelectedIndex = diffIndx;
         }
     }
 }

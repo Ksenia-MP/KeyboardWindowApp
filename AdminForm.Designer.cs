@@ -168,6 +168,7 @@ namespace KeyboardWIndowApp
             this.info.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.info.TabIndex = 9;
             this.info.TabStop = false;
+            this.info.Click += new System.EventHandler(this.info_Click);
             // 
             // AdminForm
             // 

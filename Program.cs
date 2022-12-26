@@ -22,6 +22,7 @@ namespace KeyboardWIndowApp
             Application.Run(new LogInForm());
             //Application.Run(new DifficultyForm());
             //Application.Run(new ExerciseForm());
+            //Application.Run(new CreateExercise());
         }
     }
 }
