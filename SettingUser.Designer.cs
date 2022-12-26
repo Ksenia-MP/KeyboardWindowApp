@@ -1,5 +1,4 @@
-﻿
-namespace KeyboardWIndowApp
+﻿namespace KeyboardWIndowApp
 {
     partial class SettingUser
     {
@@ -156,6 +155,7 @@ namespace KeyboardWIndowApp
             this.Controls.Add(this.label2);
             this.Controls.Add(this.delBut);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "SettingUser";
             this.Text = "Настройки";
             this.ResumeLayout(false);

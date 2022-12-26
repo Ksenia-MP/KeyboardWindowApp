@@ -15,13 +15,14 @@ namespace KeyboardWIndowApp
     {
         private Exercise _exercise = new Exercise();
         private List<Difficulty> difficulties = DifficultyWork.GetDifficultyes();
-        private List<Keyboard> keys = KeyboardWork.GetKeyboard();
+        private static List<Keyboard> keys = KeyboardWork.GetKeyboard();
         private List<string> diffZones = new List<string>();
-        
-        private List<int> type_zones; 
+
+        private List<int> type_zones;
         private List<Panel> panels = new List<Panel>();
 
-        bool GenerateState = false;
+        private bool GenerateState = false;
+        private bool OpenState = false;
 
         Color noColor = Color.Transparent;
         Color setClr = Color.FromArgb(100, Color.Green);
@@ -122,6 +123,35 @@ namespace KeyboardWIndowApp
             SetPanels(diff.Id);
             countChar.Minimum = diff.MinLen;
             countChar.Maximum = diff.MaxLen;
+
+            List<int> d_zones = diffZones[diffComBox.SelectedIndex]
+                    .Split(',').Select(int.Parse).ToList();
+            string allowedchars = "";
+            foreach (int z in d_zones)
+            {
+                allowedchars += KeyboardWork.GetChars(z);
+            }
+
+            if (GenerateState)
+            {
+                character.Text = DeleteWrongSymbols(character.Text, allowedchars);
+
+            }
+            else
+            {
+                exerciseText.TextChanged -= exerciseText_TextChanged;
+                exerciseText.Text = DeleteWrongSymbols(exerciseText.Text, allowedchars);
+                exerciseText.TextChanged += exerciseText_TextChanged;
+
+                if (exerciseText.TextLength > difficulties[diffComBox.SelectedIndex].MaxLen)
+                {
+                    string text = exerciseText.Text;
+                    text = text.Substring(0, difficulties[diffComBox.SelectedIndex].MaxLen);
+                    exerciseText.Text = text;
+                }
+                character.Text = "Набрано " + exerciseText.TextLength + " символов";
+            }
+
         }
 
         private void SetPanels(long id)
@@ -149,6 +179,7 @@ namespace KeyboardWIndowApp
                     "Продолжить?", MessageBoxButtons.YesNo)) return;
                 generateBut_Click(sender, e);
             }
+            OpenState = true;
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "txt files (*.txt)|*.txt|exc files (*.exc)|*.exc";
             openFileDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory; //относительный путь
@@ -187,11 +218,16 @@ namespace KeyboardWIndowApp
                 error_flag = true;
             }
 
-            if (exerciseText.TextLength == countChar.Value)
+            int i = diffComBox.SelectedIndex;
+            _exercise.DifficultyId = difficulties[i].Id;
+            _exercise.Difficulty = difficulties[i];
+
+            if (_exercise.Difficulty.MinLen <= exerciseText.TextLength && _exercise.Difficulty.MaxLen >= exerciseText.TextLength)
                 _exercise.Len = (int)(countChar.Value);
             else
             {
-                error_mes += "Недопустимая длина упражнения\n";
+                error_mes += "Недопустимая длина упражнения\nРазмер текста не соответствует уровню. Минимальная длинна теста "
+                    + _exercise.Difficulty.MinLen + " Максимальная " + _exercise.Difficulty.MaxLen;
                 error_flag = true;
             }
 
@@ -205,11 +241,6 @@ namespace KeyboardWIndowApp
                 _exercise.IsRandom = false;
                 _exercise.Text = exerciseText.Text;
             }
-
-
-            int i = diffComBox.SelectedIndex;
-            _exercise.DifficultyId = difficulties[i].Id;
-            _exercise.Difficulty = difficulties[i];
 
             if (!error_flag)
             {
@@ -267,7 +298,7 @@ namespace KeyboardWIndowApp
             //}
             //else
             //    MessageBox.Show("Размер текста не соответствует уровню. Минимальная длинна теста " + _exercise.Difficulty.MinLen + " Максимальная " + _exercise.Difficulty.MaxLen);
-            
+
         }
 
         //сделать удаление
@@ -327,8 +358,19 @@ namespace KeyboardWIndowApp
 
         private string DeleteWrongSymbols(string text)
         {
-            List<string> symbols = keys.Select(k => k.Char).ToList();
+            string symbols = string.Join("", keys.Select(k => k.Char).ToArray());
+            symbols += symbols.ToUpper() + " ";
             IEnumerable<Char> allowed = text.Select(c => symbols.Contains(c.ToString()) ? c : '*');
+
+            string result = new string(allowed.ToArray());
+            result = result.Replace("*", "");
+            return result;
+        }
+
+        private string DeleteWrongSymbols(string text, string allowedsymbols)
+        {
+            allowedsymbols += allowedsymbols.ToUpper() + " ";
+            IEnumerable<Char> allowed = text.Select(c => (allowedsymbols.Contains(c.ToString())) ? c : '*');
 
             string result = new string(allowed.ToArray());
             result = result.Replace("*", "");
@@ -358,7 +400,7 @@ namespace KeyboardWIndowApp
 
             //список зон задействованных в тексте упражнения
             List<int> zones = GetTextZones(chars);
-            
+
             bool foundall;
             for (int i = 0; i < difficulties.Count; i++)
             {
@@ -392,9 +434,8 @@ namespace KeyboardWIndowApp
             int diffIndx = GetDiffIndex(ref text, GetCharecters(text));
             if (diffIndx == diffComBox.Items.Count)
             {
-                MessageBox.Show("Текст содержит недопустимые символы.\nВозможно выбрана неверная раскладка.");
-                exerciseText.Text = DeleteWrongSymbols(text);
-                return;
+                MessageBox.Show("Текст содержит недопустимые символы.\nВозможно, выбрана неверная раскладка.");
+                text = DeleteWrongSymbols(text);
             }
 
             exerciseText.TextChanged -= exerciseText_TextChanged;  // останавливаем обработчик события
@@ -403,10 +444,12 @@ namespace KeyboardWIndowApp
 
             character.Text = "Набрано " + exerciseText.TextLength + " символов";
             exerciseText.SelectionStart = exerciseText.TextLength;
-            if (diffComBox.SelectedIndex != diffIndx)
+            if (diffIndx != diffComBox.Items.Count && diffComBox.SelectedIndex != diffIndx)
+            {
                 diffComBox.SelectedIndex = diffIndx;
-            countChar.Value = (exerciseText.TextLength < difficulties[diffIndx].MinLen) ? difficulties[diffIndx].MinLen : exerciseText.TextLength; ;
-
+            }
+            countChar.Value = (exerciseText.TextLength < countChar.Minimum) ? countChar.Minimum : exerciseText.TextLength;
+            exerciseText.Select(exerciseText.TextLength, 0);
         }
 
         private void generateBut_Click(object sender, EventArgs e)
@@ -444,14 +487,17 @@ namespace KeyboardWIndowApp
             int diffIndx = GetDiffIndex(ref text, text);
             if (diffIndx == diffComBox.Items.Count)
             {
-                MessageBox.Show("Текст содержит недопустимые символы.\nВозможно выбрана неверная раскладка.");
+                MessageBox.Show("Текст содержит недопустимые символы.\nВозможно, выбрана неверная раскладка.");
                 character.Text = DeleteWrongSymbols(text);
                 return;
             }
-
-            character.TextChanged -= exerciseText_TextChanged;  // останавливаем обработчик события
+            character.TextChanged -= exerciseText_TextChanged;
             character.Text = text;
-            character.TextChanged += exerciseText_TextChanged; // запускаем обработчик события
+            character.TextChanged += exerciseText_TextChanged;
+
+            exerciseText.TextChanged -= exerciseText_TextChanged;
+            exerciseText.Text = DeleteWrongSymbols(exerciseText.Text, text);
+            exerciseText.TextChanged += exerciseText_TextChanged;
 
             character.SelectionStart = character.TextLength;
             if (diffComBox.SelectedIndex != diffIndx)
