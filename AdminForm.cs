@@ -80,7 +80,7 @@ namespace KeyboardWIndowApp
                     exercise = context.Exercise.Include(ex => ex.Difficulty).FirstOrDefault(ex => ex.Name == curr_btn.Text.Split(' ')[1]);
                 }
                 CreateExercise ce = new CreateExercise(exercise);
-                ce.Show();
+                ce.ShowDialog();
             }
             else
                 MessageBox.Show("Выберете упражнение!");
@@ -117,6 +117,11 @@ namespace KeyboardWIndowApp
             List<Button> btns = ExerciseWork.CreateExecBtns(tc, w, h);
             foreach (Button b in btns)
                 b.Click += new System.EventHandler(exercise_Click);
+        }
+
+        private void logout_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
     }
 }

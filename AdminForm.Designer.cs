@@ -37,7 +37,9 @@ namespace KeyboardWIndowApp
             this.LevelSettingsBtn = new System.Windows.Forms.Button();
             this.changeBtn = new System.Windows.Forms.Button();
             this.delBtn = new System.Windows.Forms.Button();
+            this.logout = new System.Windows.Forms.PictureBox();
             this.info = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.info)).BeginInit();
             this.SuspendLayout();
             // 
@@ -158,6 +160,18 @@ namespace KeyboardWIndowApp
             this.delBtn.UseVisualStyleBackColor = false;
             this.delBtn.Click += new System.EventHandler(this.delBtn_Click);
             // 
+            // logout
+            // 
+            this.logout.Image = global::KeyboardWIndowApp.Properties.Resources.logout;
+            this.logout.Location = new System.Drawing.Point(945, 13);
+            this.logout.Margin = new System.Windows.Forms.Padding(4);
+            this.logout.Name = "logout";
+            this.logout.Size = new System.Drawing.Size(47, 47);
+            this.logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.logout.TabIndex = 10;
+            this.logout.TabStop = false;
+            this.logout.Click += new System.EventHandler(this.logout_Click);
+            // 
             // info
             // 
             this.info.Image = global::KeyboardWIndowApp.Properties.Resources.infolinear;
@@ -175,6 +189,7 @@ namespace KeyboardWIndowApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1060, 578);
+            this.Controls.Add(this.logout);
             this.Controls.Add(this.info);
             this.Controls.Add(this.delBtn);
             this.Controls.Add(this.changeBtn);
@@ -189,6 +204,7 @@ namespace KeyboardWIndowApp
             this.Name = "AdminForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Режим администратора";
+            ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.info)).EndInit();
             this.ResumeLayout(false);
 
@@ -206,5 +222,6 @@ namespace KeyboardWIndowApp
         private System.Windows.Forms.Button changeBtn;
         private System.Windows.Forms.Button delBtn;
         private System.Windows.Forms.PictureBox info;
+        private System.Windows.Forms.PictureBox logout;
     }
 }

@@ -94,5 +94,6 @@ namespace KeyboardWIndowApp
             else MessageBox.Show("Длина логина должна быть от 2х до 8ми символов\nДлина пароля должна быть от 4х до 12ми символов");
 
         }
+
     }
 }

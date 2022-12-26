@@ -45,81 +45,101 @@ namespace KeyboardWIndowApp
             // 
             // LogInBtn
             // 
-            this.LogInBtn.Location = new System.Drawing.Point(72, 187);
+            this.LogInBtn.BackColor = System.Drawing.Color.SteelBlue;
+            this.LogInBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LogInBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LogInBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.LogInBtn.Location = new System.Drawing.Point(108, 266);
             this.LogInBtn.Margin = new System.Windows.Forms.Padding(4);
             this.LogInBtn.Name = "LogInBtn";
-            this.LogInBtn.Size = new System.Drawing.Size(167, 46);
+            this.LogInBtn.Size = new System.Drawing.Size(239, 60);
             this.LogInBtn.TabIndex = 0;
             this.LogInBtn.Text = "Вход";
-            this.LogInBtn.UseVisualStyleBackColor = true;
+            this.LogInBtn.UseVisualStyleBackColor = false;
             this.LogInBtn.Click += new System.EventHandler(this.LogIn_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label1.Location = new System.Drawing.Point(15, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 17);
+            this.label1.Size = new System.Drawing.Size(108, 32);
             this.label1.TabIndex = 1;
             this.label1.Text = "Логин:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 70);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label2.Location = new System.Drawing.Point(15, 89);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 17);
+            this.label2.Size = new System.Drawing.Size(129, 32);
             this.label2.TabIndex = 2;
             this.label2.Text = "Пароль:";
             // 
             // loginText
             // 
-            this.loginText.Location = new System.Drawing.Point(17, 31);
+            this.loginText.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.loginText.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.loginText.Location = new System.Drawing.Point(21, 45);
             this.loginText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.loginText.MaxLength = 8;
             this.loginText.Name = "loginText";
-            this.loginText.Size = new System.Drawing.Size(253, 22);
+            this.loginText.Size = new System.Drawing.Size(407, 38);
             this.loginText.TabIndex = 3;
             // 
             // passwordText
             // 
-            this.passwordText.Location = new System.Drawing.Point(17, 90);
+            this.passwordText.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passwordText.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.passwordText.Location = new System.Drawing.Point(21, 123);
             this.passwordText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.passwordText.MaxLength = 12;
             this.passwordText.Name = "passwordText";
             this.passwordText.PasswordChar = '●';
-            this.passwordText.Size = new System.Drawing.Size(253, 22);
+            this.passwordText.Size = new System.Drawing.Size(407, 38);
             this.passwordText.TabIndex = 4;
             // 
             // RegBtn
             // 
-            this.RegBtn.Location = new System.Drawing.Point(72, 187);
+            this.RegBtn.BackColor = System.Drawing.Color.SteelBlue;
+            this.RegBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RegBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RegBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.RegBtn.Location = new System.Drawing.Point(108, 266);
             this.RegBtn.Margin = new System.Windows.Forms.Padding(4);
             this.RegBtn.Name = "RegBtn";
-            this.RegBtn.Size = new System.Drawing.Size(167, 46);
+            this.RegBtn.Size = new System.Drawing.Size(239, 60);
             this.RegBtn.TabIndex = 5;
             this.RegBtn.Text = "Регистрация";
-            this.RegBtn.UseVisualStyleBackColor = true;
+            this.RegBtn.UseVisualStyleBackColor = false;
             this.RegBtn.Visible = false;
             this.RegBtn.Click += new System.EventHandler(this.Registr_Click);
             // 
             // reptpassText
             // 
-            this.reptpassText.Location = new System.Drawing.Point(17, 149);
+            this.reptpassText.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.reptpassText.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.reptpassText.Location = new System.Drawing.Point(21, 197);
             this.reptpassText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.reptpassText.MaxLength = 12;
             this.reptpassText.Name = "reptpassText";
             this.reptpassText.PasswordChar = '●';
-            this.reptpassText.Size = new System.Drawing.Size(253, 22);
+            this.reptpassText.Size = new System.Drawing.Size(407, 38);
             this.reptpassText.TabIndex = 7;
             this.reptpassText.Visible = false;
             // 
             // reptpassLabel
             // 
             this.reptpassLabel.AutoSize = true;
-            this.reptpassLabel.Location = new System.Drawing.Point(15, 129);
+            this.reptpassLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.reptpassLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.reptpassLabel.Location = new System.Drawing.Point(15, 163);
             this.reptpassLabel.Name = "reptpassLabel";
-            this.reptpassLabel.Size = new System.Drawing.Size(134, 17);
+            this.reptpassLabel.Size = new System.Drawing.Size(283, 32);
             this.reptpassLabel.TabIndex = 6;
             this.reptpassLabel.Text = "Повторите пароль:";
             this.reptpassLabel.Visible = false;
@@ -127,18 +147,23 @@ namespace KeyboardWIndowApp
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 234);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label3.Location = new System.Drawing.Point(12, 321);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(288, 17);
+            this.label3.Size = new System.Drawing.Size(431, 32);
             this.label3.TabIndex = 8;
-            this.label3.Text = "___________________________________";
+            this.label3.Text = "__________________________";
             // 
             // showRegBtn
             // 
-            this.showRegBtn.Location = new System.Drawing.Point(85, 281);
+            this.showRegBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.showRegBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.showRegBtn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.showRegBtn.Location = new System.Drawing.Point(108, 431);
             this.showRegBtn.Margin = new System.Windows.Forms.Padding(4);
             this.showRegBtn.Name = "showRegBtn";
-            this.showRegBtn.Size = new System.Drawing.Size(140, 34);
+            this.showRegBtn.Size = new System.Drawing.Size(239, 60);
             this.showRegBtn.TabIndex = 9;
             this.showRegBtn.Text = "Регистрация";
             this.showRegBtn.UseVisualStyleBackColor = true;
@@ -147,18 +172,23 @@ namespace KeyboardWIndowApp
             // newhereLable
             // 
             this.newhereLable.AutoSize = true;
-            this.newhereLable.Location = new System.Drawing.Point(95, 261);
+            this.newhereLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.newhereLable.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.newhereLable.Location = new System.Drawing.Point(105, 382);
             this.newhereLable.Name = "newhereLable";
-            this.newhereLable.Size = new System.Drawing.Size(115, 17);
+            this.newhereLable.Size = new System.Drawing.Size(245, 32);
             this.newhereLable.TabIndex = 10;
             this.newhereLable.Text = "Впервые здесь?";
             // 
             // showLogInBtn
             // 
-            this.showLogInBtn.Location = new System.Drawing.Point(85, 281);
+            this.showLogInBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.showLogInBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.showLogInBtn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.showLogInBtn.Location = new System.Drawing.Point(108, 431);
             this.showLogInBtn.Margin = new System.Windows.Forms.Padding(4);
             this.showLogInBtn.Name = "showLogInBtn";
-            this.showLogInBtn.Size = new System.Drawing.Size(140, 34);
+            this.showLogInBtn.Size = new System.Drawing.Size(239, 60);
             this.showLogInBtn.TabIndex = 11;
             this.showLogInBtn.Text = "<< Назад";
             this.showLogInBtn.UseVisualStyleBackColor = true;
@@ -170,7 +200,9 @@ namespace KeyboardWIndowApp
             this.AcceptButton = this.LogInBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(312, 329);
+            this.ClientSize = new System.Drawing.Size(454, 531);
+            this.Controls.Add(this.LogInBtn);
+            this.Controls.Add(this.RegBtn);
             this.Controls.Add(this.newhereLable);
             this.Controls.Add(this.showRegBtn);
             this.Controls.Add(this.label3);
@@ -180,8 +212,6 @@ namespace KeyboardWIndowApp
             this.Controls.Add(this.loginText);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.LogInBtn);
-            this.Controls.Add(this.RegBtn);
             this.Controls.Add(this.showLogInBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
