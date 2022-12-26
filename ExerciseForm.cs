@@ -24,6 +24,7 @@ namespace KeyboardWIndowApp
 
         private long UID;
         private long EID;
+        private Exercise EXERC;
         private int speed = 0;
         private int error = 0;
         private int typed = 0;
@@ -73,6 +74,7 @@ namespace KeyboardWIndowApp
         {
             InitializeComponent();
             UID = user_id;
+            EXERC = exrc;
             EID = exrc.Id;
             nameLbl.Text = "Упражнение " + exrc.Name;
             if (exrc.IsRandom)
@@ -80,12 +82,25 @@ namespace KeyboardWIndowApp
             else text = exrc.Text;
 
             test = false;
-            InitControls();
             shiftkey = this.Controls.Find("ShiftKey", true).FirstOrDefault() as Button;
             InitRtb();
             GetMaxParsms(exrc);
+            InitControls();
         }
 
+        private void Reload()
+        {
+            indx = 0;
+            endindx = 15;
+            speed = 0;
+            error = 0;
+            typed = 0;
+            time = 0;
+            foreach (Button b in hlBtns)
+            {
+                b.BackColor = baseKeyClr;
+            }
+        }
 
         private Button GetBtn(KeyEventArgs e)
         {
@@ -226,6 +241,23 @@ namespace KeyboardWIndowApp
                     typed++;
                     InitControls();
                 }
+            }
+
+
+            if (!test && error > diferror)
+            {
+                timer.Enabled = false;
+                if (DialogResult.Yes == MessageBox.Show("Вы допустили слишком много ошибок.\n" +
+                    "Желаете попробовать еще раз?", ":(", MessageBoxButtons.YesNo))
+                {
+                    Reload();
+                    if (EXERC.IsRandom)
+                        text = ExerciseWork.RandomText(EXERC.Text, EXERC.Len);
+                    else text = EXERC.Text;
+                    InitControls();
+                    InitRtb();
+                }
+                else Close();
             }
 
             if (indx == text.Length)

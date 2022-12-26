@@ -861,6 +861,7 @@ namespace KeyboardWIndowApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1312, 699);
+            this.Controls.Add(this.HideKeys);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.timeLbl);
             this.Controls.Add(this.countLbl);
@@ -918,7 +919,6 @@ namespace KeyboardWIndowApp
             this.Controls.Add(this.E);
             this.Controls.Add(this.W);
             this.Controls.Add(this.Q);
-            this.Controls.Add(this.HideKeys);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ExerciseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
