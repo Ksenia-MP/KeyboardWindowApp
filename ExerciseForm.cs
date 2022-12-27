@@ -93,9 +93,9 @@ namespace KeyboardWIndowApp
         {
             var appSettings = ConfigurationManager.AppSettings;
             if (appSettings["keyCheck"] == "1")
-                HideKeys.Visible = false;
+                checkVK.Checked = true;
             else
-                HideKeys.Visible = true;
+                checkVK.Checked = false;
             if (appSettings["musicCheck"] == "1")
                 pictureBox1.Image = Properties.Resources.volume;
             else

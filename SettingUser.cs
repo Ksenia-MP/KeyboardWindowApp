@@ -26,6 +26,7 @@ namespace KeyboardWIndowApp
             if (appSettings["musicCheck"] == "1")
                 musicCheck.Checked = true;
         }
+
         private void delBut_Click(object sender, EventArgs e)
         {
             using (Context context = new Context())
@@ -41,34 +42,41 @@ namespace KeyboardWIndowApp
 
         private void saveBut_Click(object sender, EventArgs e)
         {
-            user.Login = loginText.Text;
-            if(passwordText.Text!="")
-            user.Password = passwordText.Text.GetHashCode().ToString();
-                var appSettings = ConfigurationManager.AppSettings;
-            if (keyCheck.Checked)
-            {
-                appSettings["keyCheck"] = "1";
-            }
-            else
-            {
-                appSettings["keyCheck"] = "0";
-            }
-            if (musicCheck.Checked)
-            {
-                appSettings["musicCheck"] = "1";
-            }
-            else
-            {
-                appSettings["musicCheck"] = "0";
-            }
+            string err_str = "";
+            if (loginText.Text.Length > 2 && loginText.Text.Length <= 8)
+                user.Login = loginText.Text;
+            else err_str += "Логин должен содержать от 2-х до 8-ми символов\n";
 
-            using (Context context = new Context())
+            if (passwordText.Text != "")
+                if (passwordText.Text.Length > 4 && passwordText.Text.Length <= 12)
+                    user.Password = passwordText.Text.GetHashCode().ToString();
+                else err_str += "Пароль должен содержать от 4-х до 12-ти символов\n";
+
+            var appSettings = ConfigurationManager.AppSettings;
+            if (keyCheck.Checked)
+                appSettings["keyCheck"] = "1";
+            else
+                appSettings["keyCheck"] = "0";
+            
+            if (musicCheck.Checked)
+                appSettings["musicCheck"] = "1";
+            else
+                appSettings["musicCheck"] = "0";
+            if (err_str != "")
             {
-                context.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                context.User.Update(user);
-                context.SaveChanges();
-                MessageBox.Show("Изменения сохранены");
+                MessageBox.Show(err_str);
             }
+            else
+            {
+                using (Context context = new Context())
+                {
+                    context.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    context.User.Update(user);
+                    context.SaveChanges();
+                    MessageBox.Show("Изменения сохранены");
+                }
+            }
+            
         }
     }
 }
