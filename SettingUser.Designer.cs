@@ -125,7 +125,7 @@ namespace KeyboardWIndowApp
             this.keyCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
             this.keyCheck.Location = new System.Drawing.Point(18, 254);
             this.keyCheck.Name = "keyCheck";
-            this.keyCheck.Size = new System.Drawing.Size(307, 41);
+            this.keyCheck.Size = new System.Drawing.Size(327, 41);
             this.keyCheck.TabIndex = 8;
             this.keyCheck.Text = "Виртуальная клавиатура";
             this.keyCheck.UseVisualStyleBackColor = true;
@@ -135,7 +135,7 @@ namespace KeyboardWIndowApp
             this.musicCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
             this.musicCheck.Location = new System.Drawing.Point(18, 301);
             this.musicCheck.Name = "musicCheck";
-            this.musicCheck.Size = new System.Drawing.Size(307, 41);
+            this.musicCheck.Size = new System.Drawing.Size(327, 41);
             this.musicCheck.TabIndex = 9;
             this.musicCheck.Text = "Звук нажатия клавиш";
             this.musicCheck.UseVisualStyleBackColor = true;
@@ -156,6 +156,7 @@ namespace KeyboardWIndowApp
             this.Controls.Add(this.label2);
             this.Controls.Add(this.delBut);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "SettingUser";
             this.Text = "Настройки";
             this.ResumeLayout(false);

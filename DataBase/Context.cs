@@ -20,8 +20,15 @@ namespace KeyboardWIndowApp.DataBase
 
         public Context()
         {
+            //try
+            //{
             Database.CloseConnection();
             Database.EnsureCreated();
+            //}
+            //catch (System.Net.Sockets.SocketException)
+            //{
+
+            //}
         }
 
         public Context(DbContextOptions<Context> options) : base(options) {}

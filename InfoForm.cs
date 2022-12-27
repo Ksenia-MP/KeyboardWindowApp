@@ -13,8 +13,21 @@ namespace KeyboardWIndowApp
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            string curDir = Directory.GetCurrentDirectory();
-            System.Diagnostics.Process.Start(String.Format("file:///{0}/Info.html", curDir));
+            try
+            {
+                string curDir = Directory.GetCurrentDirectory();
+                System.Diagnostics.Process.Start(String.Format("file:///{0}/Info.html", curDir));
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("Файл справки отсутствует");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Файл справки поврежден");
+
+            }
+
         }
     }
 }
