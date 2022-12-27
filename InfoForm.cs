@@ -18,7 +18,7 @@ namespace KeyboardWIndowApp
                 string curDir = Directory.GetCurrentDirectory();
                 System.Diagnostics.Process.Start(String.Format("file:///{0}/Info.html", curDir));
             }
-            catch (FileNotFoundException)
+            catch (System.ComponentModel.Win32Exception)
             {
                 MessageBox.Show("Файл справки отсутствует");
             }

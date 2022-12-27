@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using KeyboardWIndowApp.DataBase;
 using KeyboardWIndowApp.StaticClasses;
 using System.IO;
+using System.Configuration;
 
 namespace KeyboardWIndowApp
 {
@@ -63,6 +64,16 @@ namespace KeyboardWIndowApp
             InitControls();
             shiftkey = this.Controls.Find("ShiftKey", true).FirstOrDefault() as Button;
             InitRtb();
+            var appSettings = ConfigurationManager.AppSettings;
+            if (appSettings["keyCheck"] == "1")
+                HideKeys.Visible = false;
+            else
+                HideKeys.Visible = true;
+            if (appSettings["musicCheck"] == "1")
+                pictureBox1.Image = Properties.Resources.volume;
+            else
+                pictureBox1.Image = Properties.Resources.mute;
+            HideKeys.Visible = !checkVK.Checked;
         }
 
         public ExerciseForm(long user_id, Exercise exrc)
@@ -163,6 +174,10 @@ namespace KeyboardWIndowApp
         private void show_CheckedChanged(object sender, EventArgs e)
         {
             HideKeys.Visible = !checkVK.Checked;
+            if (checkVK.Checked)
+                ConfigurationManager.AppSettings["keyCheck"] = "1";
+            else
+                ConfigurationManager.AppSettings["keyCheck"] = "0";
         }
 
         private void InitRtb()
@@ -179,7 +194,14 @@ namespace KeyboardWIndowApp
 
         private void rtb_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (soundON) sound.Play();
+            try
+            {
+                if (soundON) sound.Play();
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Отсутствует звук");
+            }
             if (indx < text.Length)
             {
                 if (!first)
@@ -279,11 +301,13 @@ namespace KeyboardWIndowApp
             {
                 pictureBox1.Image = Properties.Resources.mute;
                 soundON = false;
+                ConfigurationManager.AppSettings["musicCheck"] = "0";
             }
             else
             {
                 pictureBox1.Image = Properties.Resources.volume;
                 soundON = true;
+                ConfigurationManager.AppSettings["musicCheck"] = "1";
             }
         }
 
