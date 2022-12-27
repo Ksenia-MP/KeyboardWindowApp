@@ -32,5 +32,14 @@ namespace KeyboardWIndowApp.StaticClasses
             text += "\nРекомендуемая сложность: Уровень " + speed_dif;
             return text;
         }
+
+        public static void SaveStatistic (Statistics stat)
+        {
+            using (Context context = new Context())
+            {
+                context.Statistics.Add(stat);
+                context.SaveChanges();
+            }
+        }
     }
 }

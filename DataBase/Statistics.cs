@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KeyboardWIndowApp.StaticClasses;
 
 namespace KeyboardWIndowApp.DataBase
 {
@@ -19,13 +20,15 @@ namespace KeyboardWIndowApp.DataBase
 
         public Statistics() { }
 
-        public Statistics(int ts, int err, DateTime date, long user_id, long exer_id)
+        public Statistics(int ts, int err, DateTime date, long user_id, Exercise exerc)
         {
             TipeSpeed = ts;
             ErrorPct = err;
             Date = date;
             UserId = user_id;
-            ExerciseId = exer_id;
+            //User = UserWork.GetUserById(user_id);
+            ExerciseId = exerc.Id;
+            //Exercise = exerc;
         }
 
     }

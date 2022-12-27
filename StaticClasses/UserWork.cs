@@ -26,7 +26,7 @@ namespace KeyboardWIndowApp.StaticClasses
             }
         }
 
-        public static User GetUserById(int id)
+        public static User GetUserById(long id)
         {
             using (Context context = new Context())
             {

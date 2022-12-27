@@ -17,13 +17,12 @@ namespace KeyboardWIndowApp
     public partial class ExerciseForm : Form
     {
         private static string FileName = string.Format("{0}Resources\\bup.wav", Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\")));
-        //private SoundPlayer sound = new SoundPlayer(FileName);
-        private SoundPlayer sound = new SoundPlayer(Directory.GetCurrentDirectory() + "\\bup.wav");
+        private SoundPlayer sound = new SoundPlayer(FileName);
+        //private SoundPlayer sound = new SoundPlayer(Directory.GetCurrentDirectory() + "\\bup.wav");
 
 
 
         private long UID;
-        private long EID;
         private Exercise EXERC;
         private int speed = 0;
         private int error = 0;
@@ -75,7 +74,6 @@ namespace KeyboardWIndowApp
             InitializeComponent();
             UID = user_id;
             EXERC = exrc;
-            EID = exrc.Id;
             nameLbl.Text = "Упражнение " + exrc.Name;
             if (exrc.IsRandom)
                 text = ExerciseWork.RandomText(exrc.Text, exrc.Len);
@@ -268,7 +266,8 @@ namespace KeyboardWIndowApp
                 else
                 {
                     int err_pct = error * 100 / len;
-                    Statistics statistics = new Statistics(speed, err_pct, DateTime.Now, UID, EID);
+                    Statistics statistics = new Statistics(speed, err_pct, DateTime.Now, UID, EXERC);
+                    StatisticWork.SaveStatistic(statistics);
                     MessageBox.Show(StatisticWork.GetStatisticString(time, len, error, speed));
                 }
             }
