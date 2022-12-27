@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using KeyboardWIndowApp.DataBase;
 
 namespace KeyboardWIndowApp.StaticClasses
@@ -11,9 +12,18 @@ namespace KeyboardWIndowApp.StaticClasses
     {
         public static List<int> GetZoneByDiffId(long diffId)
         {
-            using (Context context = new Context())
+            try
             {
-                return context.TypeZone.Where(t => t.DifficultyId == diffId).Select(t => t.ZoneN).ToList();
+                using (Context context = new Context())
+                {
+                    return context.TypeZone.Where(t => t.DifficultyId == diffId).Select(t => t.ZoneN).ToList();
+                }
+            }
+            catch (Npgsql.PostgresException)
+            {
+                MessageBox.Show("Структура базы данных нарушена");
+                Application.Exit();
+                return null;
             }
         }
 

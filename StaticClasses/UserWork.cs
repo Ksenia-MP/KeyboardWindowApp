@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using KeyboardWIndowApp.DataBase;
 
 namespace KeyboardWIndowApp.StaticClasses
@@ -36,9 +37,18 @@ namespace KeyboardWIndowApp.StaticClasses
 
         public static User GetUserByLogin(string login)
         {
-            using (Context context = new Context())
+            try
             {
-                return context.User.FirstOrDefault(u => u.Login == login);
+                using (Context context = new Context())
+                {
+                    return context.User.FirstOrDefault(u => u.Login == login);
+                }
+            }
+            catch (Npgsql.PostgresException)
+            {
+                MessageBox.Show("Структура базы данных нарушена");
+                Application.Exit();
+                return null;
             }
         }
 

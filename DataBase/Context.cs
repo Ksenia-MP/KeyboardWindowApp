@@ -37,7 +37,14 @@ namespace KeyboardWIndowApp.DataBase
                 LogInForm loginForm = new LogInForm(str);
                 loginForm.ShowDialog();
             }
+            catch(Npgsql.PostgresException)
+            {
+                string str = "Сервер загружен, перезапустите программу чуть попозже";
+                LogInForm loginForm = new LogInForm(str);
+                loginForm.ShowDialog();
+            }
         }
+        
 
         public Context(DbContextOptions<Context> options) : base(options) {}
 
