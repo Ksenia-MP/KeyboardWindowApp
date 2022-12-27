@@ -54,11 +54,6 @@ namespace KeyboardWIndowApp
             infoForm.ShowDialog();
         }
 
-        private void UserForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void statisticBtn_Click(object sender, EventArgs e)
         {
             StatisticForm statisticForm = new StatisticForm(userNameLbl.Text);
@@ -69,7 +64,7 @@ namespace KeyboardWIndowApp
         {
             User user = UserWork.GetUserByLogin(userNameLbl.Text);
             SettingUser su = new SettingUser(user);
-            su.Show();
+            su.ShowDialog();
         }
 
         private void logout_Click(object sender, EventArgs e)

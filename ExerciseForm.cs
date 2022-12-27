@@ -68,16 +68,7 @@ namespace KeyboardWIndowApp
             InitControls();
             shiftkey = this.Controls.Find("ShiftKey", true).FirstOrDefault() as Button;
             InitRtb();
-            var appSettings = ConfigurationManager.AppSettings;
-            if (appSettings["keyCheck"] == "1")
-                HideKeys.Visible = false;
-            else
-                HideKeys.Visible = true;
-            if (appSettings["musicCheck"] == "1")
-                pictureBox1.Image = Properties.Resources.volume;
-            else
-                pictureBox1.Image = Properties.Resources.mute;
-            HideKeys.Visible = !checkVK.Checked;
+            SetAppSettings();
         }
 
         public ExerciseForm(long user_id, Exercise exrc)
@@ -95,6 +86,21 @@ namespace KeyboardWIndowApp
             InitRtb();
             GetMaxParsms(exrc);
             InitControls();
+            SetAppSettings();
+        }
+
+        private void SetAppSettings()
+        {
+            var appSettings = ConfigurationManager.AppSettings;
+            if (appSettings["keyCheck"] == "1")
+                HideKeys.Visible = false;
+            else
+                HideKeys.Visible = true;
+            if (appSettings["musicCheck"] == "1")
+                pictureBox1.Image = Properties.Resources.volume;
+            else
+                pictureBox1.Image = Properties.Resources.mute;
+            HideKeys.Visible = !checkVK.Checked;
         }
 
         private void Reload()

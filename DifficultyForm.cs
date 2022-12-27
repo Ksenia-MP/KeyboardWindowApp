@@ -186,6 +186,8 @@ namespace KeyboardWIndowApp
             }
             else error_flag = true;
 
+            if (typeZoneText.Text.Length == 0) error_flag = true;
+
             if (error_flag)
                 MessageBox.Show("Некоторые данные имели неверный формат \nИзменения не сохранены.");
             else

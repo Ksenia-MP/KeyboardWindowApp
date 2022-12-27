@@ -428,10 +428,8 @@ namespace KeyboardWIndowApp
 
         private void exerciseText_TextChanged(object sender, EventArgs e)
         {
-            //if (generateBut.BackColor == onRndClr)
-            //{
-            //    return;
-            //}
+            if (GenerateState) return;
+
             string text = exerciseText.Text;
             int diffIndx = GetDiffIndex(ref text, GetCharecters(text));
             if (diffIndx == diffComBox.Items.Count)
