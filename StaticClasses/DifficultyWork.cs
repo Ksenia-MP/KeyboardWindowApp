@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using KeyboardWIndowApp.DataBase;
 
 namespace KeyboardWIndowApp.StaticClasses
@@ -16,6 +17,7 @@ namespace KeyboardWIndowApp.StaticClasses
             {
                 return context.Difficulty.ToList();
             }
+            
         }
 
         public static List<DiffIdLvl> GetDiffIdLvls()

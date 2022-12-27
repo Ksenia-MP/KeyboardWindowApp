@@ -21,6 +21,12 @@ namespace KeyboardWIndowApp
             loginText.Text = "admin";
             passwordText.Text = "admin";
         }
+        public LogInForm(string str)
+        {
+            MessageBox.Show(str);
+            Application.Restart();
+            Environment.Exit(1);
+        }
 
         private void ShowHide(Control control)
         {

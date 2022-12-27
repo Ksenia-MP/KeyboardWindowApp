@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace KeyboardWIndowApp.DataBase
 {
@@ -20,8 +21,22 @@ namespace KeyboardWIndowApp.DataBase
 
         public Context()
         {
-            Database.CloseConnection();
-            Database.EnsureCreated();
+            try
+            {
+                Database.EnsureCreated();
+            }
+            catch (System.Net.Sockets.SocketException)
+            {
+                string str = "Проверьте подключение к интернету";
+                LogInForm loginForm = new LogInForm(str);
+                loginForm.ShowDialog();
+            }
+            catch(ArgumentException)
+            {
+                string str = "База данных отсутствует";
+                LogInForm loginForm = new LogInForm(str);
+                loginForm.ShowDialog();
+            }
         }
 
         public Context(DbContextOptions<Context> options) : base(options) {}
@@ -37,6 +52,7 @@ namespace KeyboardWIndowApp.DataBase
             var connStr = string.Format("Server={0};Database={1};User Id={2};Password={3};Port={4}",
                 uri.Host, db, user, passwd, port);
             optionsBuilder.UseNpgsql(connStr);
+            //optionsBuilder.UseNpgsql("fugjfbdvi");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
