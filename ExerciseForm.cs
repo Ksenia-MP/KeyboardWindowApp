@@ -298,6 +298,7 @@ namespace KeyboardWIndowApp
                     StatisticWork.SaveStatistic(statistics);
                     MessageBox.Show(StatisticWork.GetStatisticString(time, len, error, speed));
                 }
+                Close();
             }
             e.Handled = true;
         }

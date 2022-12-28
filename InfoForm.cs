@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 
+
 namespace KeyboardWIndowApp
 {
     public partial class InfoForm : Form
@@ -15,8 +16,9 @@ namespace KeyboardWIndowApp
         {
             try
             {
-                string curDir = Directory.GetCurrentDirectory();
-                System.Diagnostics.Process.Start(String.Format("file:///{0}/Info.html", curDir));
+                string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
+                string FileName = string.Format("{0}Resources\\info.html", Path.GetFullPath(Path.Combine(RunningPath, @"..\..\")));
+                System.Diagnostics.Process.Start(FileName);
             }
             catch (System.ComponentModel.Win32Exception)
             {

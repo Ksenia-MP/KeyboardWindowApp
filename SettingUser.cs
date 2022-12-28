@@ -18,6 +18,7 @@ namespace KeyboardWIndowApp
         public SettingUser(User u_user)
         {
             InitializeComponent();
+            AcceptButton = saveBut;
             loginText.Text = u_user.Login;
             user = u_user;
             var appSettings = ConfigurationManager.AppSettings;
@@ -29,15 +30,17 @@ namespace KeyboardWIndowApp
 
         private void delBut_Click(object sender, EventArgs e)
         {
-            using (Context context = new Context())
+            if (DialogResult.Yes == MessageBox.Show("Вы уверены что хотите удалить аккаунт?", "Удаление", MessageBoxButtons.YesNo))
             {
-                context.User.Remove(user);
-                context.SaveChanges();
-                MessageBox.Show("Пользователь удален!");
-                Close();
-                Application.Restart();
+                using (Context context = new Context())
+                {
+                    context.User.Remove(user);
+                    context.SaveChanges();
+                    MessageBox.Show("Пользователь удален!");
+                    Close();
+                    Application.Restart();
+                }
             }
-            
         }
 
         private void saveBut_Click(object sender, EventArgs e)

@@ -61,6 +61,30 @@ namespace KeyboardWIndowApp.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на &lt;!DOCTYPE html&gt;
+        ///&lt;html&gt;
+        ///&lt;head&gt;
+        ///&lt;title&gt;Информация о клавиатурном тренажере&lt;/title&gt;
+        ///&lt;/head&gt;
+        ///&lt;body&gt;
+        ///    &lt;h2 style=&quot;color: #5e9ca0;&quot;&gt;Навигация&lt;/h2&gt;
+        ///    &lt;ul&gt;
+        ///        &lt;li&gt;&lt;a href=&quot;#h1_1&quot;&gt;Автоматизированная система &quot;Клавиатурный тренажер&quot; с функциями администратора&lt;/a&gt;&lt;/li&gt;
+        ///        &lt;li&gt;&lt;a href=&quot;#h2_1&quot;&gt;Введение&lt;/a&gt;&lt;/li&gt;
+        ///        &lt;li&gt;&lt;a href=&quot;#h2_2&quot;&gt;Авторизация/регистрация&lt;/a&gt;&lt;/li&gt;
+        ///        &lt;li&gt;
+        ///            &lt;a href=&quot;#h2_3&quot;&gt;Режим администратора&lt;/a&gt;
+        ///            &lt;ul&gt;
+        ///                &lt;li&gt;
+        ///                    [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string info {
+            get {
+                return ResourceManager.GetString("info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap infolinear {
