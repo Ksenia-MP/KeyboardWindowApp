@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KeyboardWIndowApp.DataBase;
-
+using System.Windows.Forms;
 
 namespace KeyboardWIndowApp.StaticClasses
 {
@@ -29,19 +29,49 @@ namespace KeyboardWIndowApp.StaticClasses
         };
 
         public static int GetZoneN(string ch)
-        {
-            using (Context context = new Context())
+        { 
+            int cha = new int();
+            try
             {
-                return context.Keyboard.Where(k => k.Char.Equals(ch)).Select(k => k.ZoneN).FirstOrDefault();
+                using (Context context = new Context())
+                {
+                    cha =  context.Keyboard.Where(k => k.Char.Equals(ch)).Select(k => k.ZoneN).FirstOrDefault();
+                }
+                if(cha == 0)
+                {
+                    MessageBox.Show("Информация отсутствует в базе данных");
+                    Application.Exit();
+                }
             }
+            catch (Npgsql.PostgresException)
+            {
+                MessageBox.Show("Структура базы данных нарушена");
+                Application.Exit();
+            }
+            return cha;
         }
 
         public static List<Keyboard> GetKeyboard()
         {
-            using (Context context = new Context())
+            List<Keyboard> list = new List<Keyboard>();
+            try
             {
-                return context.Keyboard.ToList();
+                using (Context context = new Context())
+                {
+                    list = context.Keyboard.ToList();
+                }
+                if (list.Count == 0)
+                {
+                    MessageBox.Show("Информация отсутствует в базе данных");
+                    Application.Exit();
+                }
             }
+            catch (Npgsql.PostgresException)
+            {
+                MessageBox.Show("Структура базы данных нарушена");
+                Application.Exit();
+            }
+            return list;
         }
 
         public static List<int> TextZones(string characters)
@@ -64,9 +94,18 @@ namespace KeyboardWIndowApp.StaticClasses
 
         public static string GetChars(int zoneN)
         {
-            using (Context context = new Context())
+            try
             {
-                return string.Join("",context.Keyboard.Where(k => k.ZoneN == zoneN).Select(k => k.Char).ToArray());
+                using (Context context = new Context())
+                {
+                    return string.Join("", context.Keyboard.Where(k => k.ZoneN == zoneN).Select(k => k.Char).ToArray());
+                }
+            }
+            catch (Npgsql.PostgresException)
+            {
+                MessageBox.Show("Структура базы данных нарушена");
+                Application.Exit();
+                return null;
             }
         }
     }

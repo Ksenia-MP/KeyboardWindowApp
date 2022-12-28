@@ -26,9 +26,18 @@ namespace KeyboardWIndowApp.StaticClasses
 
         public static Exercise GetExerciseByName(string name)
         {
-            using (Context context = new Context())
+            try
             {
-                return context.Exercise.FirstOrDefault(e => e.Name.Equals(name));
+                using (Context context = new Context())
+                {
+                    return context.Exercise.FirstOrDefault(e => e.Name.Equals(name));
+                }
+            }
+            catch (Npgsql.PostgresException)
+            {
+                MessageBox.Show("Структура базы данных нарушена");
+                Application.Exit();
+                return null;
             }
         }
 
@@ -39,9 +48,18 @@ namespace KeyboardWIndowApp.StaticClasses
         /// <returns>Список названий упражнений</returns>
         private static List<string> GetExerciseNames(long dId)
         {
-            using (Context context = new Context())
+            try
             {
-                return context.Exercise.Where(e => e.DifficultyId == dId).Select(e => e.Name).ToList();
+                using (Context context = new Context())
+                {
+                    return context.Exercise.Where(e => e.DifficultyId == dId).Select(e => e.Name).ToList();
+                }
+            }
+            catch (Npgsql.PostgresException)
+            {
+                MessageBox.Show("Структура базы данных нарушена");
+                Application.Exit();
+                return null;
             }
         }
 

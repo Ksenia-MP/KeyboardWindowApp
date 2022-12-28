@@ -17,22 +17,48 @@ namespace KeyboardWIndowApp.StaticClasses
             {
                 return context.Difficulty.ToList();
             }
-            
+
         }
 
         public static List<DiffIdLvl> GetDiffIdLvls()
         {
-            using (Context context = new Context())
+            List<DiffIdLvl> list = new List<DiffIdLvl>();
+            try
             {
-                return context.Difficulty.Select(d => new DiffIdLvl { Id = d.Id, Level = d.Level }).ToList();
+
+                using (Context context = new Context())
+                {
+                    list = context.Difficulty.Select(d => new DiffIdLvl { Id = d.Id, Level = d.Level }).ToList();
+                }
+                if (list.Count == 0)
+                {
+                    MessageBox.Show("Информация отсутствует в базе данных");
+                    Application.Exit();
+                }
             }
+            catch (Npgsql.PostgresException)
+            {
+                MessageBox.Show("Структура базы данных нарушена");
+                Application.Exit();
+            }
+            return list;
         }
 
         public static long GetIdByName(int lvl)
         {
-            using (Context context = new Context())
+            try
             {
-                return context.Difficulty.Where(d => d.Level == lvl).Select(d => d.Id).FirstOrDefault();
+                using (Context context = new Context())
+                {
+                    return context.Difficulty.Where(d => d.Level == lvl).Select(d => d.Id).FirstOrDefault();
+                }
+
+            }
+            catch (Npgsql.PostgresException)
+            {
+                MessageBox.Show("Структура базы данных нарушена");
+                Application.Exit();
+                return new long();
             }
         }
 
@@ -42,7 +68,7 @@ namespace KeyboardWIndowApp.StaticClasses
             {
                 return context.Difficulty.FirstOrDefault(d => d.Id == id);
             }
-        } 
+        }
 
         public static Difficulty GetDiffByName(int lvl)
         {
@@ -54,19 +80,28 @@ namespace KeyboardWIndowApp.StaticClasses
 
         public static void UdateDifficulty(int old_diff_lvl, Difficulty new_diff, List<int> new_typeZones)
         {
-            using (Context context = new Context())
+            try
             {
-                var difficulty = context.Difficulty.Where(d => d.Level == old_diff_lvl).FirstOrDefault();
-                if (difficulty != null)
+                using (Context context = new Context())
                 {
-                    difficulty.MaxLen = new_diff.MaxLen;
-                    difficulty.MinLen = new_diff.MinLen;
-                    difficulty.ErrorPct = new_diff.ErrorPct;
-                    difficulty.TypeSpeed = new_diff.TypeSpeed;
-                    context.SaveChanges();
+                    var difficulty = context.Difficulty.Where(d => d.Level == old_diff_lvl).FirstOrDefault();
+                    if (difficulty != null)
+                    {
+                        difficulty.MaxLen = new_diff.MaxLen;
+                        difficulty.MinLen = new_diff.MinLen;
+                        difficulty.ErrorPct = new_diff.ErrorPct;
+                        difficulty.TypeSpeed = new_diff.TypeSpeed;
+                        context.SaveChanges();
 
-                    TypeZoneWork.SetZones(difficulty.Id, new_typeZones);
+                        TypeZoneWork.SetZones(difficulty.Id, new_typeZones);
+                    }
                 }
+            }
+            catch (Npgsql.PostgresException)
+            {
+                MessageBox.Show("Структура базы данных нарушена");
+                Application.Exit();
+
             }
         }
     }
