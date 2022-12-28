@@ -30,25 +30,46 @@ namespace KeyboardWIndowApp
                 b.Click += new System.EventHandler(exercise_Click);
         }
 
-        private void exercise_Click(object sender, EventArgs e) // Сделать для статистики
+        private void exercise_Click(object sender, EventArgs e) 
         {
+            //string stat_name = (sender as Button).Name.Replace('_', '-').Substring(3, 5);
+
             string exrc_name = (sender as Button).Name.Replace('_', '-').Substring(3, 5);
             Exercise exrc = ExerciseWork.GetExerciseByName(exrc_name);
             this.Hide();
-            ExerciseForm exerciseForm = new ExerciseForm(UID, exrc);
-            exerciseForm.ShowDialog();
+            DiagrammForm diagrammForm = new DiagrammForm(exrc.Id, exrc_name, userNameLbl.Text, UID);
+            diagrammForm.ShowDialog();
+            //ExerciseForm exerciseForm = new ExerciseForm(UID, exrc);
+            //exerciseForm.ShowDialog();
             this.Show();
         }
 
         private void StatisticForm_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void buttonAllStatistic_Click(object sender, EventArgs e)
         {
-            DiagrammForm diagrammForm = new DiagrammForm();
+            DiagrammForm diagrammForm = new DiagrammForm(userNameLbl.Text, UID);
             diagrammForm.ShowDialog();
+        }
+
+        private void ExercisesTab_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void exrcBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void settingsBtn_Click(object sender, EventArgs e)
+        {
+            User user = UserWork.GetUserByLogin(userNameLbl.Text);
+            SettingUser su = new SettingUser(user);
+            su.ShowDialog();
         }
     }
 }

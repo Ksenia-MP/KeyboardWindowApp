@@ -60,7 +60,8 @@ namespace KeyboardWIndowApp
 
         private void adminStatBtn_Click(object sender, EventArgs e)
         {
-
+            StaticAdminForm staticAdminForm = new StaticAdminForm();
+            staticAdminForm.ShowDialog();
         }
 
         private void createExrcBtn_Click(object sender, EventArgs e)

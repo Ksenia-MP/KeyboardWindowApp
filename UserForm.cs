@@ -57,7 +57,9 @@ namespace KeyboardWIndowApp
         private void statisticBtn_Click(object sender, EventArgs e)
         {
             StatisticForm statisticForm = new StatisticForm(userNameLbl.Text);
+            this.Hide();
             statisticForm.ShowDialog();
+            this.Show();
         }
 
         private void settingsBtn_Click(object sender, EventArgs e)

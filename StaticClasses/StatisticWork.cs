@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using KeyboardWIndowApp.DataBase;
 
 namespace KeyboardWIndowApp.StaticClasses
@@ -39,6 +40,104 @@ namespace KeyboardWIndowApp.StaticClasses
             {
                 context.Statistics.Add(stat);
                 context.SaveChanges();
+            }
+        }
+        public static Statistics GetStatisticsByName(long u_id)
+        {
+            try
+            {
+                using (Context context = new Context())
+                {
+                    return context.Statistics/*.Include/*(ex => ex.Exercise)*/.FirstOrDefault(e => e.UserId.Equals(u_id));
+                    
+                }
+            }
+            catch (Npgsql.PostgresException)
+            {
+                MessageBox.Show("Структура базы данных нарушена");
+                Application.Exit();
+                return null;
+            }
+        }
+        public static Statistics GetNameByUID(long u_id)
+        {
+            try
+            {
+                using (Context context = new Context())
+                {
+                    return context.Statistics.FirstOrDefault(e => e.UserId.Equals(u_id));
+
+                }
+            }
+            catch (Npgsql.PostgresException)
+            {
+                MessageBox.Show("Структура базы данных нарушена");
+                Application.Exit();
+                return null;
+            }
+        }
+        public static List<Statistics> GetListStatByUID(long u_id)
+        {
+            try
+            {
+                using (Context context = new Context())
+                {
+                    return context.Statistics.Where(e => e.UserId.Equals(u_id)).ToList();
+                }
+            }
+            catch (Npgsql.PostgresException)
+            {
+                MessageBox.Show("Структура базы данных нарушена");
+                Application.Exit();
+                return null;
+            }
+        }
+        public static List<Statistics> GetListStatByExersID(long ex_id)
+        {
+            try
+            {
+                using (Context context = new Context())
+                {
+                    return context.Statistics.Where(e => e.ExerciseId.Equals(ex_id)).ToList();
+                }
+            }
+            catch (Npgsql.PostgresException)
+            {
+                MessageBox.Show("Структура базы данных нарушена");
+                Application.Exit();
+                return null;
+            }
+        }
+        public static List<Statistics> GetListStatByUIDAndExersID(long u_id, long ex_id)
+        {
+            try
+            {
+                using (Context context = new Context())
+                {
+                    return context.Statistics.Where(e => e.UserId.Equals(u_id)).Where(e => e.ExerciseId.Equals(ex_id)).ToList();
+                }
+            }
+            catch (Npgsql.PostgresException)
+            {
+                MessageBox.Show("Структура базы данных нарушена");
+                Application.Exit();
+                return null;
+            }
+        }
+        public static List<Statistics> GetListStatAll()
+        {
+            try
+            {
+                using (Context context = new Context())
+                {
+                    return context.Statistics.ToList();
+                }
+            }
+            catch (Npgsql.PostgresException)
+            {
+                MessageBox.Show("Структура базы данных нарушена");
+                Application.Exit();
+                return null;
             }
         }
     }

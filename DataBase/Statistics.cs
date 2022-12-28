@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Drawing;
 using System.Text;
 using System.Threading.Tasks;
 using KeyboardWIndowApp.StaticClasses;
+using System.Windows.Forms;
+using KeyboardWIndowApp.DataBase;
+using Microsoft.EntityFrameworkCore;
 
 namespace KeyboardWIndowApp.DataBase
 {
@@ -31,5 +35,6 @@ namespace KeyboardWIndowApp.DataBase
             //Exercise = exerc;
         }
 
+        
     }
 }
