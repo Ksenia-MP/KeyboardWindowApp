@@ -10,15 +10,15 @@ namespace KeyboardWIndowApp.StaticClasses
 {
     static class UserWork
     {
-        public static List<User> GetUsersList()
-        {
-            using (Context context = new Context())
-            {
-                return context.User.ToList();
-            }
-        }
+        //public static List<User> GetUsersList()
+        //{
+        //    using (Context context = new Context())
+        //    {
+        //        return context.User.ToList();
+        //    }
+        //}
 
-        public static void AddUser (string login, string password)
+        public static void AddUser(string login, string password)
         {
             using (Context context = new Context())
             {
@@ -27,13 +27,13 @@ namespace KeyboardWIndowApp.StaticClasses
             }
         }
 
-        public static User GetUserById(long id)
-        {
-            using (Context context = new Context())
-            {
-                return context.User.FirstOrDefault(u => u.Id == id);
-            }
-        }
+        //public static User GetUserById(long id)
+        //{
+        //    using (Context context = new Context())
+        //    {
+        //        return context.User.FirstOrDefault(u => u.Id == id);
+        //    }
+        //}
 
         public static User GetUserByLogin(string login)
         {

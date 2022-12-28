@@ -17,7 +17,6 @@ namespace KeyboardWIndowApp.StaticClasses
             {
                 return context.Difficulty.ToList();
             }
-
         }
 
         public static List<DiffIdLvl> GetDiffIdLvls()
@@ -64,19 +63,28 @@ namespace KeyboardWIndowApp.StaticClasses
 
         public static Difficulty GetDiffById(long id)
         {
-            using (Context context = new Context())
+            try
             {
-                return context.Difficulty.FirstOrDefault(d => d.Id == id);
+                using (Context context = new Context())
+                {
+                    return context.Difficulty.FirstOrDefault(d => d.Id == id);
+                }
+            }
+            catch(Npgsql.PostgresException)
+            {
+                MessageBox.Show("Структура базы данных нарушена");
+                Application.Exit();
+                return null;
             }
         }
 
-        public static Difficulty GetDiffByName(int lvl)
-        {
-            using (Context context = new Context())
-            {
-                return context.Difficulty.FirstOrDefault(d => d.Level == lvl);
-            }
-        }
+        //public static Difficulty GetDiffByName(int lvl)
+        //{
+        //    using (Context context = new Context())
+        //    {
+        //        return context.Difficulty.FirstOrDefault(d => d.Level == lvl);
+        //    }
+        //}
 
         public static void UdateDifficulty(int old_diff_lvl, Difficulty new_diff, List<int> new_typeZones)
         {
@@ -101,7 +109,6 @@ namespace KeyboardWIndowApp.StaticClasses
             {
                 MessageBox.Show("Структура базы данных нарушена");
                 Application.Exit();
-
             }
         }
     }

@@ -28,28 +28,28 @@ namespace KeyboardWIndowApp.StaticClasses
             new Point(54, 98), new Point(30,98), new Point(13, 25)
         };
 
-        public static int GetZoneN(string ch)
-        { 
-            int cha = new int();
-            try
-            {
-                using (Context context = new Context())
-                {
-                    cha =  context.Keyboard.Where(k => k.Char.Equals(ch)).Select(k => k.ZoneN).FirstOrDefault();
-                }
-                if(cha == 0)
-                {
-                    MessageBox.Show("Информация отсутствует в базе данных");
-                    Application.Exit();
-                }
-            }
-            catch (Npgsql.PostgresException)
-            {
-                MessageBox.Show("Структура базы данных нарушена");
-                Application.Exit();
-            }
-            return cha;
-        }
+        //public static int GetZoneN(string ch)
+        //{ 
+        //    int cha = new int();
+        //    try
+        //    {
+        //        using (Context context = new Context())
+        //        {
+        //            cha = context.Keyboard.Where(k => k.Char.Equals(ch)).Select(k => k.ZoneN).FirstOrDefault();
+        //        }
+        //        if(cha == 0)
+        //        {
+        //            MessageBox.Show("Информация отсутствует в базе данных");
+        //            Application.Exit();
+        //        }
+        //    }
+        //    catch (Npgsql.PostgresException)
+        //    {
+        //        MessageBox.Show("Структура базы данных нарушена");
+        //        Application.Exit();
+        //    }
+        //    return cha;
+        //}
 
         public static List<Keyboard> GetKeyboard()
         {
@@ -74,23 +74,23 @@ namespace KeyboardWIndowApp.StaticClasses
             return list;
         }
 
-        public static List<int> TextZones(string characters)
-        {
-            using (Context context = new Context())
-            {
-                List<Keyboard> keys = context.Keyboard.ToList();
-                List<int> zones = new List<int>();
-                int zone;
+        //public static List<int> TextZones(string characters)
+        //{
+        //    using (Context context = new Context())
+        //    {
+        //        List<Keyboard> keys = context.Keyboard.ToList();
+        //        List<int> zones = new List<int>();
+        //        int zone;
 
-                foreach (char ch in characters)
-                {
-                    zone = keys.Where(k => k.Char.Equals(ch.ToString())).Select(k => k.ZoneN).FirstOrDefault();
-                    if (!zones.Contains(zone))
-                        zones.Add(zone);
-                }
-                return zones;
-            }
-        }
+        //        foreach (char ch in characters)
+        //        {
+        //            zone = keys.Where(k => k.Char.Equals(ch.ToString())).Select(k => k.ZoneN).FirstOrDefault();
+        //            if (!zones.Contains(zone))
+        //                zones.Add(zone);
+        //        }
+        //        return zones;
+        //    }
+        //}
 
         public static string GetChars(int zoneN)
         {

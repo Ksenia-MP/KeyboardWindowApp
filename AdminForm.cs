@@ -75,10 +75,8 @@ namespace KeyboardWIndowApp
             Exercise exercise;
             if (curr_btn != null)
             {
-                using (Context context = new Context())
-                {
-                    exercise = context.Exercise.Include(ex => ex.Difficulty).FirstOrDefault(ex => ex.Name == curr_btn.Text.Split(' ')[1]);
-                }
+                exercise = ExerciseWork.GetExerciseByName(curr_btn.Text.Split(' ')[1]);
+
                 CreateExercise ce = new CreateExercise(exercise);
                 ce.ShowDialog();
             }

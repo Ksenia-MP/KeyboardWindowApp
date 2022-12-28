@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KeyboardWIndowApp.DataBase;
+using Microsoft.EntityFrameworkCore;
 
 namespace KeyboardWIndowApp.StaticClasses
 {
@@ -30,7 +31,7 @@ namespace KeyboardWIndowApp.StaticClasses
             {
                 using (Context context = new Context())
                 {
-                    return context.Exercise.FirstOrDefault(e => e.Name.Equals(name));
+                    return context.Exercise.Include(ex => ex.Difficulty).FirstOrDefault(e => e.Name.Equals(name));
                 }
             }
             catch (Npgsql.PostgresException)
