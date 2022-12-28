@@ -41,13 +41,45 @@ namespace KeyboardWIndowApp.StaticClasses
                 return null;
             }
         }
+        public static Exercise GetExerciseById(long id)
+        {
+            try
+            {
+                using (Context context = new Context())
+                {
+                    return context.Exercise.FirstOrDefault(e => e.Id == id);
+                }
+            }
+            catch (Npgsql.PostgresException)
+            {
+                MessageBox.Show("Структура базы данных нарушена");
+                Application.Exit();
+                return null;
+            }
+        }
+        /*public static Exercise GetExerciseByNameAndUId(string name, long u_id)
+        {
+            try
+            {
+                using (Context context = new Context())
+                {
+                    return context.Exercise.Include(ex => ex.Difficulty).FirstOrDefault(e => e.Name.Equals(name));
+                }
+            }
+            catch (Npgsql.PostgresException)
+            {
+                MessageBox.Show("Структура базы данных нарушена");
+                Application.Exit();
+                return null;
+            }
+        }*/
 
         /// <summary>
         /// Возвращает список названий упражнений для указанного уровня сложности
         /// </summary>
         /// <param name="diffId">ID уровня сложности</param>
         /// <returns>Список названий упражнений</returns>
-        private static List<string> GetExerciseNames(long dId)
+        public static List<string> GetExerciseNames(long dId)
         {
             try
             {

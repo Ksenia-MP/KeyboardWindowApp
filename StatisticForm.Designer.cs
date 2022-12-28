@@ -37,7 +37,9 @@ namespace KeyboardWIndowApp
             this.ExercisesTab = new System.Windows.Forms.TabControl();
             this.info = new System.Windows.Forms.PictureBox();
             this.buttonAllStatistic = new System.Windows.Forms.Button();
+            this.logout = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.info)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logout)).BeginInit();
             this.SuspendLayout();
             // 
             // userNameLbl
@@ -81,6 +83,7 @@ namespace KeyboardWIndowApp
             this.settingsBtn.TabIndex = 18;
             this.settingsBtn.Text = "Настройка";
             this.settingsBtn.UseVisualStyleBackColor = false;
+            this.settingsBtn.Click += new System.EventHandler(this.settingsBtn_Click);
             // 
             // statisticBtn
             // 
@@ -110,6 +113,7 @@ namespace KeyboardWIndowApp
             this.exrcBtn.TabIndex = 16;
             this.exrcBtn.Text = "Упражнения";
             this.exrcBtn.UseVisualStyleBackColor = false;
+            this.exrcBtn.Click += new System.EventHandler(this.exrcBtn_Click);
             // 
             // ExercisesTab
             // 
@@ -122,11 +126,12 @@ namespace KeyboardWIndowApp
             this.ExercisesTab.SelectedIndex = 0;
             this.ExercisesTab.Size = new System.Drawing.Size(713, 481);
             this.ExercisesTab.TabIndex = 20;
+            this.ExercisesTab.SelectedIndexChanged += new System.EventHandler(this.ExercisesTab_SelectedIndexChanged);
             // 
             // info
             // 
             this.info.Image = global::KeyboardWIndowApp.Properties.Resources.infolinear;
-            this.info.Location = new System.Drawing.Point(1000, 4);
+            this.info.Location = new System.Drawing.Point(1000, 13);
             this.info.Margin = new System.Windows.Forms.Padding(4);
             this.info.Name = "info";
             this.info.Size = new System.Drawing.Size(47, 47);
@@ -141,7 +146,7 @@ namespace KeyboardWIndowApp
             this.buttonAllStatistic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAllStatistic.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonAllStatistic.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.buttonAllStatistic.Location = new System.Drawing.Point(684, 4);
+            this.buttonAllStatistic.Location = new System.Drawing.Point(619, 13);
             this.buttonAllStatistic.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAllStatistic.Name = "buttonAllStatistic";
             this.buttonAllStatistic.Size = new System.Drawing.Size(308, 47);
@@ -150,11 +155,23 @@ namespace KeyboardWIndowApp
             this.buttonAllStatistic.UseVisualStyleBackColor = false;
             this.buttonAllStatistic.Click += new System.EventHandler(this.buttonAllStatistic_Click);
             // 
+            // logout
+            // 
+            this.logout.Image = global::KeyboardWIndowApp.Properties.Resources.logout;
+            this.logout.Location = new System.Drawing.Point(945, 13);
+            this.logout.Margin = new System.Windows.Forms.Padding(4);
+            this.logout.Name = "logout";
+            this.logout.Size = new System.Drawing.Size(47, 47);
+            this.logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.logout.TabIndex = 23;
+            this.logout.TabStop = false;
+            // 
             // StatisticForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1060, 578);
+            this.Controls.Add(this.logout);
             this.Controls.Add(this.buttonAllStatistic);
             this.Controls.Add(this.info);
             this.Controls.Add(this.ExercisesTab);
@@ -165,10 +182,11 @@ namespace KeyboardWIndowApp
             this.Controls.Add(this.userNameLbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "StatisticForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Статистика";
             this.Load += new System.EventHandler(this.StatisticForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.info)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logout)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -183,5 +201,6 @@ namespace KeyboardWIndowApp
         private System.Windows.Forms.TabControl ExercisesTab;
         private System.Windows.Forms.PictureBox info;
         private System.Windows.Forms.Button buttonAllStatistic;
+        private System.Windows.Forms.PictureBox logout;
     }
 }

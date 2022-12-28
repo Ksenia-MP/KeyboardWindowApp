@@ -10,13 +10,13 @@ namespace KeyboardWIndowApp.StaticClasses
 {
     static class UserWork
     {
-        //public static List<User> GetUsersList()
-        //{
-        //    using (Context context = new Context())
-        //    {
-        //        return context.User.ToList();
-        //    }
-        //}
+        public static List<User> GetUsersList()
+        {
+            using (Context context = new Context())
+            {
+                return context.User.ToList();
+            }
+        }
 
         public static void AddUser(string login, string password)
         {
