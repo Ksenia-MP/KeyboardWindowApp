@@ -33,7 +33,8 @@ namespace KeyboardWIndowApp
             
             for (int i = 0; i < us.Count; i++)
             {
-                comBoxUsers.Items.Add(us[i].Login);
+                if (!us[i].Login.Equals("admin")) 
+                    comBoxUsers.Items.Add(us[i].Login);
             }
             if (us.Count == 0)
             {
@@ -43,10 +44,11 @@ namespace KeyboardWIndowApp
             comBoxUsers.SelectedIndex = 0;
 
             List<DiffIdLvl> dId = DifficultyWork.GetDiffIdLvls();
-            List<String> ex = new List<String>();
+            List<string> ex = new List<string>();
             for (int i = 0; i < dId.Count; i++)
             {
                 ex.AddRange(ExerciseWork.GetExerciseNames(dId[i].Id));
+                ex.Sort((a, b) => a.CompareTo(b));
             }
             
 

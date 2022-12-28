@@ -61,20 +61,22 @@
             // 
             this.label1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(9, 7);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(209, 63);
+            this.label1.Size = new System.Drawing.Size(157, 51);
             this.label1.TabIndex = 0;
             this.label1.Text = "Название упражнения";
             // 
             // exerciseName
             // 
             this.exerciseName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.8F);
-            this.exerciseName.Location = new System.Drawing.Point(301, 16);
+            this.exerciseName.Location = new System.Drawing.Point(226, 13);
+            this.exerciseName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.exerciseName.MaxLength = 2;
             this.exerciseName.Multiline = true;
             this.exerciseName.Name = "exerciseName";
-            this.exerciseName.Size = new System.Drawing.Size(135, 51);
+            this.exerciseName.Size = new System.Drawing.Size(102, 42);
             this.exerciseName.TabIndex = 1;
             this.exerciseName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.exerciseName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.exerciseName_KeyPress);
@@ -86,10 +88,10 @@
             this.diffComBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.diffComBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.diffComBox.FormattingEnabled = true;
-            this.diffComBox.Location = new System.Drawing.Point(14, 119);
-            this.diffComBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.diffComBox.Location = new System.Drawing.Point(10, 97);
+            this.diffComBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.diffComBox.Name = "diffComBox";
-            this.diffComBox.Size = new System.Drawing.Size(192, 39);
+            this.diffComBox.Size = new System.Drawing.Size(145, 34);
             this.diffComBox.TabIndex = 11;
             this.diffComBox.SelectedIndexChanged += new System.EventHandler(this.diffComBox_SelectedIndexChanged);
             // 
@@ -98,9 +100,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(12, 87);
+            this.label2.Location = new System.Drawing.Point(9, 71);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(149, 29);
+            this.label2.Size = new System.Drawing.Size(116, 24);
             this.label2.TabIndex = 10;
             this.label2.Text = "Сложность:";
             // 
@@ -109,26 +112,29 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(222, 87);
+            this.label3.Location = new System.Drawing.Point(166, 71);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(215, 24);
+            this.label3.Size = new System.Drawing.Size(170, 18);
             this.label3.TabIndex = 12;
             this.label3.Text = "Количество символов:";
             // 
             // countChar
             // 
             this.countChar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.countChar.Location = new System.Drawing.Point(227, 120);
+            this.countChar.Location = new System.Drawing.Point(170, 98);
+            this.countChar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.countChar.Name = "countChar";
-            this.countChar.Size = new System.Drawing.Size(209, 38);
+            this.countChar.Size = new System.Drawing.Size(157, 32);
             this.countChar.TabIndex = 13;
             // 
             // character
             // 
             this.character.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.character.Location = new System.Drawing.Point(12, 163);
+            this.character.Location = new System.Drawing.Point(9, 132);
+            this.character.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.character.Name = "character";
-            this.character.Size = new System.Drawing.Size(429, 45);
+            this.character.Size = new System.Drawing.Size(323, 37);
             this.character.TabIndex = 14;
             this.character.Text = "";
             this.character.TextChanged += new System.EventHandler(this.character_TextChanged);
@@ -137,9 +143,10 @@
             // exerciseText
             // 
             this.exerciseText.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.exerciseText.Location = new System.Drawing.Point(12, 205);
+            this.exerciseText.Location = new System.Drawing.Point(9, 167);
+            this.exerciseText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.exerciseText.Name = "exerciseText";
-            this.exerciseText.Size = new System.Drawing.Size(744, 299);
+            this.exerciseText.Size = new System.Drawing.Size(559, 244);
             this.exerciseText.TabIndex = 15;
             this.exerciseText.Text = "";
             this.exerciseText.TextChanged += new System.EventHandler(this.exerciseText_TextChanged);
@@ -151,9 +158,10 @@
             this.openBut.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.openBut.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.openBut.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.openBut.Location = new System.Drawing.Point(762, 205);
+            this.openBut.Location = new System.Drawing.Point(572, 167);
+            this.openBut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.openBut.Name = "openBut";
-            this.openBut.Size = new System.Drawing.Size(230, 58);
+            this.openBut.Size = new System.Drawing.Size(172, 47);
             this.openBut.TabIndex = 16;
             this.openBut.Text = "Открыть файл";
             this.openBut.UseVisualStyleBackColor = false;
@@ -165,9 +173,10 @@
             this.generateBut.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.generateBut.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.generateBut.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.generateBut.Location = new System.Drawing.Point(762, 269);
+            this.generateBut.Location = new System.Drawing.Point(572, 219);
+            this.generateBut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.generateBut.Name = "generateBut";
-            this.generateBut.Size = new System.Drawing.Size(230, 58);
+            this.generateBut.Size = new System.Drawing.Size(172, 47);
             this.generateBut.TabIndex = 17;
             this.generateBut.Text = "Сгенерировать";
             this.generateBut.UseVisualStyleBackColor = false;
@@ -179,9 +188,10 @@
             this.saveBut.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.saveBut.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.saveBut.ForeColor = System.Drawing.SystemColors.Window;
-            this.saveBut.Location = new System.Drawing.Point(762, 446);
+            this.saveBut.Location = new System.Drawing.Point(572, 362);
+            this.saveBut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.saveBut.Name = "saveBut";
-            this.saveBut.Size = new System.Drawing.Size(230, 58);
+            this.saveBut.Size = new System.Drawing.Size(172, 47);
             this.saveBut.TabIndex = 18;
             this.saveBut.Text = "Сохранить";
             this.saveBut.UseVisualStyleBackColor = false;
@@ -190,9 +200,10 @@
             // diffName
             // 
             this.diffName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.8F);
-            this.diffName.Location = new System.Drawing.Point(227, 16);
+            this.diffName.Location = new System.Drawing.Point(170, 13);
+            this.diffName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.diffName.Name = "diffName";
-            this.diffName.Size = new System.Drawing.Size(68, 51);
+            this.diffName.Size = new System.Drawing.Size(51, 41);
             this.diffName.TabIndex = 19;
             this.diffName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -200,80 +211,80 @@
             // 
             this.zone6.BackColor = System.Drawing.SystemColors.Control;
             this.zone6.ForeColor = System.Drawing.SystemColors.Control;
-            this.zone6.Location = new System.Drawing.Point(309, 17);
-            this.zone6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.zone6.Location = new System.Drawing.Point(232, 14);
+            this.zone6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.zone6.Name = "zone6";
-            this.zone6.Size = new System.Drawing.Size(79, 129);
+            this.zone6.Size = new System.Drawing.Size(59, 105);
             this.zone6.TabIndex = 4;
             // 
             // zone2
             // 
             this.zone2.BackColor = System.Drawing.SystemColors.Control;
             this.zone2.ForeColor = System.Drawing.SystemColors.Control;
-            this.zone2.Location = new System.Drawing.Point(211, 17);
-            this.zone2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.zone2.Location = new System.Drawing.Point(158, 14);
+            this.zone2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.zone2.Name = "zone2";
-            this.zone2.Size = new System.Drawing.Size(149, 129);
+            this.zone2.Size = new System.Drawing.Size(112, 105);
             this.zone2.TabIndex = 6;
             // 
             // zone5
             // 
             this.zone5.BackColor = System.Drawing.SystemColors.Control;
             this.zone5.ForeColor = System.Drawing.SystemColors.Control;
-            this.zone5.Location = new System.Drawing.Point(77, 17);
-            this.zone5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.zone5.Location = new System.Drawing.Point(58, 14);
+            this.zone5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.zone5.Name = "zone5";
-            this.zone5.Size = new System.Drawing.Size(77, 129);
+            this.zone5.Size = new System.Drawing.Size(58, 105);
             this.zone5.TabIndex = 3;
             // 
             // zone7
             // 
             this.zone7.BackColor = System.Drawing.SystemColors.Control;
             this.zone7.ForeColor = System.Drawing.SystemColors.Control;
-            this.zone7.Location = new System.Drawing.Point(44, 17);
-            this.zone7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.zone7.Location = new System.Drawing.Point(33, 14);
+            this.zone7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.zone7.Name = "zone7";
-            this.zone7.Size = new System.Drawing.Size(99, 129);
+            this.zone7.Size = new System.Drawing.Size(74, 105);
             this.zone7.TabIndex = 2;
             // 
             // zone3
             // 
             this.zone3.BackColor = System.Drawing.SystemColors.Control;
             this.zone3.ForeColor = System.Drawing.SystemColors.Control;
-            this.zone3.Location = new System.Drawing.Point(111, 17);
-            this.zone3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.zone3.Location = new System.Drawing.Point(83, 14);
+            this.zone3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.zone3.Name = "zone3";
-            this.zone3.Size = new System.Drawing.Size(83, 129);
+            this.zone3.Size = new System.Drawing.Size(62, 105);
             this.zone3.TabIndex = 4;
             // 
             // zone1
             // 
             this.zone1.BackColor = System.Drawing.SystemColors.Control;
             this.zone1.ForeColor = System.Drawing.SystemColors.Control;
-            this.zone1.Location = new System.Drawing.Point(144, 17);
-            this.zone1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.zone1.Location = new System.Drawing.Point(108, 14);
+            this.zone1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.zone1.Name = "zone1";
-            this.zone1.Size = new System.Drawing.Size(141, 129);
+            this.zone1.Size = new System.Drawing.Size(106, 105);
             this.zone1.TabIndex = 5;
             // 
             // zone4
             // 
             this.zone4.BackColor = System.Drawing.SystemColors.Control;
             this.zone4.ForeColor = System.Drawing.SystemColors.Control;
-            this.zone4.Location = new System.Drawing.Point(277, 17);
-            this.zone4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.zone4.Location = new System.Drawing.Point(208, 14);
+            this.zone4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.zone4.Name = "zone4";
-            this.zone4.Size = new System.Drawing.Size(83, 129);
+            this.zone4.Size = new System.Drawing.Size(62, 105);
             this.zone4.TabIndex = 4;
             // 
             // zone8
             // 
             this.zone8.BackColor = System.Drawing.SystemColors.Control;
             this.zone8.ForeColor = System.Drawing.SystemColors.Control;
-            this.zone8.Location = new System.Drawing.Point(343, 17);
-            this.zone8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.zone8.Location = new System.Drawing.Point(257, 14);
+            this.zone8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.zone8.Name = "zone8";
-            this.zone8.Size = new System.Drawing.Size(148, 129);
+            this.zone8.Size = new System.Drawing.Size(111, 105);
             this.zone8.TabIndex = 4;
             // 
             // panel1
@@ -287,19 +298,19 @@
             this.panel1.Controls.Add(this.zone4);
             this.panel1.Controls.Add(this.zone8);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(473, 16);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(355, 13);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(519, 171);
+            this.panel1.Size = new System.Drawing.Size(389, 139);
             this.panel1.TabIndex = 20;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::KeyboardWIndowApp.Properties.Resources.Keyboard_layout;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(519, 154);
+            this.pictureBox1.Size = new System.Drawing.Size(389, 125);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -307,9 +318,10 @@
             // refresh
             // 
             this.refresh.Image = global::KeyboardWIndowApp.Properties.Resources.refresh;
-            this.refresh.Location = new System.Drawing.Point(762, 333);
+            this.refresh.Location = new System.Drawing.Point(572, 271);
+            this.refresh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.refresh.Name = "refresh";
-            this.refresh.Size = new System.Drawing.Size(50, 50);
+            this.refresh.Size = new System.Drawing.Size(38, 41);
             this.refresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.refresh.TabIndex = 21;
             this.refresh.TabStop = false;
@@ -318,9 +330,9 @@
             // 
             // CreateExercise
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1004, 520);
+            this.ClientSize = new System.Drawing.Size(753, 422);
             this.Controls.Add(this.refresh);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.diffName);
@@ -336,7 +348,9 @@
             this.Controls.Add(this.exerciseName);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "CreateExercise";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Создание упражнения";
             ((System.ComponentModel.ISupportInitialize)(this.countChar)).EndInit();
             this.panel1.ResumeLayout(false);

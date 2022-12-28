@@ -67,14 +67,16 @@ namespace KeyboardWIndowApp
             legend1.HeaderSeparator = System.Windows.Forms.DataVisualization.Charting.LegendSeparatorStyle.Line;
             legend1.Name = "Legend1";
             this.chartSpeed.Legends.Add(legend1);
-            this.chartSpeed.Location = new System.Drawing.Point(30, 60);
+            this.chartSpeed.Location = new System.Drawing.Point(22, 49);
+            this.chartSpeed.Margin = new System.Windows.Forms.Padding(2);
             this.chartSpeed.Name = "chartSpeed";
             this.chartSpeed.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chartSpeed.Series.Add(series1);
-            this.chartSpeed.Size = new System.Drawing.Size(350, 350);
+            this.chartSpeed.Size = new System.Drawing.Size(262, 284);
             this.chartSpeed.TabIndex = 0;
             this.chartSpeed.Text = "Скорость печати";
             // 
@@ -87,14 +89,15 @@ namespace KeyboardWIndowApp
             legend2.Enabled = false;
             legend2.Name = "Legend1";
             this.chartMistake.Legends.Add(legend2);
-            this.chartMistake.Location = new System.Drawing.Point(400, 60);
+            this.chartMistake.Location = new System.Drawing.Point(300, 49);
+            this.chartMistake.Margin = new System.Windows.Forms.Padding(2);
             this.chartMistake.Name = "chartMistake";
             this.chartMistake.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.chartMistake.Series.Add(series2);
-            this.chartMistake.Size = new System.Drawing.Size(350, 350);
+            this.chartMistake.Size = new System.Drawing.Size(262, 284);
             this.chartMistake.TabIndex = 1;
             this.chartMistake.Text = "% ошибок";
             this.chartMistake.Click += new System.EventHandler(this.chartMistake_Click);
@@ -108,13 +111,14 @@ namespace KeyboardWIndowApp
             legend3.Enabled = false;
             legend3.Name = "Legend1";
             this.chartTime.Legends.Add(legend3);
-            this.chartTime.Location = new System.Drawing.Point(770, 60);
+            this.chartTime.Location = new System.Drawing.Point(578, 49);
+            this.chartTime.Margin = new System.Windows.Forms.Padding(2);
             this.chartTime.Name = "chartTime";
             series3.ChartArea = "ChartArea1";
             series3.Legend = "Legend1";
             series3.Name = "Series1";
             this.chartTime.Series.Add(series3);
-            this.chartTime.Size = new System.Drawing.Size(350, 350);
+            this.chartTime.Size = new System.Drawing.Size(262, 284);
             this.chartTime.TabIndex = 2;
             this.chartTime.Text = "Время выполнения";
             // 
@@ -130,7 +134,8 @@ namespace KeyboardWIndowApp
             this.Mistake,
             this.ColumnTime,
             this.Date});
-            this.dataGVStatistic.Location = new System.Drawing.Point(31, 445);
+            this.dataGVStatistic.Location = new System.Drawing.Point(23, 362);
+            this.dataGVStatistic.Margin = new System.Windows.Forms.Padding(2);
             this.dataGVStatistic.Name = "dataGVStatistic";
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -143,7 +148,7 @@ namespace KeyboardWIndowApp
             this.dataGVStatistic.RowHeadersVisible = false;
             this.dataGVStatistic.RowHeadersWidth = 51;
             this.dataGVStatistic.RowTemplate.Height = 24;
-            this.dataGVStatistic.Size = new System.Drawing.Size(1089, 321);
+            this.dataGVStatistic.Size = new System.Drawing.Size(817, 261);
             this.dataGVStatistic.TabIndex = 3;
             this.dataGVStatistic.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -199,23 +204,25 @@ namespace KeyboardWIndowApp
             // 
             this.labelAbout.AutoSize = true;
             this.labelAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelAbout.Location = new System.Drawing.Point(24, 9);
+            this.labelAbout.Location = new System.Drawing.Point(18, 7);
+            this.labelAbout.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelAbout.Name = "labelAbout";
-            this.labelAbout.Size = new System.Drawing.Size(259, 32);
+            this.labelAbout.Size = new System.Drawing.Size(201, 26);
             this.labelAbout.TabIndex = 4;
             this.labelAbout.Text = "Статистика общая";
             // 
             // DiagrammForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1154, 778);
+            this.ClientSize = new System.Drawing.Size(866, 632);
             this.Controls.Add(this.labelAbout);
             this.Controls.Add(this.dataGVStatistic);
             this.Controls.Add(this.chartTime);
             this.Controls.Add(this.chartMistake);
             this.Controls.Add(this.chartSpeed);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "DiagrammForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Статистика диаграммы";

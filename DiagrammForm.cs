@@ -89,14 +89,14 @@ namespace KeyboardWIndowApp
             Series mySeriesTime = new Series("Время");
             for (int i = 0; i < st.Count; i++)
             {
-                mySeriesSpeed.Points.AddXY(st[i].Date.Date, st[i].TipeSpeed);
-                mySeriesMistake.Points.AddXY(st[i].Date.Date, st[i].ErrorPct);
-                mySeriesTime.Points.AddXY(st[i].Date.Date, arr[i]);
+                mySeriesSpeed.Points.AddXY(st[i].Date, st[i].TipeSpeed);
+                mySeriesMistake.Points.AddXY(st[i].Date, st[i].ErrorPct);
+                mySeriesTime.Points.AddXY(st[i].Date, arr[i]);
             }
-            chartSpeed.Series.Add(mySeriesSpeed);
-            chartMistake.Series.Add(mySeriesMistake);
-            chartTime.Series.Add(mySeriesTime);
-            
+            chartSpeed.Series[0] = mySeriesSpeed;
+            chartMistake.Series[0] = mySeriesMistake;
+            chartTime.Series[0] = mySeriesTime;
+
         }
 
         private void chartMistake_Click(object sender, EventArgs e)

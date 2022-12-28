@@ -62,7 +62,7 @@ namespace KeyboardWIndowApp
 
         private void exrcBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Close();
         }
 
         private void settingsBtn_Click(object sender, EventArgs e)
@@ -70,6 +70,12 @@ namespace KeyboardWIndowApp
             User user = UserWork.GetUserByLogin(userNameLbl.Text);
             SettingUser su = new SettingUser(user);
             su.ShowDialog();
+        }
+
+
+        private void logout_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
     }
 }

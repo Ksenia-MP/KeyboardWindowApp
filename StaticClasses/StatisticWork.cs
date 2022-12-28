@@ -30,7 +30,10 @@ namespace KeyboardWIndowApp.StaticClasses
                 if (d.ErrorPct >= err_pct) err_dif = d.Level;
                 if (d.TypeSpeed <= speed) speed_dif = d.Level;
             }
-            text += "\nРекомендуемая сложность: Уровень " + speed_dif;
+            if (speed_dif == 0)
+                text += "Показатели скорости печати слижком низкие\nРекомендуем начать обучение с первого уровня сложности.";
+            else
+                text += "\nРекомендуемая сложность: Уровень " + speed_dif;
             return text;
         }
 

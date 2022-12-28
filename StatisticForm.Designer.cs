@@ -30,7 +30,6 @@ namespace KeyboardWIndowApp
         private void InitializeComponent()
         {
             this.userNameLbl = new System.Windows.Forms.Label();
-            this.testBtn = new System.Windows.Forms.Button();
             this.settingsBtn = new System.Windows.Forms.Button();
             this.statisticBtn = new System.Windows.Forms.Button();
             this.exrcBtn = new System.Windows.Forms.Button();
@@ -48,26 +47,10 @@ namespace KeyboardWIndowApp
             this.userNameLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.userNameLbl.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.userNameLbl.Location = new System.Drawing.Point(0, 0);
-            this.userNameLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.userNameLbl.Name = "userNameLbl";
-            this.userNameLbl.Size = new System.Drawing.Size(325, 80);
+            this.userNameLbl.Size = new System.Drawing.Size(244, 65);
             this.userNameLbl.TabIndex = 11;
             this.userNameLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // testBtn
-            // 
-            this.testBtn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.testBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
-            this.testBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.testBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.testBtn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.testBtn.Location = new System.Drawing.Point(20, 491);
-            this.testBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.testBtn.Name = "testBtn";
-            this.testBtn.Size = new System.Drawing.Size(287, 74);
-            this.testBtn.TabIndex = 19;
-            this.testBtn.Text = "Тестовое упражнение";
-            this.testBtn.UseVisualStyleBackColor = false;
             // 
             // settingsBtn
             // 
@@ -76,10 +59,9 @@ namespace KeyboardWIndowApp
             this.settingsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.settingsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.settingsBtn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.settingsBtn.Location = new System.Drawing.Point(20, 271);
-            this.settingsBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.settingsBtn.Location = new System.Drawing.Point(15, 220);
             this.settingsBtn.Name = "settingsBtn";
-            this.settingsBtn.Size = new System.Drawing.Size(287, 74);
+            this.settingsBtn.Size = new System.Drawing.Size(215, 60);
             this.settingsBtn.TabIndex = 18;
             this.settingsBtn.Text = "Настройка";
             this.settingsBtn.UseVisualStyleBackColor = false;
@@ -92,10 +74,9 @@ namespace KeyboardWIndowApp
             this.statisticBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.statisticBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.statisticBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.statisticBtn.Location = new System.Drawing.Point(20, 185);
-            this.statisticBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.statisticBtn.Location = new System.Drawing.Point(15, 150);
             this.statisticBtn.Name = "statisticBtn";
-            this.statisticBtn.Size = new System.Drawing.Size(287, 74);
+            this.statisticBtn.Size = new System.Drawing.Size(215, 60);
             this.statisticBtn.TabIndex = 17;
             this.statisticBtn.Text = "Статистика";
             this.statisticBtn.UseVisualStyleBackColor = false;
@@ -106,10 +87,9 @@ namespace KeyboardWIndowApp
             this.exrcBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exrcBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.exrcBtn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.exrcBtn.Location = new System.Drawing.Point(20, 98);
-            this.exrcBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.exrcBtn.Location = new System.Drawing.Point(15, 80);
             this.exrcBtn.Name = "exrcBtn";
-            this.exrcBtn.Size = new System.Drawing.Size(287, 74);
+            this.exrcBtn.Size = new System.Drawing.Size(215, 60);
             this.exrcBtn.TabIndex = 16;
             this.exrcBtn.Text = "Упражнения";
             this.exrcBtn.UseVisualStyleBackColor = false;
@@ -119,22 +99,20 @@ namespace KeyboardWIndowApp
             // 
             this.ExercisesTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ExercisesTab.ItemSize = new System.Drawing.Size(58, 30);
-            this.ExercisesTab.Location = new System.Drawing.Point(331, 87);
-            this.ExercisesTab.Margin = new System.Windows.Forms.Padding(4);
+            this.ExercisesTab.Location = new System.Drawing.Point(248, 71);
             this.ExercisesTab.Multiline = true;
             this.ExercisesTab.Name = "ExercisesTab";
             this.ExercisesTab.SelectedIndex = 0;
-            this.ExercisesTab.Size = new System.Drawing.Size(713, 481);
+            this.ExercisesTab.Size = new System.Drawing.Size(535, 391);
             this.ExercisesTab.TabIndex = 20;
             this.ExercisesTab.SelectedIndexChanged += new System.EventHandler(this.ExercisesTab_SelectedIndexChanged);
             // 
             // info
             // 
             this.info.Image = global::KeyboardWIndowApp.Properties.Resources.infolinear;
-            this.info.Location = new System.Drawing.Point(1000, 13);
-            this.info.Margin = new System.Windows.Forms.Padding(4);
+            this.info.Location = new System.Drawing.Point(750, 11);
             this.info.Name = "info";
-            this.info.Size = new System.Drawing.Size(47, 47);
+            this.info.Size = new System.Drawing.Size(35, 38);
             this.info.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.info.TabIndex = 21;
             this.info.TabStop = false;
@@ -146,10 +124,9 @@ namespace KeyboardWIndowApp
             this.buttonAllStatistic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAllStatistic.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonAllStatistic.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.buttonAllStatistic.Location = new System.Drawing.Point(619, 13);
-            this.buttonAllStatistic.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonAllStatistic.Location = new System.Drawing.Point(464, 11);
             this.buttonAllStatistic.Name = "buttonAllStatistic";
-            this.buttonAllStatistic.Size = new System.Drawing.Size(308, 47);
+            this.buttonAllStatistic.Size = new System.Drawing.Size(231, 38);
             this.buttonAllStatistic.TabIndex = 22;
             this.buttonAllStatistic.Text = "Общая статистика";
             this.buttonAllStatistic.UseVisualStyleBackColor = false;
@@ -158,31 +135,31 @@ namespace KeyboardWIndowApp
             // logout
             // 
             this.logout.Image = global::KeyboardWIndowApp.Properties.Resources.logout;
-            this.logout.Location = new System.Drawing.Point(945, 13);
-            this.logout.Margin = new System.Windows.Forms.Padding(4);
+            this.logout.Location = new System.Drawing.Point(709, 11);
             this.logout.Name = "logout";
-            this.logout.Size = new System.Drawing.Size(47, 47);
+            this.logout.Size = new System.Drawing.Size(35, 38);
             this.logout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.logout.TabIndex = 23;
             this.logout.TabStop = false;
+            this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
             // StatisticForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1060, 578);
+            this.ClientSize = new System.Drawing.Size(795, 470);
             this.Controls.Add(this.logout);
             this.Controls.Add(this.buttonAllStatistic);
             this.Controls.Add(this.info);
             this.Controls.Add(this.ExercisesTab);
-            this.Controls.Add(this.testBtn);
             this.Controls.Add(this.settingsBtn);
             this.Controls.Add(this.statisticBtn);
             this.Controls.Add(this.exrcBtn);
             this.Controls.Add(this.userNameLbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "StatisticForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Статистика";
             this.Load += new System.EventHandler(this.StatisticForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.info)).EndInit();
@@ -194,7 +171,6 @@ namespace KeyboardWIndowApp
         #endregion
 
         private System.Windows.Forms.Label userNameLbl;
-        private System.Windows.Forms.Button testBtn;
         private System.Windows.Forms.Button settingsBtn;
         private System.Windows.Forms.Button statisticBtn;
         private System.Windows.Forms.Button exrcBtn;
