@@ -18,14 +18,15 @@ namespace KeyboardWIndowApp
         public DiagrammForm() // Общая статистика
         {
             InitializeComponent();
-            labelAbout.Text = "Общая"; 
+            labelAbout.Text = "Общая";
+            dataGVStatistic.Columns.Add("userColumn", "Пользователь");
             List<Statistics> st = StatisticWork.GetListStatAll();
             int[] ar_ex_time = new int[st.Count];
             for (int i = 0; i < st.Count; i++)
             {
                 Exercise ex = ExerciseWork.GetExerciseById(st[i].ExerciseId);
                 dataGVStatistic.Rows.Add(i + 1, ex.Name, ex.Len, st[i].TipeSpeed, 
-                    st[i].ErrorPct, ar_ex_time[i] = (int)(60 * ex.Len) / st[i].TipeSpeed, st[i].Date);
+                    st[i].ErrorPct, ar_ex_time[i] = (int)(60 * ex.Len) / st[i].TipeSpeed, st[i].Date, UserWork.GetUserById(st[i].UserId).Login);
             }
             chartView(st, ar_ex_time);
         }
@@ -51,13 +52,14 @@ namespace KeyboardWIndowApp
         {
             InitializeComponent();
             labelAbout.Text = "Статистика по упражнению " + ex_name;
+            dataGVStatistic.Columns.Add("userColumn", "Пользователь");
             Exercise ex = ExerciseWork.GetExerciseByName(ex_name);
             List<Statistics> st = StatisticWork.GetListStatByExersID(ex_id);
             int[] ar_ex_time = new int[st.Count];
             for (int i = 0; i < st.Count; i++)
             {
                 dataGVStatistic.Rows.Add(i + 1, ex_name, ex.Len, st[i].TipeSpeed, 
-                    st[i].ErrorPct, ar_ex_time[i] = (int)(60* ex.Len)/ st[i].TipeSpeed, st[i].Date);
+                    st[i].ErrorPct, ar_ex_time[i] = (int)(60* ex.Len)/ st[i].TipeSpeed, st[i].Date, UserWork.GetUserById(st[i].UserId).Login);
             }
             chartView(st, ar_ex_time);
         }

@@ -27,13 +27,13 @@ namespace KeyboardWIndowApp.StaticClasses
             }
         }
 
-        //public static User GetUserById(long id)
-        //{
-        //    using (Context context = new Context())
-        //    {
-        //        return context.User.FirstOrDefault(u => u.Id == id);
-        //    }
-        //}
+        public static User GetUserById(long id)
+        {
+            using (Context context = new Context())
+            {
+                return context.User.FirstOrDefault(u => u.Id == id);
+            }
+        }
 
         public static User GetUserByLogin(string login)
         {
