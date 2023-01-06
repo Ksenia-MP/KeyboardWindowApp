@@ -18,8 +18,8 @@ namespace KeyboardWIndowApp
         public LogInForm()
         {
             InitializeComponent();
-            loginText.Text = "admin";
-            passwordText.Text = "admin";
+            //loginText.Text = "admin";
+            //passwordText.Text = "admin";
         }
         public LogInForm(string str)
         {
@@ -51,7 +51,7 @@ namespace KeyboardWIndowApp
 
         private void LogIn_Click(object sender, EventArgs e)
         {
-            if (loginText.Text.Length > 2 && loginText.Text.Length <= 8 && passwordText.Text.Length > 4 && passwordText.Text.Length <= 12)
+            if (loginText.Text.Length >= 2 && loginText.Text.Length <= 8 && passwordText.Text.Length >= 4 && passwordText.Text.Length <= 12)
             {
                 if (UserWork.UserConfirmed(loginText.Text, passwordText.Text))
                 {
@@ -83,7 +83,7 @@ namespace KeyboardWIndowApp
 
         private void Registr_Click(object sender, EventArgs e)
         {
-            if(loginText.Text.Length > 2 && loginText.Text.Length <= 8 && passwordText.Text.Length > 4 && passwordText.Text.Length <= 12)
+            if(loginText.Text.Length >= 2 && loginText.Text.Length <= 8 && passwordText.Text.Length >= 4 && passwordText.Text.Length <= 12)
             {
                 if (UserWork.GetUserByLogin(loginText.Text) == null)
                 {
